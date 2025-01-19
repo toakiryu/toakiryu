@@ -10,7 +10,7 @@ import {
 import { useTranslations } from "use-intl";
 import { Link } from "@/i18n/routing";
 
-export const HeroParallax = ({
+const HeroParallax = ({
   products,
 }: {
   products: {
@@ -92,6 +92,7 @@ export const HeroParallax = ({
     </div>
   );
 };
+export default HeroParallax;
 
 export const Header = () => {
   const t = useTranslations("pages.home.avatarContent");

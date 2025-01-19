@@ -1,10 +1,11 @@
-import { HeroParallax } from "@/components/ui/hero-parallax";
 import { products } from "../../../config";
-import HeroAboutMeContent from "@/components/hero/aboutMe";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { Image } from "@nextui-org/react";
-import ServerWorldMap from "@/components/hero/ServerWorldMap";
-import HeroTimelineContent from "@/components/hero/timelineContent";
+import { lazyImport } from "@/components/lazyImport";
+const HeroParallax = lazyImport(() => import("@/components/ui/hero-parallax"))
+const HeroAboutMeContent = lazyImport(() => import("@/components/hero/aboutMe"))
+const ContainerScroll = lazyImport(() => import("@/components/ui/container-scroll-animation"))
+const HeroTimelineContent = lazyImport(() => import("@/components/hero/timelineContent"))
+const ServerWorldMap = lazyImport(() => import("@/components/hero/ServerWorldMap"))
 
 export default function Home() {
   return (

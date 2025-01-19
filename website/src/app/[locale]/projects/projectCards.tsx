@@ -1,6 +1,6 @@
 import { projectExpandableCardGridType } from "./projectsContent";
 
-export const cards: projectExpandableCardGridType[] = [
+const cards: projectExpandableCardGridType[] = [
   {
     title: "Scratch Status",
     times: "2024年12月20日 ~",
@@ -272,3 +272,5 @@ export const cards: projectExpandableCardGridType[] = [
     },
   },
 ];
+
+export default cards

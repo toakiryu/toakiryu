@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import React from "react";
-import { ContactPageContent, ContactPageTopTitle } from "./contact";
+
+import { lazyImport } from "@/components/lazyImport";
+const ContactPageContainer = lazyImport(() => import("./contact"))
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = getLocale();
@@ -17,8 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ContactPage() {
   return (
     <>
-      <ContactPageTopTitle />
-      <ContactPageContent />
+<ContactPageContainer/>
     </>
   );
 }

@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import {
   CloseIcon,
 } from "@/components/ui/expandableCard";
-import { cards } from "./projectCards";
+import cards from "./projectCards";
 
 function ExpandableCardGridMapDiv({
   id,

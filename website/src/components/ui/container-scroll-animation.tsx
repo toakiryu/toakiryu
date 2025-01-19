@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
-export const ContainerScroll = ({
+const ContainerScroll = ({
   titleComponent,
   children,
 }: {
@@ -53,6 +53,8 @@ export const ContainerScroll = ({
     </div>
   );
 };
+
+export default ContainerScroll
 
 export const Header = ({ translate, titleComponent }: any) => {
   return (
