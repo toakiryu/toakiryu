@@ -2,8 +2,10 @@
 
 import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import ProjectsContent from "./projectsContent";
-import ProjectsContentTitle from "./title";
+import { lazyImport } from "@/components/lazyImport";
+
+const ProjectsContentTitle = lazyImport(() => import("./title"))
+const ProjectsContent = lazyImport(() => import("./projectsContent"))
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = getLocale();

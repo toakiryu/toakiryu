@@ -21,6 +21,15 @@ import {
 } from "./formcontent";
 import { useSearchParams } from "next/navigation";
 
+export default function ContactPageContainer() {
+  return (
+    <>
+      <ContactPageTopTitle />
+      <ContactPageContent />
+    </>
+  );
+}
+
 export function ContactPageTopTitle() {
   const t = useTranslations("pages.contact");
   return (

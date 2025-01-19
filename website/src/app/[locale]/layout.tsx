@@ -16,8 +16,10 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Toaster } from "react-hot-toast";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+
+import { lazyImport } from "@/components/lazyImport";
+const Header = lazyImport(() => import("@/components/header"))
+const Footer = lazyImport(() => import("@/components/footer"))
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
