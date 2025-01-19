@@ -8,6 +8,7 @@ export const lazyImport = (
     try {
       return await factory();
     } catch (e) {
+      console.error(e)
       return {
         default: () => (
           <>
