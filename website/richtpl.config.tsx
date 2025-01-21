@@ -52,7 +52,16 @@ const config: Config = {
     // Metadata for the site
     metadata: {
       keywords: [
+        "きりゅうとあ",
+        "とあきりゅう",
+        "桐生トア",
+        "桐生",
+        "トア",
+        "とあ",
         "Toakiryu",
+        "toa kiryu",
+        "kiryu",
+        "toa",
         "portfolio",
         "website",
         "projects",
