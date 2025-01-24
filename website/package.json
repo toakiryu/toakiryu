@@ -13,7 +13,7 @@
     "@nextui-org/react": "^2.6.11",
     "@nextui-org/system": "^2.4.6",
     "@nextui-org/theme": "^2.4.5",
-    "@tabler/icons-react": "^3.28.1",
+    "@tabler/icons-react": "^3.29.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
