@@ -18,8 +18,12 @@ import { routing } from "@/i18n/routing";
 import { Toaster } from "react-hot-toast";
 
 import { lazyImport } from "@/components/lazyImport";
-const Header = lazyImport(() => import("@/components/header"))
-const Footer = lazyImport(() => import("@/components/footer"))
+const Header = lazyImport(() => import("@/components/header"));
+const Footer = lazyImport(() => import("@/components/footer"));
+
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+import { HeroUIProvider } from "@heroui/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -176,24 +180,29 @@ export default async function LocaleLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  const gaId = process.env.GA_ID || "";
+
   return (
     <html lang={locale} suppressHydrationWarning>
+      <GoogleAnalytics gaId={gaId} />
       <body
         className={`relative w-full h-full overflow-x-clip ${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={config.themeConfig.colorMode.defaultMode}
-          {...config.themeConfig.colorMode.custom}
-        >
-          <NextIntlClientProvider messages={messages}>
-            <Header />
-            <main className="w-full h-full">{children}</main>
-            <Footer />
-            <Toaster />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <HeroUIProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme={config.themeConfig.colorMode.defaultMode}
+            {...config.themeConfig.colorMode.custom}
+          >
+            <NextIntlClientProvider messages={messages}>
+              <Header />
+              <main className="w-full h-full">{children}</main>
+              <Footer />
+              <Toaster />
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </HeroUIProvider>
       </body>
     </html>
   );

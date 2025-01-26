@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Input, InputProps, Textarea, TextAreaProps } from "@nextui-org/react";
+import { Input, InputProps, Textarea, TextAreaProps } from "@heroui/react";
 import React, { ReactNode } from "react";
 
 export function CustomFormLabel({
