@@ -1,6 +1,6 @@
 "use client";
 
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 import { Timeline } from "../ui/timeline";
 
 export const timelineData = [

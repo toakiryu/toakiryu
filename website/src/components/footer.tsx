@@ -1,7 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { Image, Tooltip } from "@nextui-org/react";
+import { Image, Tooltip } from "@heroui/react";
 import React from "react";
 import { socials } from "../../config";
 import { useTranslations } from "next-intl";

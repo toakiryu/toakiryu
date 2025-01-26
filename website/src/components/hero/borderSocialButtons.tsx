@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Tooltip } from "@nextui-org/react";
+import { Tooltip } from "@heroui/react";
 import { socials, socialType } from "../../../config";
 
 import { motion, useInView } from "framer-motion";

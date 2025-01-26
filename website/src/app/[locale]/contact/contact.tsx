@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { GFromQuickSubmitFormPOST } from "gform-quick-submit";
 
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import { Button, Select, SelectItem } from "@heroui/react";
 import {
   CustomFormDt,
   CustomFormInput,

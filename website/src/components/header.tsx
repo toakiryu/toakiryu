@@ -10,7 +10,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { Link, usePathname } from "@/i18n/routing";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import LocaleSwitcherSelect from "./ui/LocaleSwitcherSelect";

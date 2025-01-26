@@ -18,7 +18,7 @@ import {
   DrawerHeader,
   Tooltip,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 function AnimateContentDiv({ children }: { children: ReactNode }) {
   const ref = useRef(null);

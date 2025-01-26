@@ -1,5 +1,5 @@
 import { products } from "../../../config";
-import { Image } from "@nextui-org/react";
+import { Image } from "@heroui/react";
 import { lazyImport } from "@/components/lazyImport";
 const HeroParallax = lazyImport(() => import("@/components/ui/hero-parallax"))
 const HeroAboutMeContent = lazyImport(() => import("@/components/hero/aboutMe"))

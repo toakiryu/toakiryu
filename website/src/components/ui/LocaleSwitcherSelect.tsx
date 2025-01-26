@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { ChangeEvent, useTransition } from "react";
 import { Locale, routing, usePathname, useRouter } from "@/i18n/routing";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem } from "@heroui/react";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function LocaleSwitcherSelect() {
