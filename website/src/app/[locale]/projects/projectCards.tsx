@@ -2,6 +2,29 @@ import { projectExpandableCardGridType } from "./projectsContent";
 
 const cards: projectExpandableCardGridType[] = [
   {
+    title: "StreamKit Portal",
+    times: "2024年01月25日 ~ 中断中",
+    src: "/wp-content/product/streamkitportal.com.webp",
+    ctaText: "Visit",
+    ctaLink: "https://streamkitportal.vercel.app",
+    description: () =>
+      "ストリーマーおよび配信者向けの、ウィジェットなどのカスタマイズまたはテンプレートを提供するサービス。",
+    content: () => {
+      return (
+        <>
+          <p>
+            DiscordやYoutubeなどのコミュニティーが提供しているウィジェットをOBSなどの録画アプリに表示させるときに、カスタマイズをしてオリジナルのデザインを作成できるようにしてみたいと思い開発を開始しました。
+          </p>
+          <p>
+          専門的な知識のない初心者でもカスタマイズを作成できるようにUIコントロールを実装しており、さらに上級者向けにコードを書いて作成する機能もあります。カスタマイズは編集した値を常に適応しているためリアルタイムでプレビューを見ながら作成することができます。
+          現在は、Discordが提供する全ウィジェットを実装後開発を一時中断しています。
+          </p>
+          <p>制作期間: 約5日間</p>
+        </>
+      );
+    },
+  },
+  {
     title: "Scratch Status",
     times: "2024年12月20日 ~",
     src: "/wp-content/product/scratch-status.toakiryu.com.webp",
