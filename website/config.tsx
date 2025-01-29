@@ -46,8 +46,8 @@ export const products = [
     thumbnail: "/wp-content/product/zshmgr.vercel.app.webp",
   },
   {
-    title: "COMING SOON",
-    thumbnail: "/wp-content/product/comingsoon.webp",
+    title: "StreamKit Portal",
+    thumbnail: "/wp-content/product/streamkitportal.com.webp",
   },
 
   {
