@@ -19,7 +19,7 @@
     "cmdk": "^1.0.4",
     "cookies-next": "^5.1.0",
     "dotted-map": "^2.2.3",
-    "framer-motion": "^12.4.2",
+    "framer-motion": "^12.4.3",
     "gform-quick-submit": "^0.0.1",
     "lucide-react": "^0.475.0",
     "next": "15.1.6",
