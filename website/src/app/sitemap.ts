@@ -6,59 +6,35 @@ import config from "../../richtpl.config";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const result: MetadataRoute.Sitemap = [];
 
-  for (const lang of config.i18n.locales) {
-    const langConfig = config.i18n.localeConfigs[lang];
-    const homeUrl = `${config.url}/${langConfig.path}`;
+  const homeUrl = `${config.url}`;
 
-    result.push({
-      url: homeUrl,
-      lastModified: new Date().toISOString(),
-      changeFrequency: "daily",
-      priority: 1.0,
-      alternates: {
-        languages: config.i18n.locales.reduce<{ [key: string]: string }>(
-          (acc, l) => {
-            const langConfig = config.i18n.localeConfigs[l];
-            acc[langConfig.htmlLang] = `${config.url}/${langConfig.path}`;
-            return acc;
-          },
-          {}
-        ),
-      },
-    });
+  result.push({
+    url: homeUrl,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "daily",
+    priority: 1.0,
+  });
 
-    const dirPath = path.join(process.cwd(), `src/app/[locale]`);
+  const dirPath = path.join(process.cwd(), `src/app/`);
 
-    if (fs.existsSync(dirPath)) {
-      const items = fs.readdirSync(dirPath, { withFileTypes: true });
+  if (fs.existsSync(dirPath)) {
+    const items = fs.readdirSync(dirPath, { withFileTypes: true });
 
-      for (const item of items) {
-        if (
-          item.isDirectory() &&
-          !config.themeConfig.sitemap?.excludedDirs?.includes(item.name)
-        ) {
-          const pagePath = path.join(dirPath, item.name, "page.tsx");
-          if (fs.existsSync(pagePath)) {
-            const url = `${config.url}/${langConfig.path}/${item.name}`;
+    for (const item of items) {
+      if (
+        item.isDirectory() &&
+        !config.themeConfig.sitemap?.excludedDirs?.includes(item.name)
+      ) {
+        const pagePath = path.join(dirPath, item.name, "page.tsx");
+        if (fs.existsSync(pagePath)) {
+          const url = `${config.url}/${item.name}`;
 
-            result.push({
-              url: url,
-              lastModified: new Date().toISOString(),
-              changeFrequency: "daily",
-              priority: 0.7,
-              alternates: {
-                languages: config.i18n.locales.reduce<{
-                  [key: string]: string;
-                }>((acc, l) => {
-                  const langConfig = config.i18n.localeConfigs[l];
-                  acc[
-                    langConfig.htmlLang
-                  ] = `${config.url}/${langConfig.path}/${item.name}`;
-                  return acc;
-                }, {}),
-              },
-            });
-          }
+          result.push({
+            url: url,
+            lastModified: new Date().toISOString(),
+            changeFrequency: "daily",
+            priority: 0.7,
+          });
         }
       }
     }

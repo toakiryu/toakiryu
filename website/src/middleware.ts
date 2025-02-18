@@ -1,26 +1,23 @@
-import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import { routing } from "./i18n/routing";
-
-// 既存のミドルウェアを作成
-const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
-  // intlMiddleware を実行して、結果を取得
-  let response = intlMiddleware(request);
+  const currentPath = request.nextUrl.pathname;
+  const maintenance = `${process.env.NEXT_PUBLIC_MAINTENANCE || false}`;
 
-  // intlMiddleware がレスポンスを返さなかった場合、デフォルトのNextResponseを作成
-  if (!response) {
-    response = NextResponse.next();
+  // ステータスに応じたリダイレクト処理
+  if (maintenance === "true" && currentPath !== "/maintenance") {
+    return NextResponse.redirect(new URL("/maintenance", request.url));
+  } else if (maintenance === "false" && currentPath === "/maintenance") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // カスタムヘッダーを追加する処理
-  response.headers.set("x-pathname", request.nextUrl.pathname);
+  // 通常のレスポンスを作成
+  const response = NextResponse.next();
+  response.headers.set("x-pathname", currentPath);
 
   return response;
 }
 
 export const config = {
-  // Match only internationalized pathnames
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
