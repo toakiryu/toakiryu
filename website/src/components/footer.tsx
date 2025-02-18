@@ -1,165 +1,63 @@
-"use client";
-
-import { Link } from "@/i18n/routing";
-import { Image, Tooltip } from "@heroui/react";
 import React from "react";
-import { socials } from "../../config";
-import { useTranslations } from "next-intl";
-import LocaleSwitcherSelect from "./ui/LocaleSwitcherSelect";
-import { ColorModeSwitcherSelect } from "./ui/colorModeSwitcherSelect";
 
-export type FooterNavItemLinkType = {
-  href: string;
-  label: string;
-};
-export type FooterNavItemType = {
-  label: string;
-  items: FooterNavItemLinkType[];
-};
+import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 
-export const footerItems: FooterNavItemType[] = [
-  {
-    label: "website",
-    items: [
-      {
-        href: "/",
-        label: "home",
-      },
-      {
-        href: "/projects",
-        label: "projects",
-      },
-      {
-        href: "/contact",
-        label: "contact",
-      },
-    ],
-  },
-  {
-    label: "projects",
-    items: [
-      {
-        href: "https://craftrecycle.toakiryu.com",
-        label: "craftrecycle",
-      },
-      {
-        href: "https://gform-quick-submit.toakiryu.com",
-        label: "gform-quick-submit",
-      },
-      {
-        href: "https://nextjs-rich-tpl.toakiryu.com",
-        label: "nextjs-rich-tpl",
-      },
-      {
-        href: "https://safe-encode.vercel.app",
-        label: "safe-encode",
-      },
-      {
-        href: "https://scpay.vercel.app",
-        label: "scpay",
-      },
-      {
-        href: "https://scratch-building.vercel.app",
-        label: "scratch-building",
-      },
-      {
-        href: "https://scratch-status.toakiryu.com",
-        label: "scratch-status",
-      },
-      {
-        href: "https://support-scripts.toakiryu.com",
-        label: "support-scripts",
-      },
-      {
-        href: "https://vspodb.vercel.app",
-        label: "vspodb",
-      },
-      {
-        href: "https://zshmgr.vercel.app",
-        label: "zshmgr",
-      },
-    ],
-  },
-];
+import Link from "./custom/link";
 
 function Footer() {
-  const t = useTranslations("footer");
-
-  // const returnTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
-
   return (
-    <footer className="w-full pt-10 bg-neutral-100 dark:bg-neutral-900">
-      <div className="container max-w-5xl p-5">
-        <div className="grid grid-cols-1 sm:!grid-cols-2 md:!grid-cols-3 gap-10 w-full">
-          <div className="mb-10">
-            <Image
-              alt="Toa Kiryu icon"
-              src="/wp-content/toakiryu/icon.webp"
-              className="w-10 h-10"
-              loading="lazy"
-            />
-            <div className="mt-5">
-              <p>{t("description")}</p>
-            </div>
-            <div className="flex flex-wrap gap-3 mt-5">
-              {socials.map((social, index) => {
-                return (
-                  <Tooltip key={index} content={social.label} showArrow>
-                    <Link
-                      href={social.link}
-                      target="_blank"
-                      className="hover:opacity-50 transition-all duration-300 ease-in-out"
-                    >
-                      <span className="sr-only">{social.label}</span>
-                      <social.icon className="text-lg" />
-                    </Link>
-                  </Tooltip>
-                );
-              })}
-            </div>
-            <div className="grid grid-cols-2 gap-5 mt-5">
-              <LocaleSwitcherSelect />
-              <ColorModeSwitcherSelect />
-            </div>
-          </div>
-          <div className="flex gap-10">
-            {footerItems.map((item, index) => {
-              return (
-                <div key={index}>
-                  <h2 className="font-bold">
-                    {t(`items.${item.label}.label`)}
-                  </h2>
-                  <ul className="flex flex-col mt-5 *:mb-1">
-                    {item.items.map((link, idx) => {
-                      const isSiteUrl = link.href.indexOf(`https://`) !== 0;
-                      return (
-                        <li key={idx}>
-                          <Link
-                            href={link.href}
-                            target={isSiteUrl ? "_self" : "_blank"}
-                            className="opacity-70 hover:!opacity-50 transition-all duration-300 ease-in-out"
-                          >
-                            {t(`items.${item.label}.links.${link.label}`)}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
+    <footer className="flex flex-col gap-y-5 rounded-lg container max-w-5xl px-7 py-5">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-x-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-5 w-5"
+          >
+            <polyline points="4 17 10 11 4 5" />
+            <line x1={12} x2={20} y1={19} y2={19} />
+          </svg>
+          <h2 className="text-lg font-bold text-foreground">Toa Kiryu</h2>
         </div>
-        <hr className="my-5" />
-        <div>
-          <p>{t("copyright")}</p>
+        <div className="flex gap-x-2">
+          <Link
+            href="https://l.toakiryu.com/github"
+            className="flex h-5 w-5 items-center justify-center text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
+          >
+            <IconBrandGithub size={23} />
+          </Link>
+          <Link
+            href="https://l.toakiryu.com/x"
+            className="flex h-5 w-5 items-center justify-center text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4"
+          >
+            <IconBrandTwitter size={23} />
+          </Link>
         </div>
       </div>
+      <div className="flex flex-col justify-between gap-y-5 md:flex-row md:items-center">
+        <ul className="flex flex-col gap-x-5 gap-y-2 text-muted-foreground md:flex-row md:items-center">
+          <li className="text-[15px]/normal font-medium text-muted-foreground transition-all duration-100 ease-linear hover:text-foreground hover:underline hover:underline-offset-4">
+            <Link
+              href="/contact"
+              target="_blank"
+              className="text-muted-foreground"
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
+        <div className="flex items-center justify-between text-sm font-medium tracking-tight text-muted-foreground">
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+      <div className="flex items-center justify-center" />
     </footer>
   );
 }

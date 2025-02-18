@@ -1,6 +1,6 @@
 {
   "name": "nextjs-rich-tpl",
-  "version": "15.1.2",
+  "version": "latest",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,43 +9,36 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroui/react": "^2.6.14",
-    "@hookform/resolvers": "^3.10.0",
-    "@next/third-parties": "^15.1.6",
-    "@tabler/icons-react": "^3.29.0",
+    "@emotion/react": "^11.14.0",
+    "@tabler/icons-react": "^3.30.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
-    "cookies-next": "^5.1.0",
-    "dotted-map": "^2.2.3",
-    "framer-motion": "^12.4.2",
-    "gform-quick-submit": "^0.0.1",
+    "cookies-next": "^5.0.2",
     "lucide-react": "^0.475.0",
-    "next": "15.1.6",
-    "next-intl": "^3.26.3",
+    "motion": "^12.4.3",
+    "next": "15.1.7",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.54.2",
-    "react-hot-toast": "^2.5.1",
     "react-icons": "^5.4.0",
+    "sonner": "^1.7.4",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.1"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.8",
-    "@babel/preset-env": "^7.26.8",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
-    "@types/node": "^22.13.1",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "^15.1.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.2"
   }
 }
