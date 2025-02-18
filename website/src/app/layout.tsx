@@ -18,6 +18,8 @@ import config from "../../richtpl.config";
 
 import { Toaster } from "sonner";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import { ThemeProvider } from "next-themes";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -79,8 +81,11 @@ export default async function LocaleLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const gaId = process.env.GA_ID || "";
+
   return (
     <html lang="ja" suppressHydrationWarning>
+      <GoogleAnalytics gaId={gaId} />
       <body
         className={`relative w-full h-full overflow-x-clip ${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
         suppressHydrationWarning

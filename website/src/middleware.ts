@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;
-  const maintenance = process.env.NEXT_PUBLIC_MAINTENANCE;
+  const maintenance = `${process.env.NEXT_PUBLIC_MAINTENANCE || false}`;
 
   // ステータスに応じたリダイレクト処理
   if (maintenance === "true" && currentPath !== "/maintenance") {
