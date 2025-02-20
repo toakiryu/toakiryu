@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+
+import { motion, useInView } from "motion/react";
 
 import Image from "../custom/image";
 
@@ -12,6 +14,67 @@ export type testimonialType = {
   description: string;
   avatar?: string;
 };
+
+function AnimationTestimonialCard({
+  index,
+  visibleCount,
+  testimonial,
+}: {
+  index: number;
+  visibleCount: number;
+  testimonial: testimonialType;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px" });
+
+  return (
+    <motion.div
+      className={`flex-col border-b break-inside-avoid border-l transition-colors hover:bg-secondary/20 opacity-100 will-change-auto ${
+        index >= visibleCount ? "hidden" : "flex"
+      }`}
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "show" : "hidden"}
+      variants={{
+        hidden: {
+          opacity: 0,
+          filter: "blur(100%)",
+          y: 50,
+        },
+        show: {
+          opacity: 1,
+          filter: "blur(0%)",
+          y: 0,
+        },
+      }}
+      transition={{
+        duration: 0.5,
+        delay: 0.1 * index,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="px-4 py-5 sm:p-6 flex-grow">
+        <div className="flex items-center gap-4 mb-4">
+          <Image
+            src={testimonial.avatar || "/wp-content/uploads/user-avatar.png"}
+            alt={testimonial.name}
+            width={48}
+            height={48}
+            className="border"
+            rounded="999px"
+          />
+          <div>
+            <h3 className="text-lg font-medium text-foreground">
+              {testimonial.name}
+            </h3>
+            <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+          </div>
+        </div>
+        <p className="truncate">{testimonial.description}</p>
+      </div>
+    </motion.div>
+  );
+}
 
 function SectionTestimonials({
   testimonials,
@@ -56,37 +119,12 @@ function SectionTestimonials({
               </button>
             )}
             {testimonials.map((testimonial, index) => (
-              <div
+              <AnimationTestimonialCard
                 key={index}
-                className={`flex-col border-b break-inside-avoid border-l transition-colors hover:bg-secondary/20 opacity-100 will-change-auto ${
-                  index >= visibleCount ? "hidden" : "flex"
-                }`}
-              >
-                <div className="px-4 py-5 sm:p-6 flex-grow">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Image
-                      src={
-                        testimonial.avatar ||
-                        "/wp-content/uploads/user-avatar.png"
-                      }
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="border"
-                      rounded="999px"
-                    />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">
-                        {testimonial.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="truncate">{testimonial.description}</p>
-                </div>
-              </div>
+                index={index}
+                visibleCount={visibleCount}
+                testimonial={testimonial}
+              />
             ))}
           </div>
         </div>

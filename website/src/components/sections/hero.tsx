@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -7,6 +9,8 @@ import Image from "../custom/image";
 
 import { ArrowRightIcon } from "lucide-react";
 
+import { motion, useInView } from "motion/react";
+
 import { Meteors } from "../magicui/meteors";
 import { AnimatedGridPattern } from "../magicui/animated-grid-pattern";
 import { AuroraText } from "../magicui/aurora-text";
@@ -14,6 +18,13 @@ import { SpinningText } from "../magicui/spinning-text";
 import { AnimatedShinyText } from "../magicui/animated-shiny-text";
 
 function SectionHero() {
+  const ref_avatar = useRef(null);
+  const isInView_avatar = useInView(ref_avatar, { once: true, margin: "0px" });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px" });
+  const ref2 = useRef(null);
+  const isInView2 = useInView(ref2, { once: true, margin: "0px" });
+
   return (
     <section id="hero">
       <div className="relative container max-w-5xl px-4">
@@ -34,7 +45,7 @@ function SectionHero() {
           <div className="relative flex flex-col-reverse lg:grid lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12">
             <div className="flex flex-col justify-start items-start lg:col-span-1">
               <Link
-                href="https://portfolio.toakiryu.com/"
+                href="https://foriio.com/toakiryu"
                 className="w-fit animation-slide-button"
               >
                 <div
@@ -49,16 +60,82 @@ function SectionHero() {
                 </div>
               </Link>
               <div className="flex w-full max-w-3xl flex-col overflow-hidden pt-8">
-                <h1 className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-6xl tracking-tighter">
-                  <AuroraText>桐生トア</AuroraText>
-                </h1>
-                <p className="text-left max-w-xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance mt-2">
+                <motion.h1
+                  ref={ref}
+                  initial="hidden"
+                  animate={isInView ? "show" : "hidden"}
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      filter: "blur(100%)",
+                      y: 50,
+                    },
+                    show: {
+                      opacity: 1,
+                      filter: "blur(0%)",
+                      y: 0,
+                    },
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.5,
+                    ease: "easeInOut",
+                  }}
+                  className="text-left text-4xl font-semibold leading-tighter text-foreground sm:text-5xl md:text-6xl tracking-tighter will-change-auto"
+                >
+                  <span className="inline-block text-balance">
+                    <AuroraText>桐生トア</AuroraText>
+                  </span>
+                </motion.h1>
+                <motion.p
+                  ref={ref2}
+                  initial="hidden"
+                  animate={isInView2 ? "show" : "hidden"}
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      filter: "blur(100%)",
+                      y: 50,
+                    },
+                    show: {
+                      opacity: 1,
+                      filter: "blur(0%)",
+                      y: 0,
+                    },
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.7,
+                    ease: "easeInOut",
+                  }}
+                  className="text-left max-w-xl leading-normal text-muted-foreground sm:text-lg sm:leading-normal text-balance mt-2"
+                >
                   最新の技術とフレームワークを用いて、美しい製品を開発しています。素晴らしい製品作りに情熱を注ぐ開発者です。
-                </p>
+                </motion.p>
               </div>
             </div>
             <div className="relative h-[240px] mb-5 lg:mb-0 lg:h-full lg:col-span-1">
-              <div className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center">
+              <motion.div
+                ref={ref_avatar}
+                initial="hidden"
+                animate={isInView_avatar ? "show" : "hidden"}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    filter: "blur(100%)",
+                  },
+                  show: {
+                    opacity: 1,
+                    filter: "blur(0%)",
+                  },
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.3,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center"
+              >
                 <SpinningText
                   reverse
                   className="text-3xl"
@@ -75,7 +152,7 @@ function SectionHero() {
                   className="absolute"
                   rounded="9999px"
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
