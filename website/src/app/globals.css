@@ -118,3 +118,14 @@
     background-size: calc(100% / 3) 100%;
   }
 }
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
