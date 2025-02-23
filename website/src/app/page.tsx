@@ -7,6 +7,8 @@ import {
   IconTerminal,
 } from "@tabler/icons-react";
 
+import { ScrollProgress } from "@/components/magicui/scroll-progress";
+
 import Header from "@/components/header";
 import SectionHero from "@/components/sections/hero";
 import SectionSocials from "@/components/sections/socials";
@@ -17,7 +19,7 @@ import SectionTestimonials from "@/components/sections/testimonials";
 import SectionCommunity from "@/components/sections/community";
 import SectionCta from "@/components/sections/cta";
 import Footer from "@/components/footer";
-import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import SectionCertifications from "@/components/sections/certifications";
 
 export default function Home() {
   return (
@@ -55,6 +57,7 @@ export default function Home() {
           },
         ]}
       />
+      <SectionCertifications />
       <SectionUseCases />
       <SectionProjects
         projects={[
