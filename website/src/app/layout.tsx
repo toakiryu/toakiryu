@@ -86,6 +86,20 @@ export default async function LocaleLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <GoogleAnalytics gaId={gaId} />
+      <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed"
+          href="/api/feed"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Certifications Feed"
+          href="/api/feed/certifications"
+        />
+      </head>
       <body
         className={`relative w-full h-full overflow-x-clip ${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
         suppressHydrationWarning

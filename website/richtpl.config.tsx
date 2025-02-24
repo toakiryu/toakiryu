@@ -69,6 +69,11 @@ const siteConfig: Config = {
         template: "%s | 桐生トア",
         default: "桐生トア | 公式ウェブサイト",
       },
+
+      other: {
+        "rss-feed": "/api/feed",
+        "rss-certifications": "/api/feed/certifications",
+      },
     },
     // Sitemap Configuration
     sitemap: {
