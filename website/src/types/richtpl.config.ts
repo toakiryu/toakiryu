@@ -28,7 +28,7 @@ interface Config {
   title: string; // Site title
   description?: string; // Site description
   tagline: string; // Site tagline
-  favicon?: string; // URL to the favicon
+  favicon: string; // URL to the favicon
 
   url: string; // Production URL of the site
   baseUrl?: string; // Base URL pathname
