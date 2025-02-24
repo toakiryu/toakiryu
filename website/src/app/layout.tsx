@@ -54,22 +54,29 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: "follow, index",
     metadataBase: new URL(config.url),
     openGraph: {
-      type: "website",
+      type: "profile",
       url: config.url,
       siteName: config.title,
       title: title,
       description:
         config.themeConfig?.metadata?.description ?? config.description,
-      images: config.themeConfig.image,
+      images: [
+        {
+          url: config.themeConfig.image || config.favicon,
+          width: 512,
+          height: 512,
+          alt: "Toa Kiryu's Profile Icon",
+        },
+      ],
       locale: "ja-JP",
     },
     twitter: {
-      card: "summary_large_image",
-      site: `@${config.themeConfig?.metadata?.creator ?? "Toa Kiryu"}`,
+      card: "summary", // `summary` or `summary_large_image`
+      site: `@${config.themeConfig?.metadata?.creator ?? "toakiryu"}`,
       title: title,
       description:
         config.themeConfig?.metadata?.description ?? config.description,
-      creator: `@${config.themeConfig?.metadata?.creator ?? "Toa Kiryu"}`,
+      creator: `@${config.themeConfig?.metadata?.creator ?? "toakiryu"}`,
       images: config.themeConfig.image,
     },
     ...config.themeConfig?.metadata,
@@ -99,6 +106,8 @@ export default async function LocaleLayout({
           title="Certifications Feed"
           href="/api/feed/certifications"
         />
+        <meta name="theme-color" content="#1e2327" />
+        <meta name="color-scheme" content="dark light" />
       </head>
       <body
         className={`relative w-full h-full overflow-x-clip ${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
