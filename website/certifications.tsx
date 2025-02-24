@@ -26,6 +26,31 @@ const certifications: certificationsType = [
       "Historical Attacks",
     ],
   },
+  {
+    id: "DZRCRGWMAT2Q",
+    name: "Introduction to Front-End Development",
+    issuer: "Meta",
+    issueDate: "2025-02-23",
+    skills: [
+      "Web Development Tools",
+      "HTML and CSS",
+      "Responsive Web Design",
+      "Front-End Web Development",
+      "User Interface",
+    ],
+  },
+  {
+    id: "GFMAPEZM6459",
+    name: "Programming with JavaScript",
+    issuer: "Meta",
+    issueDate: "2025-02-23",
+    skills: [
+      "Test-Driven Development",
+      "JavaScript",
+      "Front-End Web Development",
+      "Object-Oriented Programming (OOP)",
+    ],
+  },
 ];
 
 export default certifications;

@@ -39,7 +39,7 @@ const ReviewCard = ({ props }: { props: certificationType }) => {
             ) : (
               <IconCertificate size={32} />
             )}
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <figcaption className="text-sm font-medium dark:text-white truncate">
                 {props.name}
               </figcaption>
@@ -48,7 +48,7 @@ const ReviewCard = ({ props }: { props: certificationType }) => {
               </p>
             </div>
           </div>
-          <blockquote className="flex flex-wrap gap-1 max-h-24 mt-2">
+          <blockquote className="flex flex-wrap gap-1 w-full max-h-24 mt-2">
             {props.skills?.map((skill, index) => (
               <span
                 key={index}

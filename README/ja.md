@@ -49,8 +49,6 @@
 - **年齢**: 15
 - **職業**: 中学生
 
-🔭 現在、[Website](https://github.com/selcold/scratch-building) に取り組んでいます。
-
 ### 📫 連絡先:
 
 [![Email][gmail-img]](https://toakiryu.com/contact)
@@ -65,11 +63,11 @@
 # 🔗 リンク
 
 [![NPM][npm-img]](https://www.npmjs.com/~toakiryu)
-[![Discord][discord-img]](https://discord.com/users/990984460365365258)
-[![Youtube][youtube-img]](https://www.youtube.com/channel/UCT34DhsVlYoyV8Y4c-MTTrQ)
-[![Twitter(x)][twitter-img]](https://twitter.com/toakiryu)
+[![Discord][discord-img]](https://l.toakiryu.com/discord)
+[![Youtube][youtube-img]](https://l.toakiryu.com/youtube)
+[![Twitter(x)][twitter-img]](https://l.toakiryu.com/x)
 [![Scratch][scratch-img]](https://scratch.mit.edu/users/Fun_117/)
-[![Minecraft][minecraft-img]](https://ja.namemc.com/profile/fun117.1)
+[![Minecraft][minecraft-img]](https://ja.namemc.com/profile/toakiryu)
 
 <p align="center">
   <picture>
