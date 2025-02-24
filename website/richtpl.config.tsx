@@ -78,15 +78,16 @@ const siteConfig: Config = {
 
       openGraph: {
         type: "profile",
+        username: "toakiryu",
         url: _config.url,
         title: `${_config.title}｜公式ウェブサイト`,
         description: _config.description,
         images: [
           {
+            alt: "Toa Kiryu's Profile Icon",
             url: "/wp-content/toakiryu/icon_256x256.png",
             width: 512,
             height: 512,
-            alt: "Toa Kiryu's Profile Icon",
           },
         ],
         locale: "ja-JP",
