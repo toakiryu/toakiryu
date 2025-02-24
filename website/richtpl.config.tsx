@@ -4,7 +4,7 @@ import Config from "@/types/richtpl.config";
  * Site configuration object.
  * Contains general site information, i18n settings, and theme configuration.
  */
-const config: Config = {
+const siteConfig: Config = {
   // Tagline for the site
   tagline: "Toa Kiryu Website",
 
@@ -17,7 +17,7 @@ const config: Config = {
   // Base URL pathname (for GitHub Pages deployment)
   baseUrl: "/",
 
-  title: "toakiryu",
+  title: "桐生トア",
   description:
     "最新の技術とフレームワークを駆使し、モダンでスケーラブルなウェブアプリケーションを開発します。ReactとTypeScriptを活用したフロントエンド開発が得意です。",
 
@@ -81,4 +81,4 @@ const config: Config = {
   },
 };
 
-export default config;
+export default siteConfig;
