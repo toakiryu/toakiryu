@@ -1,5 +1,12 @@
 import Config from "@/types/richtpl.config";
 
+const _config = {
+  url: "https://toakiryu.com",
+  title: "桐生トア",
+  description:
+    "最新の技術とフレームワークを駆使し、モダンでスケーラブルなウェブアプリケーションを開発します。ReactとTypeScriptを活用したフロントエンド開発が得意です。",
+};
+
 /**
  * Site configuration object.
  * Contains general site information, i18n settings, and theme configuration.
@@ -12,14 +19,13 @@ const siteConfig: Config = {
   favicon: "/favicon.ico",
 
   // Production URL of the site
-  url: "https://toakiryu.com",
+  url: _config.url,
 
   // Base URL pathname (for GitHub Pages deployment)
   baseUrl: "/",
 
   title: "桐生トア",
-  description:
-    "最新の技術とフレームワークを駆使し、モダンでスケーラブルなウェブアプリケーションを開発します。ReactとTypeScriptを活用したフロントエンド開発が得意です。",
+  description: _config.description,
 
   // GitHub deployment configuration
   organizationName: "toakiryu", // GitHub organization/user name
@@ -66,8 +72,32 @@ const siteConfig: Config = {
       metadataBase: new URL("https://toakiryu.com"),
 
       title: {
-        template: "%s | 桐生トア",
-        default: "桐生トア | 公式ウェブサイト",
+        template: `%s | ${_config.title}`,
+        default: `${_config.title} | 公式ウェブサイト`,
+      },
+
+      openGraph: {
+        type: "profile",
+        url: _config.url,
+        title: `${_config.title}｜公式ウェブサイト`,
+        description: _config.description,
+        images: [
+          {
+            url: "/wp-content/toakiryu/icon_256x256.png",
+            width: 512,
+            height: 512,
+            alt: "Toa Kiryu's Profile Icon",
+          },
+        ],
+        locale: "ja-JP",
+      },
+      twitter: {
+        card: "summary", // `summary` or `summary_large_image`
+        site: "@toakiryu",
+        title: `${_config.title}｜公式ウェブサイト`,
+        description: _config.description,
+        creator: "@toakiryu",
+        images: "/wp-content/toakiryu/icon_256x256.png",
       },
 
       other: {
@@ -75,6 +105,7 @@ const siteConfig: Config = {
         "rss-certifications": "/api/feed/certifications",
       },
     },
+
     // Sitemap Configuration
     sitemap: {
       excludedDirs: [
