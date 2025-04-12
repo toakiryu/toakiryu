@@ -51,10 +51,10 @@ const Image = React.forwardRef<HTMLImageElement, CustomImageProps>(
           `shadow-black/5 shadow-none group relative overflow-hidden`,
           !isLoaded &&
             !hasError &&
-            "before:opacity-100 before:absolute before:w-full before:inset-0 before:z-10 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:custom-image-gradient-stops before:to-transparent",
+            "before:opacity-100 before:absolute before:w-full before:inset-0 before:z-10 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-linear-to-r before:from-transparent before:custom-image-gradient-stops before:to-transparent",
           !isLoaded &&
             !hasError &&
-            `after:opacity-100 after:absolute after:inset-0 after:-z-10 after:bg-zinc-50 dark:after:bg-zinc-900 after:backdrop-blur-sm`,
+            `after:opacity-100 after:absolute after:inset-0 after:-z-10 after:bg-zinc-50 dark:after:bg-zinc-900 after:backdrop-blur-xs`,
           className,
           classNames?.base
         )}
@@ -95,7 +95,7 @@ const Image = React.forwardRef<HTMLImageElement, CustomImageProps>(
             src={hasError ? "/wp-content/upload/noimage.webp" : src}
             fill
             className={cn(
-              "!relative z-10 max-w-full h-auto shadow-black/5 opacity-0 data-[loaded=true]:opacity-100 blur-md data-[loaded=true]:blur-none shadow-none transition-transform-opacity motion-reduce:transition-none transition-all duration-300 ease-in-out object-cover",
+              "relative! z-10 max-w-full h-auto shadow-black/5 opacity-0 data-[loaded=true]:opacity-100 blur-md data-[loaded=true]:blur-none shadow-none transition-transform-opacity motion-reduce:transition-none transition-all duration-300 ease-in-out object-cover",
               classNames?.img
             )}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

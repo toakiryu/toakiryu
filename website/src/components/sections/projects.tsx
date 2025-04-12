@@ -17,7 +17,7 @@ function SectionProjects({ projects }: { projects: SectionProjectsType[] }) {
           <h2 className="text-sm text-muted-foreground text-balance font-semibold tracking-tight uppercase">
             Projects
           </h2>
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-gradient-to-t from-background dark:from-background -z-10 from-50%" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-linear-to-t from-background dark:from-background -z-10 from-50%" />
           <FlickeringGrid
             className="w-full h-full -z-20 absolute inset-0 size-full"
             squareSize={4}
@@ -32,10 +32,10 @@ function SectionProjects({ projects }: { projects: SectionProjectsType[] }) {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="flex flex-col gap-y-2 items-center justify-center py-8 px-4 border-b transition-colors hover:bg-secondary/20 last:border-b-0 md:[&:nth-child(2n+1)]:border-r md:[&:nth-child(n+5)]:border-b-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(n+4)]:border-b-0 lg:border-r"
+                className="flex flex-col gap-y-2 items-center justify-center py-8 px-4 border-b transition-colors hover:bg-secondary/20 last:border-b-0 md:nth-[2n+1]:border-r md:nth-[n+5]:border-b-0 lg:nth-[3n]:border-r-0 lg:nth-[n+4]:border-b-0 lg:border-r"
               >
                 <div className="flex flex-col gap-y-2 items-center">
-                  <div className="bg-gradient-to-b from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-800 p-2 rounded-lg transition-colors group-hover:from-secondary group-hover:to-secondary/80">
+                  <div className="bg-linear-to-b from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-800 p-2 rounded-lg transition-colors group-hover:from-secondary group-hover:to-secondary/80">
                     {React.createElement(project.icon, { size: 32 })}
                   </div>
                   <h2 className="text-xl font-medium text-card-foreground text-center text-balance">

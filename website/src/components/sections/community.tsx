@@ -42,7 +42,7 @@ function SectionCommunity() {
           <h2 className="text-sm text-muted-foreground text-balance font-semibold tracking-tight uppercase">
             Community
           </h2>
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-gradient-to-t from-background dark:from-background -z-10 from-50%" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-linear-to-t from-background dark:from-background -z-10 from-50%" />
           <FlickeringGrid
             className="w-full h-full -z-20 absolute inset-0 size-full"
             squareSize={4}
@@ -68,7 +68,7 @@ function SectionCommunity() {
             <div className="flex justify-center">
               <Link
                 href="https://vercel.connpass.com"
-                className="justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 flex items-center gap-2"
+                className="justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2 flex items-center gap-2"
               >
                 <IconUsers />
                 参加する

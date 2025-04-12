@@ -21,7 +21,7 @@ function SectionUseCases() {
           <h2 className="text-sm text-muted-foreground text-balance font-semibold tracking-tigh uppercase">
             Use Cases
           </h2>
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-gradient-to-t from-background dark:from-background -z-10 from-50%" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-linear-to-t from-background dark:from-background -z-10 from-50%" />
           <FlickeringGrid
             className="w-full h-full -z-20 absolute inset-0 size-full"
             squareSize={4}

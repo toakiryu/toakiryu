@@ -100,7 +100,7 @@ function SectionMyStatus() {
           <h2 className="text-sm text-muted-foreground text-balance font-semibold tracking-tight uppercase">
             My Status
           </h2>
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-gradient-to-t from-background dark:from-background -z-10 from-50%" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-linear-to-t from-background dark:from-background -z-10 from-50%" />
           <FlickeringGrid
             className="w-full h-full -z-20 absolute inset-0 size-full"
             squareSize={4}
@@ -115,7 +115,7 @@ function SectionMyStatus() {
             {items.map((item, index) => (
               <Link
                 key={index}
-                className="text-muted-foreground flex flex-col items-center justify-center py-8 px-4 border-b sm:border-b-0 last:border-b-0 sm:border-r sm:last:border-r-0 [&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(-n+3)]:border-t-0 relative group overflow-hidden"
+                className="text-muted-foreground flex flex-col items-center justify-center py-8 px-4 border-b sm:border-b-0 last:border-b-0 sm:border-r sm:last:border-r-0 nth-[-n+2]:border-t-0 sm:nth-[-n+3]:border-t-0 relative group overflow-hidden"
                 href={item.link}
               >
                 <div className="text-center relative">
