@@ -53,7 +53,7 @@ function AnimationTestimonialCard({
         ease: "easeInOut",
       }}
     >
-      <div className="px-4 py-5 sm:p-6 flex-grow">
+      <div className="px-4 py-5 sm:p-6 grow">
         <div className="flex items-center gap-4 mb-4">
           <Image
             src={testimonial.avatar || "/wp-content/uploads/user-avatar.png"}
@@ -94,7 +94,7 @@ function SectionTestimonials({
           <h2 className="text-sm text-muted-foreground text-balance font-semibold tracking-tight uppercase">
             Testimonials
           </h2>
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-gradient-to-t from-background dark:from-background -z-10 from-50%" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-full w-full bg-linear-to-t from-background dark:from-background -z-10 from-50%" />
           <FlickeringGrid
             className="w-full h-full -z-20 absolute inset-0 size-full"
             squareSize={4}
@@ -109,10 +109,10 @@ function SectionTestimonials({
             className="bg-grid-1 sm:bg-grid-2 lg:bg-grid-3 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px)] columns-1 sm:columns-2 lg:columns-3 gap-0 lg:bg-grid-3 border-r pb-24 sm:bg-grid-2 relative bg-grid-1"
             style={{ "--tw-bg-size": "100% 100%" } as React.CSSProperties}
           >
-            <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-2/6 w-[calc(100%-2px)] overflow-hidden bg-gradient-to-t from-background to-transparent" />
+            <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-2/6 w-[calc(100%-2px)] overflow-hidden bg-linear-to-t from-background to-transparent" />
             {visibleCount < testimonials.length && (
               <button
-                className="whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground py-2 absolute bottom-12 left-1/2 -translate-x-1/2 border h-10 w-fit px-5 flex items-center justify-center z-10"
+                className="whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-input bg-background hover:bg-accent hover:text-accent-foreground py-2 absolute bottom-12 left-1/2 -translate-x-1/2 border h-10 w-fit px-5 flex items-center justify-center z-10"
                 onClick={handleSeeMore}
               >
                 See more

@@ -5,7 +5,7 @@ import { ColorModeToggle } from "./ui/color-mode-toggle.tsx";
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full h-14 p-0 bg-background/60 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full h-14 p-0 bg-background/60 backdrop-blur-sm">
       <div className="flex justify-between items-center container max-w-5xl mx-auto p-2">
         <Link
           title="brand-logo"

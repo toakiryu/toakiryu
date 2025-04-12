@@ -17,7 +17,7 @@ function SectionSocials({ socialLinks }: { socialLinks: socialLinksType[] }) {
             {socialLinks.map(({ name, href, src }, index) => (
               <div
                 key={index}
-                className="flex group items-center justify-center p-4 border-r border-t last:border-r-0 sm:last:border-r md:[&:nth-child(3n)]:border-r md:[&:nth-child(6n)]:border-r-0 md:[&:nth-child(3)]:border-r [&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(-n+3)]:border-t-0 sm:[&:nth-child(3n)]:border-r-0 md:[&:nth-child(-n+6)]:border-t-0 [&:nth-child(2n)]:border-r-0 sm:[&:nth-child(2n)]:border-r"
+                className="flex group items-center justify-center p-4 border-r border-t last:border-r-0 sm:last:border-r md:nth-[3n]:border-r md:nth-[6n]:border-r-0 md:nth-3:border-r nth-[-n+2]:border-t-0 sm:nth-[-n+3]:border-t-0 sm:nth-[3n]:border-r-0 md:nth-[-n+6]:border-t-0 nth-[2n]:border-r-0 sm:nth-[2n]:border-r"
               >
                 {href ? (
                   <Link href={href}>
