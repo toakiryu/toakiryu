@@ -48,7 +48,6 @@
 ### A passionate programmer based in Japan.
 
 - **Age**: 15
-- **Occupation**: junior high school student
 
 ### 📫 How to reach me:
 
