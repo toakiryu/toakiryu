@@ -17,7 +17,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
-    "cookies-next": "^5.1.0",
+    "cookies-next": "^6.0.0",
     "feed": "^4.2.2",
     "lucide-react": "^0.507.0",
     "motion": "^12.7.4",
