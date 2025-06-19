@@ -38,7 +38,7 @@
     "@types/node": "^22.15.17",
     "@types/react": "19.1.1",
     "@types/react-dom": "19.1.2",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "postcss": "^8",
