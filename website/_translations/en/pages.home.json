@@ -1,0 +1,11 @@
+{
+  "pages.home": {
+    "get started by editing": "Get started by editing",
+    "save and see your changes instantly": "Save and see your changes instantly.",
+    "deploy now": "Deploy now",
+    "read our docs": "Read our docs",
+    "learn": "Learn",
+    "examples": "Examples",
+    "go to <domain>": "Go to {domain}"
+  }
+}

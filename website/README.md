@@ -57,19 +57,11 @@ Check out the live preview of this template [here](https://nextjs-rich-tpl.verce
 
 You can deploy the template to Vercel or preview it in StackBlitz:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/toakiryu/nextjs-rich-tpl/tree/main/examples/app/with-i18n-routing&project-name=nextjs-rich-tpl&repository-name=nextjs-rich-tpl)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/toakiryu/nextjs-rich-tpl/tree/main/templates/app/with-i18n-routing&project-name=nextjs-rich-tpl&repository-name=nextjs-rich-tpl)
 
 ## Usage
 
 Bootstrap your project using the CLI:
-
-### Installation
-
-You can globally install `nextjs-rich-tpl` using the following command:
-
-```bash
-npm install -g nextjs-rich-tpl
-```
 
 ### Using the CLI
 
@@ -89,6 +81,10 @@ To deploy to the cloud, use [Vercel](https://vercel.com/new?utm_source=github&ut
 
 # 搭載ライブラリ
 
+## i18n
+
+- [next-intl](https://next-intl.dev/)
+
 ## icon
 
 - [Lucide](https://lucide.dev/)
@@ -97,7 +93,6 @@ To deploy to the cloud, use [Vercel](https://vercel.com/new?utm_source=github&ut
 ## UI
 - [shadcn/ui](https://ui.shadcn.com/)
   - 拡張ライブラリ [Magic UI](https://magicui.design/)
-- [Chakra UI](https://www.chakra-ui.com/)
 
 ## トーストコンポーネント
 

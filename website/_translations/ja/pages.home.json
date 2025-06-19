@@ -1,0 +1,11 @@
+{
+  "pages.home": {
+    "get started by editing": "編集を始める",
+    "save and see your changes instantly": "保存すれば、変更内容をすぐに確認できます。",
+    "deploy now": "今すぐデプロイ",
+    "read our docs": "ドキュメントを読む",
+    "learn": "学ぶ",
+    "examples": "例",
+    "go to <domain>": "{domain} へ行く"
+  }
+}

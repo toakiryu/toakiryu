@@ -1,35 +1,50 @@
-import Config from "@/types/richtpl.config";
-
-const _config = {
-  url: "https://toakiryu.com",
-  title: "桐生トア",
-  description:
-    "最新の技術とフレームワークを駆使し、モダンでスケーラブルなウェブアプリケーションを開発します。ReactとTypeScriptを活用したフロントエンド開発が得意です。",
-};
+import siteConfigType from "@/types/richtpl.config";
 
 /**
  * Site configuration object.
  * Contains general site information, i18n settings, and theme configuration.
  */
-const siteConfig: Config = {
+const siteConfig: siteConfigType = {
   // Tagline for the site
-  tagline: "Toa Kiryu Website",
+  tagline: "Next.js Template",
 
   // URL to the favicon
   favicon: "/favicon.ico",
 
   // Production URL of the site
-  url: _config.url,
+  url: "https://nextjs-rich-tpl.toakiryu.com",
 
   // Base URL pathname (for GitHub Pages deployment)
   baseUrl: "/",
 
-  title: "桐生トア",
-  description: _config.description,
+  title: "nextjs-rich-tpl",
 
   // GitHub deployment configuration
   organizationName: "toakiryu", // GitHub organization/user name
-  projectName: "toakiryu", // GitHub repository name
+  projectName: "nextjs-rich-tpl", // GitHub repository name
+
+  // Internationalization (i18n) configuration
+  i18n: {
+    // Default locale for the site
+    defaultLocale: "ja",
+    // List of supported locales
+    locales: ["ja", "en"],
+    // Locale-specific configurations
+    localeConfigs: {
+      ja: {
+        label: "日本語", // Label for the Japanese locale
+        htmlLang: "ja-JP", // HTML language attribute for Japanese
+        path: "ja", // Path prefix for Japanese locale
+      },
+      en: {
+        label: "English", // Label for the English locale
+        htmlLang: "en-US", // HTML language attribute for English
+        path: "en", // Path prefix for English locale
+      },
+    },
+    selectButton: true, // Option to include a locale selection button
+    localePrefix: "as-needed",
+  },
 
   // Theme and layout configuration
   themeConfig: {
@@ -39,74 +54,30 @@ const siteConfig: Config = {
       selectSwitch: true, // Whether to allow switching color modes
     },
     // URL to the social card image (replace with your project's image)
-    image: "/wp-content/toakiryu/icon-rounded.png",
-
+    image: "/wp-content/image/upload/front/nextjs/twitter-card.png",
     // Metadata for the site
     metadata: {
       keywords: [
-        "きりゅうとあ",
-        "とあきりゅう",
-        "桐生トア",
-        "桐生",
-        "トア",
-        "とあ",
-        "Toakiryu",
-        "toa kiryu",
-        "kiryu",
-        "toa",
-        "portfolio",
-        "website",
-        "projects",
-        "fullstack developer",
+        "Template",
+        "i18n",
+        "template",
+        "Next.js",
+        "autoprefixer",
+        "rich",
+        "tailwindcss",
+        "framer-motion",
+        "next-themes",
         "vercel-hosting",
+        "next-intl",
+        "lucide-icons",
       ],
       authors: { name: "toakiryu", url: "https://toakiryu.com" },
       creator: "toakiryu",
-      icons: {
-        icon: "/wp-content/toakiryu/icon-rounded.ico",
-        apple: "/wp-content/toakiryu/icon-rounded.png",
-      },
+      icons: "/favicon.ico",
       generator: "Next.js",
       publisher: "Vercel",
       robots: "follow, index",
-      metadataBase: new URL("https://toakiryu.com"),
-
-      title: {
-        template: `%s | ${_config.title}`,
-        default: `${_config.title} | 公式ウェブサイト`,
-      },
-
-      openGraph: {
-        type: "profile",
-        username: "toakiryu",
-        url: _config.url,
-        title: `${_config.title}｜公式ウェブサイト`,
-        description: _config.description,
-        images: [
-          {
-            alt: "Toa Kiryu's Profile Icon",
-            url: "/wp-content/toakiryu/icon_256x256.png",
-            width: 512,
-            height: 512,
-          },
-        ],
-        locale: "ja-JP",
-      },
-      twitter: {
-        card: "summary", // `summary` or `summary_large_image`
-        site: "@toakiryu",
-        title: `${_config.title}｜公式ウェブサイト`,
-        description: _config.description,
-        creator: "@toakiryu",
-        images: "/wp-content/toakiryu/icon_256x256.png",
-      },
-
-      other: {
-        "rss-feed": "/api/feed",
-        "rss-certifications": "/api/feed/certifications",
-      },
     },
-
     // Sitemap Configuration
     sitemap: {
       excludedDirs: [
