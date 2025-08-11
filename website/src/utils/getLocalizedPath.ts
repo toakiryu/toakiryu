@@ -1,4 +1,4 @@
-import siteConfig from "../../richtpl.config";
+import siteConfig from "@/richtpl.config";
 
 // 言語要素を削除する関数
 export function getPathWithOutLocaliz(path: string): string {

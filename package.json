@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@toakiryu/monorepo",
+  "version": "0.0.1",
+  "scripts": {
+    "cleanup": "node ./scripts/cleanMacJunkFiles.mjs",
+    "generate-brand-assets": "node ./scripts/generate-brand-assets.js"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.8",
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.34.2"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.25.4"
+  }
+}

@@ -1,10 +1,8 @@
 "use client";
 
-import { IconMoon, IconSun } from "@tabler/icons-react";
-
 import { useTheme } from "next-themes";
-
-import { Skeleton } from "./skeleton";
+import { IconMoon, IconSun } from "@tabler/icons-react";
+import { Skeleton } from "@/src/components/ui/shadcn/skeleton";
 import { ClientOnly } from "./client-only";
 
 export function ColorModeToggle() {

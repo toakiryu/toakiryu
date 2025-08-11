@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import config from "../../richtpl.config";
+import config from "@/richtpl.config";
 
 export default function robots(): MetadataRoute.Robots {
   return {

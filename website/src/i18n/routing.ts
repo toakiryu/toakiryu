@@ -1,14 +1,13 @@
 import { defineRouting } from "next-intl/routing";
 import { createNavigation } from "next-intl/navigation";
-import config from "../../richtpl.config";
-import siteConfig from "../../richtpl.config";
+import siteConfig from "@/richtpl.config";
 
 export const routing = defineRouting({
   // A list of all locales that are supported
-  locales: config.i18n.locales,
+  locales: siteConfig.i18n.locales,
 
   // Used when no locale matches
-  defaultLocale: config.i18n.defaultLocale,
+  defaultLocale: siteConfig.i18n.defaultLocale,
 
   localePrefix: siteConfig.i18n.localePrefix,
 });

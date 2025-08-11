@@ -1,4 +1,4 @@
-import siteConfigType from "@/types/richtpl.config";
+import siteConfigType from "@/src/types/richtpl.config";
 
 /**
  * Site configuration object.

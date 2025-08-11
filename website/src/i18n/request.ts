@@ -1,7 +1,7 @@
-import config from "../../richtpl.config";
+import config from "@/richtpl.config";
 import { getRequestConfig } from "next-intl/server";
-import { routing } from "./routing";
 import deepmerge from "deepmerge";
+import { routing } from "./routing";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // This typically corresponds to the `[locale]` segment
@@ -12,7 +12,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
-  const userMessages = (await import(`../../.translations/${locale}.json`)).default;
+  const userMessages = (await import(`../../.translations/${locale}.json`))
+    .default;
   const defaultMessages = (await import(`../../.translations/ja.json`)).default;
   const messages = deepmerge(defaultMessages, userMessages);
 

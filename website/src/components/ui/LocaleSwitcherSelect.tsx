@@ -1,8 +1,8 @@
 "use client";
 
 import clsx from "clsx";
-import { useParams } from "next/navigation";
 import { ChangeEvent, ReactNode, useTransition } from "react";
+import { useParams } from "next/navigation";
 import { Locale, usePathname, useRouter } from "@/i18n/routing";
 
 type Props = {
