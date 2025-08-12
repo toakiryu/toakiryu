@@ -58,36 +58,32 @@ export default function MenuContent() {
           <div className="mb-8 flex space-x-4">
             <LinkButton
               href="https://x.com/toakiryu"
-              variant="outline"
+              variant="secondary"
               size="icon"
-              className="rounded-full"
             >
               <IconBrandX className="h-4 w-4" />
               <span className="sr-only">Twitter</span>
             </LinkButton>
             <LinkButton
               href="https://github.com/toakiryu"
-              variant="outline"
+              variant="secondary"
               size="icon"
-              className="rounded-full"
             >
               <IconBrandGithub className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
             </LinkButton>
             <LinkButton
               href="https://discord.com/users/990984460365365258"
-              variant="outline"
+              variant="secondary"
               size="icon"
-              className="rounded-full"
             >
               <IconBrandDiscord className="h-4 w-4" />
               <span className="sr-only">Discord</span>
             </LinkButton>
             <LinkButton
               href="https://www.youtube.com/@toakiryu"
-              variant="outline"
+              variant="secondary"
               size="icon"
-              className="rounded-full"
             >
               <IconBrandYoutube className="h-4 w-4" />
               <span className="sr-only">YouTube</span>
@@ -101,12 +97,12 @@ export default function MenuContent() {
                 </Label>
                 <Input
                   id="email"
-                  placeholder="Enter your email"
                   type="email"
-                  className="rounded-full"
+                  placeholder="Enter your email"
+                  className="rounded-none"
                 />
               </div>
-              <Button type="submit" className="rounded-full">
+              <Button type="submit" className="rounded-none">
                 Subscribe
               </Button>
             </form>
