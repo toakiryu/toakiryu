@@ -6,7 +6,7 @@
 }
 
 .markdown {
-  @apply text-gray-900 leading-normal break-words;
+  @apply text-neutral-900 dark:text-neutral-100 leading-normal break-words;
 }
 
 .markdown > * + * {
@@ -54,19 +54,19 @@
 }
 
 .markdown h6 {
-  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+  @apply leading-tight text-sm font-semibold text-neutral-600 dark:text-neutral-400 mb-4 mt-6;
 }
 
 .markdown blockquote {
-  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+  @apply text-base border-l-4 border-neutral-300 dark:border-neutral-700 pl-4 pr-4 text-neutral-600 dark:text-neutral-400;
 }
 
 .markdown code {
-  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+  @apply font-mono text-sm inline bg-neutral-200 dark:bg-neutral-800 rounded px-1 py-05;
 }
 
 .markdown pre {
-  @apply bg-gray-100 rounded p-4;
+  @apply rounded p-4;
 }
 
 .markdown pre code {
@@ -86,7 +86,7 @@
 }
 
 .markdown table {
-  @apply text-base border-gray-600;
+  @apply text-base border-neutral-600 dark:border-neutral-400;
 }
 
 .markdown th {
@@ -97,7 +97,39 @@
   @apply border py-1 px-3;
 }
 
-/* Override pygments style background color. */
+.markdown .alert-note {
+  --alert-color-1: #1f6feb;
+  --alert-color-2: #58a6ff;
+}
+
+.markdown .alert-tip {
+  --alert-color-1: #1f6feb;
+  --alert-color-2: #58a6ff;
+}
+
+.markdown .alert-important {
+  --alert-color-1: #8957e5;
+  --alert-color-2: #ab7df8;
+}
+
+.markdown .alert-warning {
+  --alert-color-1: #9e6a03;
+  --alert-color-2: #d29922;
+}
+
+.markdown .alert-caution {
+  --alert-color-1: #da3633;
+  --alert-color-2: #f85149;
+}
+
+.markdown .alert {
+  @apply border-l-[4px] mb-[16px] p-[8px_16px] border-(--alert-color-1);
+}
+
+.markdown .alert-title {
+  @apply flex items-center font-bold text-(--alert-color-2);
+}
+
 .markdown .highlight pre {
   @apply bg-gray-100 !important;
 }

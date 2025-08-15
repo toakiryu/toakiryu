@@ -1,5 +1,3 @@
-export type Uuid = `${string}-${string}-${string}-${string}`;
-
 export type Json =
   | 1
   | string
@@ -19,7 +17,7 @@ export namespace supabaseDatabaseType {
     export namespace tables {
       export namespace health {
         export type all = {
-          id: Uuid;
+          id: string;
           created_at: string;
           requested_at: string;
         };
@@ -31,18 +29,33 @@ export namespace supabaseDatabaseType {
         };
         export namespace req {
           export type def = {
-            id: Uuid;
+            id: string;
             created_at: string;
             requested_at: string;
           };
         }
       }
       export namespace news {
+        /**
+         * ニュース記事の型定義
+         */
+        export namespace types {
+          export type id = string;
+          export type public = boolean;
+          export type type = newsType;
+          export type title = string;
+          export type excerpt = string | null;
+          export type content = string | null;
+          export type image = string | null;
+          export type authors = Json | null;
+          export type created_at = string;
+          export type updated_at = string;
+        }
         export type all = {
           /**
            * @required
            */
-          id: Uuid; // 自動生成
+          id: string; // 自動生成
           /**
            * @required
            * @default false
@@ -60,11 +73,7 @@ export namespace supabaseDatabaseType {
           /**
            * @default null
            */
-          description: string | null; // 推奨
-          /**
-           * @default null
-           */
-          image: string | null; // メイン画像
+          excerpt: string | null; // 推奨
           /**
            * @default null
            * ```md
@@ -74,6 +83,10 @@ export namespace supabaseDatabaseType {
            * ```
            */
           content: string | null; // 推奨
+          /**
+           * @default null
+           */
+          image: string | null; // メイン画像
           /**
            * @default null
            * ```json
@@ -96,92 +109,50 @@ export namespace supabaseDatabaseType {
           updated_at: string; // デフォルト：自動生成 / 更新時に最新日時（timestamptz）を渡す。
         };
         export type insert = {
+          id?: string;
           public?: boolean;
           type?: newsType;
           title: string;
-          description?: string | null;
-          image?: string | null;
+          excerpt?: string | null;
           content?: string | null;
+          image?: string | null;
           authors?: Json | null;
-          updated_at: string;
+          created_at?: string;
+          updated_at?: string;
         };
         export type update = {
+          id?: string;
           public?: boolean;
           type?: newsType;
           title?: string;
-          description?: string | null;
-          image?: string | null;
+          excerpt?: string | null;
           content?: string | null;
+          image?: string | null;
           authors?: Json | null;
-          updated_at?: string;
+          created_at?: string;
+          updated_at: string;
         };
         export namespace req {
           export type def = {
-            id: Uuid;
+            id: string;
             public: boolean;
             type: newsType;
             title: string;
-            description: string | null;
-            image: string | null;
+            excerpt: string | null;
             content: string | null;
+            image: string | null;
             authors: Json | null;
             created_at: string;
             updated_at: string;
           };
           export type iptdacu = {
-            id: Uuid;
+            id: string;
             public: boolean;
             type: newsType;
             title: string;
-            description: string | null;
+            excerpt: string | null;
             image: string | null;
             authors: Json | null;
-            created_at: string;
-            updated_at: string;
-          };
-        }
-      }
-      export namespace projects {
-        export type all = {
-          id: Uuid;
-          public: boolean;
-          title: string;
-          description: string;
-          image: string | null;
-          avatar: string | null;
-          content: string | null;
-          created_at: string;
-          updated_at: string;
-        };
-        export type insert = {
-          public: boolean;
-          title: string;
-          description: string;
-          image?: string | null;
-          avatar?: string | null;
-          content?: string | null;
-          created_at: string;
-          updated_at: string;
-        };
-        export type update = {
-          public?: boolean;
-          title?: string;
-          description?: string;
-          image?: string | null;
-          avatar?: string | null;
-          content?: string | null;
-          created_at?: string;
-          updated_at?: string;
-        };
-        export namespace req {
-          export type def = {
-            id: Uuid;
-            public: boolean;
-            title: string;
-            description: string;
-            image: string | null;
-            avatar: string | null;
-            content: string | null;
             created_at: string;
             updated_at: string;
           };

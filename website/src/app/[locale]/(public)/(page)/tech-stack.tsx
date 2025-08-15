@@ -2,48 +2,25 @@
 
 import React from "react";
 import { RoughNotation } from "react-rough-notation";
-import {
-  IconBrandAws,
-  IconBrandBootstrap,
-  IconBrandCloudflare,
-  IconBrandCss3,
-  IconBrandDocker,
-  IconBrandFigma,
-  IconBrandGit,
-  IconBrandGithub,
-  IconBrandGithubCopilot,
-  IconBrandGoogleAnalytics,
-  IconBrandHtml5,
-  IconBrandJavascript,
-  IconBrandNextjs,
-  IconBrandNodejs,
-  IconBrandNpm,
-  IconBrandNuxt,
-  IconBrandOpenai,
-  IconBrandPrisma,
-  IconBrandPython,
-  IconBrandReact,
-  IconBrandStorybook,
-  IconBrandSupabase,
-  IconBrandTailwind,
-  IconBrandTypescript,
-  IconBrandVercel,
-  IconBrandVscode,
-  IconBrandVue,
-  IconBrandWix,
-  IconBrandWordpress,
-} from "@tabler/icons-react";
-import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 import { techStackList } from "@/_config/tech-stack";
+import { cn } from "@/src/lib/utils";
+import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 
-export default function PageHomeTechStackContent() {
+export default function PageHomeTechStackContent({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const { ref, isVisible } = useDetectVisibleAssets<HTMLDivElement>({
     delayPlus: -500,
     inViewOptions: { once: true, margin: "0px 0px -100px 0px" },
   });
 
   return (
-    <div ref={ref} className="bg-background px-5 py-10">
+    <div
+      ref={ref}
+      className={cn("bg-background px-5 py-10", className)}
+      {...props}
+    >
       <div className="w-full max-w-5xl mx-auto mb-10 px-5">
         <div className="w-fit mx-auto">
           <RoughNotation

@@ -9,20 +9,19 @@ import {
   IconExclamationCircle,
   IconMoodPuzzled,
 } from "@tabler/icons-react";
-import type { supabaseDatabaseType } from "@/src/utils/supabase/table";
-import { LinkText } from "@/src/components/custom/link-text";
-import { Skeleton } from "@/src/components/ui/shadcn/skeleton";
-import { AspectRatio } from "@/src/components/ui/shadcn/aspect-ratio";
-import { Badge } from "@/src/components/ui/shadcn/badge";
-
 import useEmblaCarousel from "embla-carousel-react";
+import { cn } from "@/src/lib/utils";
+import type { supabaseDatabaseType } from "@/src/utils/supabase/table";
 import {
   PrevButton,
   NextButton,
   usePrevNextButtons,
 } from "@/src/components/custom/embla-buttons";
 import { LinkButton } from "@/src/components/custom/link-button";
-import { cn } from "@/src/lib/utils";
+import { Skeleton } from "@/src/components/ui/shadcn/skeleton";
+import { AspectRatio } from "@/src/components/ui/shadcn/aspect-ratio";
+import { Badge } from "@/src/components/ui/shadcn/badge";
+import { LinkText } from "@/src/components/custom/link-text";
 
 type statusType = "await" | "loading" | "error" | "null" | "ready";
 
@@ -177,7 +176,10 @@ function NewsRender({
   );
 }
 
-export default function PageHomeNewsContent() {
+export default function PageHomeNewsContent({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const lang = useLocale();
   const [status, setStatus] = useState<statusType>("await");
   const [news, setNews] = useState<
@@ -210,9 +212,12 @@ export default function PageHomeNewsContent() {
   }, []);
 
   return (
-    <section
-      id="news"
-      className="relative bg-background w-full h-full py-10 md:py-15 lg:py-20"
+    <div
+      className={cn(
+        "relative bg-background w-full h-full py-10 md:py-15 lg:py-20",
+        className
+      )}
+      {...props}
     >
       <div className="max-w-5xl mx-auto mb-10 px-5">
         <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary text-shadow-md/10 text-center uppercase">
@@ -229,6 +234,6 @@ export default function PageHomeNewsContent() {
           <IconArrowBarToRight className="absolute top-0 border-0 right-5 md:right-6 lg:right-7 size-[25px] sm:size-[30px] md:size-[35px] h-full!" />
         </LinkButton>
       </div>
-    </section>
+    </div>
   );
 }

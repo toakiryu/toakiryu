@@ -4,9 +4,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-import { GFromQuickSubmitFormPOST } from "@/src/utils/gform-quick-submit";
 import { RoughNotation } from "react-rough-notation";
 import { toast } from "sonner";
+import { cn } from "@/src/lib/utils";
+import { GFromQuickSubmitFormPOST } from "@/src/utils/gform-quick-submit";
 import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 import {
   Form,
@@ -29,14 +30,21 @@ import {
 } from "@/src/components/ui/shadcn/accordion";
 import { LinkText } from "@/src/components/custom/link-text";
 
-export default function PageHomeContactFormContent() {
+export default function PageHomeContactFormContent({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const { ref, isVisible } = useDetectVisibleAssets<HTMLDivElement>({
     delayPlus: -500,
     inViewOptions: { once: true, margin: "0px 0px -100px 0px" },
   });
 
   return (
-    <div ref={ref} className="flex flex-col px-5 py-10 mt-20 bg-background">
+    <div
+      ref={ref}
+      className={cn("flex flex-col px-5 py-10 mt-20 bg-background", className)}
+      {...props}
+    >
       <div className="w-full max-w-5xl mx-auto mb-10 px-5">
         <div className="w-fit mx-auto">
           <RoughNotation
@@ -99,7 +107,7 @@ function InputForm() {
       // Build the actual submission promise
       const submission = (async () => {
         // optional delay to show the loading state
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 10));
         return GFromQuickSubmitFormPOST({
           data: [
             { key: "1037971436", value: data.company },
@@ -273,7 +281,9 @@ function InputForm() {
         <div>
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="bg-sidebar px-3">
-              <AccordionTrigger className="text-lg py-3">このフォームについて</AccordionTrigger>
+              <AccordionTrigger className="text-lg py-3">
+                このフォームについて
+              </AccordionTrigger>
               <AccordionContent className="font-sans-serif">
                 <p className="text-sm mb-1">
                   本フォームは

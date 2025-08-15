@@ -1,4 +1,5 @@
 import { RoughNotation } from "react-rough-notation";
+import { cn } from "@/src/lib/utils";
 import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 import {
   Timeline,
@@ -11,14 +12,21 @@ import {
   TimelineTitle,
 } from "@/src/components/ui/origin/timeline";
 
-export default function PageHomeTimeLineContent() {
+export default function PageHomeTimeLineContent({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const { ref, isVisible } = useDetectVisibleAssets<HTMLDivElement>({
     delayPlus: -500,
     inViewOptions: { once: true, margin: "0px 0px -100px 0px" },
   });
 
   return (
-    <div ref={ref} className="flex flex-col bg-background px-5 py-10">
+    <div
+      ref={ref}
+      className={cn("flex flex-col bg-background px-5 py-10", className)}
+      {...props}
+    >
       <div className="w-full max-w-5xl mx-auto mb-10 px-5">
         <div className="w-fit mx-auto">
           <RoughNotation
@@ -78,8 +86,7 @@ const items = [
     id: 6,
     date: "xxxx年xx月",
     title: "COMING SOON",
-    description:
-      "新たな物語",
+    description: "新たな物語",
   },
 ];
 

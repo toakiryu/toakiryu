@@ -63,7 +63,7 @@ export default function PageHomeHeadContent({
               rotate: "-50deg",
             }}
           >
-            <AnimatedScribbleLine isAnimate={isAnimateArea}/>
+            <AnimatedScribbleLine isAnimate={isAnimateArea} />
           </div>
         </div>
       </div>

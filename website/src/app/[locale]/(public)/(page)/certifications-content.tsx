@@ -4,9 +4,13 @@ import React from "react";
 import { useFormatter } from "next-intl";
 import { RoughNotation } from "react-rough-notation";
 import certifications from "@/_config/certifications";
+import { cn } from "@/src/lib/utils";
 import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 
-export default function PageHomeCertificationsContent() {
+export default function PageHomeCertificationsContent({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   const format = useFormatter();
   const { ref, isVisible } = useDetectVisibleAssets<HTMLDivElement>({
     delayPlus: -500,
@@ -14,7 +18,11 @@ export default function PageHomeCertificationsContent() {
   });
 
   return (
-    <div ref={ref} className="bg-background px-5 py-10">
+    <div
+      ref={ref}
+      className={cn("bg-background px-5 py-10", className)}
+      {...props}
+    >
       <div className="w-full max-w-5xl mx-auto mb-10 px-5">
         <div className="w-fit mx-auto">
           <RoughNotation

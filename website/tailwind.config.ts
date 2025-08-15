@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate"
 
 const config = {
   content: ["**/*.{js,ts,jsx,tsx,mdx,md}"],
@@ -37,6 +38,7 @@ const config = {
       },
     },
   },
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
 
 export default config;

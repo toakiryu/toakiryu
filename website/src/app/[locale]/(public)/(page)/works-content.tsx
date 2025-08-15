@@ -8,6 +8,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { AnimatePresence, motion } from "motion/react";
 import { IconCube } from "@tabler/icons-react";
+import { cn } from "@/src/lib/utils";
 import { useDetectVisibleAssets } from "@/src/hooks/useDetectVisibleAssets";
 import { useAutoplay } from "@/src/hooks/useAutoplay";
 import { BookCard } from "@/src/components/custom/book";
@@ -71,7 +72,7 @@ function WorksListRender({ isAnimateArea }: { isAnimateArea?: boolean }) {
   const { setAutoplay } = useAutoplay(emblaApi);
 
   React.useEffect(() => {
-    const isPlay = isAnimateArea && isInViewCurrent && !selected
+    const isPlay = isAnimateArea && isInViewCurrent && !selected;
     setAutoplay(isPlay);
   }, [isAnimateArea, isInViewCurrent, selected]);
 
@@ -134,18 +135,26 @@ function WorksListRender({ isAnimateArea }: { isAnimateArea?: boolean }) {
   );
 }
 
+interface PageHomeWorksContentProps extends React.HTMLProps<HTMLDivElement> {
+  isAnimateArea?: boolean;
+}
+
 export default function PageHomeWorksContent({
   isAnimateArea,
-}: {
-  isAnimateArea?: boolean;
-}) {
+  className,
+  ...props
+}: PageHomeWorksContentProps) {
   const { ref, isVisible } = useDetectVisibleAssets<HTMLDivElement>({
     delayPlus: -500,
     inViewOptions: { once: true, margin: "0px 0px -100px 0px" },
   });
 
   return (
-    <div ref={ref} className="bg-background px-5 py-10">
+    <div
+      ref={ref}
+      className={cn("bg-background px-5 py-10", className)}
+      {...props}
+    >
       <div className="w-full max-w-5xl mx-auto mb-10 px-5">
         <div className="w-fit mx-auto">
           <RoughNotation

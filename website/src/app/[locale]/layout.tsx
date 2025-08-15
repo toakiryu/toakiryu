@@ -134,7 +134,7 @@ export default async function SiteRootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`relative w-full h-full overflow-x-clip antialiased`}
+        className={`relative w-full h-full antialiased`}
         suppressHydrationWarning
       >
         <TooltipProvider>

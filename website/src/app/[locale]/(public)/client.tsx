@@ -20,30 +20,30 @@ export default function PageHomeClient() {
   return (
     <>
       <StackedScrollReveal onVisibleIndexChange={setCurrentPageIndex}>
-        <PaperContainer>
+        <PaperContainer id="head">
           <PageHomeHeadContent
             isAnimateArea={isAnimateArea(0, currentPageIndex, 1)}
           />
         </PaperContainer>
-        <PaperContainer>
+        <PaperContainer id="news">
           <PageHomeNewsContent />
         </PaperContainer>
-        <PaperContainer rotate={1}>
+        <PaperContainer id="certifications" rotate={1}>
           <PageHomeCertificationsContent />
         </PaperContainer>
-        <PaperContainer rotate={-1}>
+        <PaperContainer id="works" rotate={-1}>
           <PageHomeWorksContent
             isAnimateArea={isAnimateArea(3, currentPageIndex, 1)}
           />
         </PaperContainer>
-        <PaperContainer rotate={1}>
+        <PaperContainer id="tech-stack" rotate={1}>
           <PageHomeTechStackContent />
         </PaperContainer>
-        <PaperContainer>
+        <PaperContainer id="timeline">
           <PageHomeTimeLineContent />
         </PaperContainer>
       </StackedScrollReveal>
-      <PaperContainer>
+      <PaperContainer id="contact-form">
         <PageHomeContactFormContent />
       </PaperContainer>
     </>
