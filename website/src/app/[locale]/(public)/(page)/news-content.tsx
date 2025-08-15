@@ -84,7 +84,6 @@ function StatusContent({ status }: { status: statusType }) {
 function NewsRender({
   status,
   news,
-  lang,
 }: {
   lang: string;
   status: statusType;

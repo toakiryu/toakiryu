@@ -131,6 +131,13 @@ export default function ClientContent() {
     );
   };
 
+  console.debug("loading news:", loading);
+  console.debug("Filtered news:", filteredNews);
+  console.debug("Current news:", currentNews);
+  console.debug("Selected news:", selectedNews);
+  console.debug("handleUpdate:", handleUpdate);
+  console.debug("handleDelete:", handleDelete);
+
   return (
     <div className="container max-w-5xl mx-auto py-4">
       {/* 検索・フィルター・新規作成 */}

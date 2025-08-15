@@ -74,6 +74,9 @@ export function NewsListContent() {
     "all"
   );
 
+  console.debug("news list:", news);
+  console.debug("setNews:", setNews);
+
   return (
     <div className="relative w-full mx-auto">
       <div className="sticky z-10 top-0 left-0 w-full flex flex-col py-5 border-b bg-background/50 backdrop-blur-lg drop-shadow-lg">

@@ -38,6 +38,8 @@ export function NewsList() {
     getNews();
   }, []);
 
+  console.debug("news list status:", status);
+
   return (
     <div>
       <ul className="flex flex-wrap gap-2">
@@ -45,7 +47,7 @@ export function NewsList() {
           <li key={item.id}>
             <Card>
               <h1>{item.title}</h1>
-              <p>{item.description}</p>
+              <p>{item.excerpt}</p>
             </Card>
           </li>
         ))}

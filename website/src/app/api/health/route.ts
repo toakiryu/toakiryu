@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { createClient } from "@/src/utils/supabase/client";
 import { getTimestamptz } from "@/src/utils/supabase/database";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const supabase = createClient();
   const reqdate = getTimestamptz();
 

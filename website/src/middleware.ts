@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { routing } from "./i18n/routing";
@@ -15,6 +15,7 @@ const isProtectedRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, request) => {
   // Clerk: 認証は auth に含まれる
   if (isProtectedRoute(request)) {
+    console.debug(auth);
     const response = await intlMiddleware(request as NextRequest);
 
     // カスタムヘッダー追加

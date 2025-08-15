@@ -121,6 +121,7 @@ export async function GET(req: NextRequest) {
     });
   } else {
     const { data, error } = await supabase.from("news").select(select);
+    console.log("GET /api/news | data:",data, "error:", error)
 
     if (error) {
       return NextResponse.json(

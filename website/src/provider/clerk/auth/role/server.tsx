@@ -13,7 +13,7 @@ export async function getCurrentUserRole(): Promise<Role | null> {
 }
 
 // 現在のユーザーが指定されたすべての権限を持つかどうかを判定する
-export async function hasPrivilege(required: string[]): Promise<boolean> {
+export async function HasPrivilege(required: string[]): Promise<boolean> {
   const user = await currentUser();
   const roleValue = user?.privateMetadata?.role;
 

@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { hasPrivilege } from "./server";
+import { HasPrivilege } from "./server";
 
 interface PrivilegeProviderProps {
   required: string[];
@@ -35,7 +35,7 @@ export function PrivilegeProvider({
 
   const evaluate = () => {
     setIsLoading(true);
-    hasPrivilege(required)
+    HasPrivilege(required)
       .then((result) => setOk(result))
       .finally(() => setIsLoading(false));
   };

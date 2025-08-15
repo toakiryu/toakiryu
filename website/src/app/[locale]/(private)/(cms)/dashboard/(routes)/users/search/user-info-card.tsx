@@ -3,18 +3,14 @@
 import React from "react";
 import { User } from "@clerk/nextjs/server";
 import { Row } from "@tanstack/react-table";
-import { Button } from "@/src/components/ui/shadcn/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/src/components/ui/shadcn/dialog";
-import { CodeBlock } from "@/src/components/custom/code-block";
 
 export default function UserInfoCard({
   children,
@@ -24,6 +20,7 @@ export default function UserInfoCard({
   row: Row<any>;
 }) {
   const user: User = row.original;
+  console.log("User Info Card | user:", user);
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>

@@ -5,7 +5,7 @@ import { ServerUserContext } from "../../../provider/clerk/user/client-wrapper";
 import { roles } from "./shared";
 
 // ロール名を返す
-export function getCurrentUserRoles(): string[] {
+export function GetCurrentUserRoles(): string[] {
   const user = useContext(ServerUserContext);
   const _roles = user?.privateMetadata?.roles;
 
@@ -24,10 +24,12 @@ export function getCurrentUserRoles(): string[] {
 }
 
 // 現在のユーザーが指定されたすべての権限を持つかどうかを判定する
-export function hasPrivilege(required: string[]): boolean {
+export function HasPrivilege(required: string[]): boolean {
   const user = useContext(ServerUserContext);
 
-  const rolesArray = getCurrentUserRoles();
+  console.debug("user:", user);
+
+  const rolesArray = GetCurrentUserRoles();
 
   if (rolesArray.length === 0) {
     return false;

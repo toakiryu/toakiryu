@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { descTimeSort } from "../sort";
-import { getGithubHeader } from "@/src/libs/github";
+import { getGithubHeader } from "@/src/lib/github";
 
 export const githubGetRepos = async (username?: string) => {
   const res = await axios(`https://api.github.com/users/${username}/repos`, {

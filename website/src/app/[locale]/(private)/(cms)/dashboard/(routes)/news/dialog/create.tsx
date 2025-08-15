@@ -18,7 +18,6 @@ import {
 } from "@/src/components/ui/shadcn/form";
 import { Button } from "@/src/components/ui/shadcn/button";
 import { Input } from "@/src/components/ui/shadcn/input";
-import { Checkbox } from "@/src/components/ui/shadcn/checkbox";
 import {
   Select,
   SelectContent,
@@ -36,7 +35,6 @@ import {
 } from "@/src/components/ui/shadcn/popover";
 import { IconCalendar } from "@tabler/icons-react";
 import { Calendar } from "@/src/components/ui/shadcn/calendar";
-import { ScrollArea } from "@/src/components/ui/shadcn/scroll-area";
 import {
   Sheet,
   SheetClose,

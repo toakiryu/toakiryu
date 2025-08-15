@@ -83,6 +83,8 @@ export function NewsOneContent({
     return <NewsOneContentSkeleton />;
   }
 
+  console.debug("news one status:", status);
+
   const dateTime = new Date(news.created_at);
 
   return (

@@ -2,9 +2,13 @@
 
 import { User } from "@clerk/nextjs/server";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { useFormatter, useLocale } from "next-intl";
+import { useFormatter } from "next-intl";
 import { clerkPublicEnv } from "@/src/lib/clerk/env-public";
-import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/shadcn/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/src/components/ui/shadcn/avatar";
 import { Button } from "@/src/components/ui/shadcn/button";
 import { LinkButton } from "@/src/components/custom/link-button";
 import { UserInfoContentTab } from "./tab";
@@ -16,9 +20,9 @@ export function SelectUserContents({
   selectUser: User | null;
   setSelectUser: React.Dispatch<React.SetStateAction<User | null>>;
 }) {
-  if (!selectUser) return null;
-  const locale = useLocale();
   const format = useFormatter();
+
+  if (!selectUser) return null;
   const user = selectUser;
   return (
     <div className="relative w-full">

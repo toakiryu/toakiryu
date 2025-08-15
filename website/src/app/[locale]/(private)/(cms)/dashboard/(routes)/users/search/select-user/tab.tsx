@@ -1,6 +1,11 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/shadcn/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/src/components/ui/shadcn/tabs";
 import { User } from "@clerk/nextjs/server";
 
 export function UserInfoContentTab({ user }: { user: User | null }) {
@@ -20,7 +25,7 @@ export function UserInfoContentTab({ user }: { user: User | null }) {
           Password
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="profile">プロフィール</TabsContent>
+      <TabsContent value="profile">プロフィール{user?.id}</TabsContent>
       <TabsContent value="password">Change your password here.</TabsContent>
     </Tabs>
   );

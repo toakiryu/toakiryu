@@ -3,12 +3,13 @@
   "version": "15.2.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm run mergeTranslations && next dev",
+    "dev": "pnpm run mergeTranslations && pnpm run cleanMacJunkFiles && next dev",
     "scan": "next dev & pnpm dlx react-scan@latest localhost:3000",
-    "build": "pnpm run mergeTranslations && next build",
-    "start": "next start",
+    "build": "pnpm run mergeTranslations && pnpm run cleanMacJunkFiles && next build",
+    "start": "pnpm run cleanMacJunkFiles && next start",
     "lint": "next lint",
-    "mergeTranslations": "node ./_job/mergeTranslations.js"
+    "mergeTranslations": "node ./_job/mergeTranslations.js",
+    "cleanMacJunkFiles": "node ./_job/cleanMacJunkFiles.mjs"
   },
   "dependencies": {
     "@clerk/localizations": "^3.20.8",

@@ -30,7 +30,6 @@
     "**/*.tsx",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "src/types/custom-elements.d.ts"
   ],
   "exclude": ["node_modules", "**/*._"]
 }

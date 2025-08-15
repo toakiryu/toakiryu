@@ -87,7 +87,7 @@ export function StackedScrollReveal({
 
   const totalHeight = heights.reduce((a, b) => a + b, 0);
 
-  let currentIndex = (() => {
+  const currentIndex = (() => {
     const foundIndex = cumulativeTops.findIndex((top) => top > scrollY);
     let currentIndex = foundIndex === -1 ? children.length - 1 : foundIndex;
 
