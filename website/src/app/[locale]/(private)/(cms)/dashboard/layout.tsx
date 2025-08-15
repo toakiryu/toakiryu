@@ -3,8 +3,8 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/src/components/ui/shadcn/sidebar";
-import { AppSidebar } from "../_ui/sidebar/app-sidebar";
-import { SiteHeader } from "../_ui/sidebar/site-header";
+import { AppSidebar } from "../_ui/(sidebar)/app-sidebar";
+import { SiteHeader } from "../_ui/(sidebar)/site-header";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
