@@ -90,11 +90,11 @@ export const DashboardNewsCreateDialogContent = ({
     authors: z
       .array(
         z.object({
-          id: z.string().uuid(),
-          name: z.string().min(2).max(100),
+          name: z.string().min(1).max(50),
+          url: z.url().min(2).max(100),
         })
       )
-      .min(1, "著者は1人以上必要です。")
+      // .min(1, "著者は1人以上必要です。")
       .optional(),
     created_at: z.string().optional(),
     updated_at: z.string().optional(),
@@ -158,6 +158,7 @@ export const DashboardNewsCreateDialogContent = ({
     } finally {
       form.reset();
       setFormState((prev) => ({ ...prev, isSubmitting: false }));
+      closeModal();
     }
   });
 
@@ -172,6 +173,7 @@ export const DashboardNewsCreateDialogContent = ({
       <SheetContent side="right" className="w-full sm:max-w-xl h-full p-0">
         <Form {...form}>
           <form
+            id="dashboard-news-create-form"
             onSubmit={
               formState.isSubmitting ? preventDuplicatedSubmit : handleSubmit
             }
@@ -386,7 +388,7 @@ export const DashboardNewsCreateDialogContent = ({
                 className="w-full"
                 disabled={formState.isSubmitting}
               >
-                {formState.isSubmitting ? "送信中..." : "送信する"}
+                {formState.isSubmitting ? "作成中..." : "作成する"}
               </Button>
               <SheetClose asChild>
                 <Button variant="outline" onClick={() => closeModal()}>

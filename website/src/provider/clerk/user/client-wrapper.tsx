@@ -3,7 +3,13 @@
 import { createContext, useContext } from "react";
 import { User } from "@clerk/nextjs/server";
 
-export const ServerUserContext = createContext<User | null>(null);
+export const ServerUserContext = createContext<{
+  user: User | null;
+  isLoaded: boolean;
+}>({
+  user: null,
+  isLoaded: false,
+});
 
 export const ClerkServerUserProvider = ({
   children,
@@ -13,7 +19,12 @@ export const ClerkServerUserProvider = ({
   user: User | null;
 }) => {
   return (
-    <ServerUserContext.Provider value={user}>
+    <ServerUserContext.Provider
+      value={{
+        user: user,
+        isLoaded: user !== null,
+      }}
+    >
       {children}
     </ServerUserContext.Provider>
   );

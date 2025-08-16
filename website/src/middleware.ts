@@ -15,7 +15,7 @@ const isProtectedRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, request) => {
   // Clerk: 認証は auth に含まれる
   if (isProtectedRoute(request)) {
-    console.debug(auth);
+    console.debug("auth", auth);
     const response = await intlMiddleware(request as NextRequest);
 
     // カスタムヘッダー追加
