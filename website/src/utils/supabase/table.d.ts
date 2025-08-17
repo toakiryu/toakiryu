@@ -136,7 +136,7 @@ export namespace supabaseDatabaseType {
           image?: string | null;
           authors?: authors | null;
           created_at?: string;
-          updated_at: string;
+          updated_at?: string;
         };
         export namespace req {
           export type def = {

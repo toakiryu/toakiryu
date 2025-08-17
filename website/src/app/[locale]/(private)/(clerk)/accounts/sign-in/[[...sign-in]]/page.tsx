@@ -9,7 +9,11 @@ export default function Page() {
   return (
     <div className="relative flex flex-col justify-center items-center w-full h-full min-h-dvh">
       {forceRedirectUrl ? (
-        <SignIn oauthFlow="popup" forceRedirectUrl={forceRedirectUrl} />
+        <SignIn
+          oauthFlow="popup"
+          forceRedirectUrl={forceRedirectUrl}
+          fallbackRedirectUrl={forceRedirectUrl}
+        />
       ) : (
         <SignIn oauthFlow="popup" />
       )}

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { jaJP, enUS } from "@clerk/localizations";
+// import { dark } from '@clerk/themes'
 
 // next-intl (i18n)
 import { NextIntlClientProvider } from "next-intl";
@@ -139,7 +140,37 @@ export default async function SiteRootLayout({
       >
         <TooltipProvider>
           <div className="relative w-full h-full">
-            <ClerkProvider localization={locale === "ja" ? jaJP : enUS}>
+            <ClerkProvider
+              localization={locale === "ja" ? jaJP : enUS}
+              appearance={{
+                // theme: dark,
+                variables: {
+                  colorPrimary: "var(--primary)",
+                  colorDanger: "var(--destructive)",
+                  colorSuccess: "var(--secondary)",
+                  colorWarning: "var(--accent-foreground)",
+                  colorNeutral: "var(--foreground)",
+                  colorForeground: "var(--foreground)",
+                  colorPrimaryForeground: "var(--primary-foreground)",
+                  colorMutedForeground: "var(--muted-foreground)",
+                  colorMuted: "var(--muted)",
+                  colorBackground: "var(--card)",
+                  colorInputForeground: "var(--muted-foreground)",
+                  colorInput: "var(--input)",
+                  // colorShimmer: "var(--aaaaa)",
+                  colorRing: "var(--ring)",
+                  colorShadow: "var(--shadow-color)",
+                  colorBorder: "var(--border)",
+                  // colorModalBackdrop: "var(--aaaaa)",
+                  fontFamily: "var(--font-sans)",
+                  // fontFamilyButtons: "var(--aaaaa)",
+                  // fontSize: "var(--aaaaa)",
+                  // fontWeight: "var(--aaaaa)",
+                  borderRadius: "var(--radius)",
+                  // spacing: "var(--aaaaa)",
+                },
+              }}
+            >
               <NextIntlClientProvider messages={messages}>
                 {children}
               </NextIntlClientProvider>

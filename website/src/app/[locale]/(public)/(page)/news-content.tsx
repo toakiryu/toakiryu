@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useFormatter, useLocale } from "next-intl";
 import { motion } from "motion/react";
@@ -187,24 +186,74 @@ export default function PageHomeNewsContent({
 
   useEffect(() => {
     const getNews = async () => {
+      setNews([
+        {
+          id: "8412-45710-418204-5915",
+          public: true,
+          type: "notice",
+          title: "News Title 1",
+          excerpt: "news description 2",
+          image: null,
+          authors: [
+            {
+              name: "桐生トア",
+              url: "https://toakiryu.com",
+            },
+          ],
+          created_at: "2025-07-08T08:24:32.470Z",
+          updated_at: "2025-07-08T08:24:32.470Z",
+        },
+        {
+          id: "8412-45710-9852-5245",
+          public: true,
+          type: "notice",
+          title: "News Title 2",
+          excerpt: "news description 2",
+          image: null,
+          authors: [
+            {
+              name: "桐生トア",
+              url: "https://toakiryu.com",
+            },
+          ],
+          created_at: "2025-07-09T08:24:32.470Z",
+          updated_at: "2025-07-09T08:24:32.470Z",
+        },
+        {
+          id: "8412-45710-9852-1245",
+          public: true,
+          type: "notice",
+          title: "News Title 3",
+          excerpt: "news description 3",
+          image: null,
+          authors: [
+            {
+              name: "桐生トア",
+              url: "https://toakiryu.com",
+            },
+          ],
+          created_at: "2025-07-09T08:24:32.470Z",
+          updated_at: "2025-07-09T08:24:32.470Z",
+        },
+        {
+          id: "1242-45710-9852-1245",
+          public: true,
+          type: "notice",
+          title: "News Title 4",
+          excerpt: "news description 4",
+          image: null,
+          authors: [
+            {
+              name: "桐生トア",
+              url: "https://toakiryu.com",
+            },
+          ],
+          created_at: "2025-07-09T08:24:32.470Z",
+          updated_at: "2025-07-09T08:24:32.470Z",
+        },
+      ]);
+      setStatus("ready");
       setStatus("loading");
-      const res = await axios("/api/news", {
-        method: "GET",
-      });
-      console.log(res);
-      if (res.status === 200) {
-        const data: supabaseDatabaseType.public.tables.news.req.iptdacu[] =
-          res.data;
-        if (data.length > 0) {
-          setNews(data);
-          setStatus("ready");
-        } else {
-          setStatus("null");
-        }
-      } else {
-        setStatus("error");
-        console.error(res.statusText);
-      }
     };
 
     getNews();

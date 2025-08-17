@@ -14,6 +14,7 @@
   "dependencies": {
     "@clerk/localizations": "^3.20.8",
     "@clerk/nextjs": "^6.30.0",
+    "@clerk/themes": "^2.4.10",
     "@clerk/types": "^4.74.0",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.1",

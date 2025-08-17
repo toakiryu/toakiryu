@@ -13,6 +13,7 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import {
+  SupabaseActionTableNewsQueries_delete,
   SupabaseActionTableNewsQueries_get,
   SupabaseActionTableNewsQueries_insert,
   SupabaseActionTableNewsQueries_update,
@@ -24,6 +25,7 @@ import { DashboardNewsCreateDialogContent } from "./dialog/create";
 import { useFormatter } from "next-intl";
 import { DashboardNewsEditDialogContent } from "./dialog/edit";
 import { Badge } from "@/src/components/ui/shadcn/badge";
+import { DashboardNewsDeleteDialogContent } from "./dialog/delete";
 
 export default function ClientContent() {
   const format = useFormatter();
@@ -100,7 +102,7 @@ export default function ClientContent() {
     const newRow = DatabaseNewsTable.handleCreate(newsData);
     const { error } = await SupabaseActionTableNewsQueries_insert(newRow);
     if (error) {
-      console.error("Error creating news:", error);
+      throw new Error("Error creating news:", error);
     } else {
       setNews((prev) => [newRow, ...prev]);
     }
@@ -116,7 +118,7 @@ export default function ClientContent() {
       newRow
     );
     if (error) {
-      console.error("Error updating news:", error);
+      throw new Error("Error updating news:", error);
     } else {
       setNews((prev) =>
         prev.map((item) => (item.id === newRow.id ? data : item))
@@ -124,11 +126,16 @@ export default function ClientContent() {
     }
   };
 
-  const handleDelete = (
+  const handleDelete = async (
     id: supabaseDatabaseType.public.tables.news.types.id
   ) => {
-    setNews((prev) => prev.filter((item) => item.id !== id));
-    closeModal();
+    const { error } = await SupabaseActionTableNewsQueries_delete(id);
+    if (error) {
+      throw new Error("Error deleting news:", error);
+    } else {
+      setNews((prev) => prev.filter((item) => item.id !== id));
+      closeModal();
+    }
   };
 
   const getStatusBadge = (val: boolean) => {
@@ -141,20 +148,14 @@ export default function ClientContent() {
       private: "非公開",
     };
     return (
-      <Badge
-        className={`${val ? styles.public : styles.private}`}
-      >
+      <Badge className={`${val ? styles.public : styles.private}`}>
         {val ? labels.public : labels.private}
       </Badge>
     );
   };
 
-  console.debug("loading news:", loading);
   console.debug("Filtered news:", filteredNews);
   console.debug("Current news:", currentNews);
-  console.debug("Selected news:", selectedNews);
-  console.debug("handleUpdate:", handleUpdate);
-  console.debug("handleDelete:", handleDelete);
 
   function ContentNewsList() {
     if (loading) {
@@ -373,6 +374,12 @@ export default function ClientContent() {
         closeModal={closeModal}
         selectedNews={selectedNews}
         handleUpdate={handleUpdate}
+      />
+      <DashboardNewsDeleteDialogContent
+        modalType={modalType}
+        closeModal={closeModal}
+        selectedNews={selectedNews}
+        handleDelete={handleDelete}
       />
     </div>
   );

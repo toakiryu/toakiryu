@@ -163,7 +163,6 @@ const FormRender = ({
 
   // submit の処理
   const handleSubmit = form.handleSubmit(async (data) => {
-    console.log("Submitted data:", data);
     setFormState((prev) => ({ ...prev, isSubmitting: true }));
     try {
       // Build the actual submission promise
@@ -173,12 +172,13 @@ const FormRender = ({
         // 10ms の遅延
         await new Promise((r) => setTimeout(r, 10));
 
+        const { updated_at, ...result } = data;
+
         // 不要なプロパティを削除
-        const cleanedData = removeFalsyFromObject<
-          supabaseDatabaseType.public.tables.news.update & {
-            updated_at?: string;
-          }
-        >(data);
+        const cleanedData =
+          removeFalsyFromObject<supabaseDatabaseType.public.tables.news.update>(
+            result
+          );
 
         // 実際の送信処理を実行
         await handleUpdate(selectedNews, cleanedData);
