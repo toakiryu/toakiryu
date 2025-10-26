@@ -47,7 +47,7 @@
 
 ### A passionate programmer based in Japan.
 
-- **Age**: 15
+- **Age**: 16
 
 ### 📫 How to reach me:
 
@@ -200,64 +200,6 @@
     <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9" />
   </picture>
 </p>
-
-<h1 align="center">
-  🚀 Recent Projects
-  <div align="center">
-    <a href="https://github.com/toakiryu/nextjs-rich-tpl">
-      <picture>
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=nextjs-rich-tpl&theme=github_dark"
-          media="(prefers-color-scheme: dark)"
-        />
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=nextjs-rich-tpl"
-          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-        />
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=nextjs-rich-tpl" />
-      </picture>
-    </a>
-    <a href="https://github.com/toakiryu/scratch-auth-react">
-      <picture>
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-auth-react&theme=github_dark"
-          media="(prefers-color-scheme: dark)"
-        />
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-auth-react"
-          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-        />
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-auth-react" />
-      </picture>
-    </a>
-    <a href="https://github.com/toakiryu/zshmgr">
-      <picture>
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=zshmgr&theme=github_dark"
-          media="(prefers-color-scheme: dark)"
-        />
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=zshmgr"
-          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-        />
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=zshmgr" />
-      </picture>
-    </a>
-    <a href="https://github.com/toakiryu/scratch-cloud-logs">
-      <picture>
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-cloud-logs&theme=github_dark"
-          media="(prefers-color-scheme: dark)"
-        />
-        <source
-          srcset="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-cloud-logs"
-          media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-        />
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=toakiryu&repo=scratch-cloud-logs" />
-      </picture>
-    </a>
-  </div>
-</h1>
 
 <!-- Japan, Aichi - My Home-->
 ```geojson
