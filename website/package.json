@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.27.1",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "^24.0.14",
