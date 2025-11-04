@@ -1,0 +1,45 @@
+{
+  "pages.home": {
+    "get started by editing": "Get started by editing",
+    "save and see your changes instantly": "Save and see your changes instantly.",
+    "deploy now": "Deploy now",
+    "read our docs": "Read our docs",
+    "learn": "Learn",
+    "examples": "Examples",
+    "go to <domain>": "Go to {domain}",
+    "hero": {
+      "title": "Build quickly with a clean, modern baseline",
+      "subtitle": "A pragmatic Next.js starter with i18n, theming, and sensible defaults. No fluff, just what you need to ship."
+    },
+    "cta": {
+      "explore": "Explore features",
+      "getStarted": "Get started"
+    },
+    "features": {
+      "perf": {
+        "title": "Fast and minimal",
+        "desc": "Lean UI with Tailwind and no unnecessary assets."
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "desc": "Ready-to-use i18n with locale-aware routing."
+      },
+      "theme": {
+        "title": "Light/Dark themes",
+        "desc": "Built-in theme toggle with persistence."
+      }
+    },
+    "usage": {
+      "title": "How to use",
+      "desc": "Kick off your project with a few simple steps.",
+      "step1": "Clone the template and install dependencies.",
+      "step2": "Update brand, metadata, and routes.",
+      "step3": "Deploy to your platform of choice."
+    },
+    "footer": {
+      "home": "Home",
+      "features": "Features",
+      "usage": "Usage"
+    }
+  }
+}

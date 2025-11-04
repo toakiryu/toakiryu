@@ -1,0 +1,45 @@
+{
+  "pages.home": {
+    "get started by editing": "編集を始める",
+    "save and see your changes instantly": "保存すれば、変更内容をすぐに確認できます。",
+    "deploy now": "今すぐデプロイ",
+    "read our docs": "ドキュメントを読む",
+    "learn": "学ぶ",
+    "examples": "例",
+    "go to <domain>": "{domain} へ行く",
+    "hero": {
+      "title": "シンプル&モダンな土台で素早く構築",
+      "subtitle": "i18n・テーマ切替・最低限の初期構成を備えた、実用的な Next.js スターター。必要なものだけ。"
+    },
+    "cta": {
+      "explore": "特徴を見る",
+      "getStarted": "はじめる"
+    },
+    "features": {
+      "perf": {
+        "title": "高速・ミニマル",
+        "desc": "Tailwind ベースの軽量UI。余計なアセットはありません。"
+      },
+      "i18n": {
+        "title": "多言語対応",
+        "desc": "ロケール対応ルーティング付きの i18n を同梱。"
+      },
+      "theme": {
+        "title": "ライト/ダーク",
+        "desc": "永続化付きのテーマ切替スイッチ。"
+      }
+    },
+    "usage": {
+      "title": "使い方",
+      "desc": "数ステップでプロジェクトを起動できます。",
+      "step1": "テンプレートをクローンして依存をインストール。",
+      "step2": "ブランド、メタデータ、ルートを調整。",
+      "step3": "お好みの環境へデプロイ。"
+    },
+    "footer": {
+      "home": "ホーム",
+      "features": "特徴",
+      "usage": "使い方"
+    }
+  }
+}

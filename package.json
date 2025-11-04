@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "taze": "taze major -r",
+    "prettier": "pnpm dlx prettier . --write",
+    "prepare": "husky install",
+    "scan-staged-secrets": "node ./scripts/check-secrets.js",
+    "scan-all-secrets": "node ./scripts/check-secrets.js --all"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "shadcn": "^3.5.0",
+    "taze": "^19.9.0"
+  },
+  "packageManager": "pnpm@10.20.0"
+}

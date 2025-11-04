@@ -1,0 +1,27 @@
+{
+  "pages.errors": {
+    "notFound": {
+      "title": "404",
+      "subtitle": "Page not found",
+      "description": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+      "goHome": "Go back home"
+    },
+    "error": {
+      "title": "Something went wrong!",
+      "subtitle": "An error occurred while processing your request",
+      "errorId": "Error ID",
+      "tryAgain": "Try again",
+      "goHome": "Go back home"
+    },
+    "globalError": {
+      "title": "Critical Error",
+      "subtitle": "A critical error occurred. Please try again.",
+      "errorId": "Error ID",
+      "tryAgain": "Try again",
+      "goHome": "Go back home"
+    },
+    "loading": {
+      "text": "Loading..."
+    }
+  }
+}

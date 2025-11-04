@@ -1,0 +1,10 @@
+{
+  "colorModeSwitcher": {
+    "label": "Change theme",
+    "color": "{color, select, light  {Light} dark {Dark} system {System} other {Unknown}}"
+  },
+  "localeSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, ja {🇯🇵 日本語} en {🇺🇸 English} other {Unknown}}"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "autorun": true,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "root",
+      "cwd": "./"
+    },
+    {
+      "name": "site - dev",
+      "cwd": "./website"
+    },
+    {
+      "name": "site - other",
+      "cwd": "./website"
+    }
+  ]
+}

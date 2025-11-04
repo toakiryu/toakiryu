@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running secret scanner on staged files..."
+pnpm -s run scan-staged-secrets

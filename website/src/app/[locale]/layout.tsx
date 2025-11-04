@@ -1,0 +1,174 @@
+import "./globals.css";
+
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+
+// config
+import siteConfig from "../../../richtpl.config";
+
+// next-intl (i18n)
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages, getTranslations } from "next-intl/server";
+
+import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+
+import { Toaster } from "sonner";
+
+import AdaptiveThemeProvider from "@/components/providers/AdaptiveThemeProvider";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export type LayoutProps = Readonly<{
+  children: React.ReactNode;
+  params: Promise<{
+    locale: string;
+  }>;
+}>;
+
+export async function generateViewport() {
+  return {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: LayoutProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  const header = await headers();
+  const origin = header.get("x-origin") ?? siteConfig.url;
+  const url = header.get("x-url") ?? siteConfig.url;
+  const pathname = header.get("x-pathname");
+  const path = pathname ? pathname : "";
+
+  const generateAlternates = () => {
+    const alternates: {
+      canonical: string;
+      languages: { [key: string]: string };
+    } = {
+      canonical: `${siteConfig.url}${path}`,
+      languages: {},
+    };
+
+    for (const locale of siteConfig.i18n.locales) {
+      const localeConfig = siteConfig.i18n.localeConfigs[locale];
+      const cleanPath = path.replace(`/${locale}`, ""); // Remove current locale from path
+      alternates.languages[localeConfig.htmlLang] =
+        `${siteConfig.url}/${localeConfig.path}${cleanPath}`;
+    }
+
+    return alternates;
+  };
+
+  // titleの値を判別
+  const titleData = siteConfig.themeConfig?.metadata?.title;
+  const title = t.has(`title.default`)
+    ? t(`title.default`)
+    : t.has(`title`)
+      ? t(`title`)
+      : typeof titleData === "string"
+        ? titleData
+        : titleData && "default" in titleData
+          ? titleData.default
+          : titleData && "absolute" in titleData
+            ? titleData.absolute
+            : siteConfig.title
+              ? siteConfig.title
+              : "Next.js Rich Tpl";
+
+  const description =
+    (t.has(`description`) && t(`description`)) ||
+    siteConfig.themeConfig.metadata?.description ||
+    siteConfig.description;
+
+  return {
+    title: {
+      template: `%s | ${t.has(`title.template`) ? t(`title.template`) : title}`,
+      default: `${title}`,
+    },
+    description: description,
+    referrer: "origin-when-cross-origin",
+    keywords: ["Vercel", "Next.js"],
+    authors: [{ name: "Toa Kiryu", url: "https://toakiryu.com" }],
+    creator: "Toa Kiryu",
+    icons: siteConfig.favicon ?? "/favicon.ico",
+    generator: "Next.js",
+    publisher: "Vercel",
+    robots: "follow, index",
+    alternates: generateAlternates(),
+    openGraph: {
+      type: "website",
+      siteName: title,
+      url: url,
+      images:
+        siteConfig.themeConfig.metadata?.openGraph?.images ??
+        siteConfig.themeConfig.image,
+      locale:
+        siteConfig.themeConfig?.metadata?.openGraph?.locale ??
+        siteConfig.i18n.localeConfigs[locale]?.htmlLang ??
+        "ja-JP",
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: `@${siteConfig.themeConfig?.metadata?.creator ?? "toakiryu"}`,
+      creator: `@${siteConfig.themeConfig?.metadata?.creator ?? "toakiryu"}`,
+      images:
+        siteConfig.themeConfig.metadata?.twitter?.images ??
+        siteConfig.themeConfig.image,
+    },
+    ...siteConfig.themeConfig?.metadata,
+    metadataBase: new URL(
+      origin ??
+        siteConfig.themeConfig?.metadata?.metadataBase ??
+        siteConfig.url,
+    ),
+  };
+}
+
+export default async function LocaleLayout(props: LayoutProps) {
+  const { locale } = await props.params;
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <body
+        className={`bg-background relative w-full h-full overflow-x-clip ${geistSans.variable} ${geistMono.variable} antialiased scrollbar-hidden`}
+        suppressHydrationWarning
+      >
+        <AdaptiveThemeProvider
+          defaultTheme={siteConfig.themeConfig.colorMode.defaultMode}
+          custom={siteConfig.themeConfig.colorMode.custom}
+        >
+          <NextIntlClientProvider messages={messages}>
+            <SmoothScrollProvider>
+              <Toaster />
+              {props.children}
+            </SmoothScrollProvider>
+          </NextIntlClientProvider>
+        </AdaptiveThemeProvider>
+      </body>
+    </html>
+  );
+}

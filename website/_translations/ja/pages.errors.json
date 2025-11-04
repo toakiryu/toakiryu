@@ -1,0 +1,27 @@
+{
+  "pages.errors": {
+    "notFound": {
+      "title": "404",
+      "subtitle": "ページが見つかりません",
+      "description": "お探しのページは削除されたか、名前が変更されたか、一時的に利用できない可能性があります。",
+      "goHome": "ホームに戻る"
+    },
+    "error": {
+      "title": "エラーが発生しました",
+      "subtitle": "リクエストの処理中にエラーが発生しました",
+      "errorId": "エラーID",
+      "tryAgain": "再試行",
+      "goHome": "ホームに戻る"
+    },
+    "globalError": {
+      "title": "重大なエラー",
+      "subtitle": "重大なエラーが発生しました。もう一度お試しください。",
+      "errorId": "エラーID",
+      "tryAgain": "再試行",
+      "goHome": "ホームに戻る"
+    },
+    "loading": {
+      "text": "読み込み中..."
+    }
+  }
+}
