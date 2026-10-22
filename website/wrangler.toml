@@ -1,0 +1,24 @@
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "toakiryu-website"
+upload_source_maps = true
+# Set this to today's date
+compatibility_date = "2026-10-19"
+workers_dev = false
+
+[route]
+pattern = "ktoa.me/*"
+zone_name = "ktoa.me"
+
+[env.staging]
+name = "toakiryu-website-staging"
+
+  [env.staging.route]
+  pattern = "staging.ktoa.me/*"
+  zone_name = "ktoa.me"
+
+[env.production]
+name = "toakiryu-website-production"
+
+  [env.production.route]
+  pattern = "ktoa.me/*"
+  zone_name = "ktoa.me"

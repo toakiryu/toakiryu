@@ -1,0 +1,16 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { locales } from "@/paraglide/runtime.js";
+import * as m from "@/paraglide/messages.js";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({
+    params: { lang },
+  }));
+}
+---
+
+<Layout>
+	<h1>{m.home_title()}</h1>
+	<p>{m.project_description()}</p>
+</Layout>

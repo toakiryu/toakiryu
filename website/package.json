@@ -1,0 +1,41 @@
+{
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "wrangler types && astro dev",
+    "start": "wrangler types && astro dev",
+    "build": "paraglide-js compile --project ./project.inlang --outdir './src\\paraglide' && wrangler types && astro build",
+    "preview": "wrangler types && astro preview",
+    "astro": "astro",
+    "check:i18n": "inlang check --project ./project.inlang",
+    "machine-translate": "inlang machine translate --project project.inlang",
+    "lint:i18n": "oxlint --config ./.oxlintrc.paraglide.json ."
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.4.2",
+    "@astrojs/node": "^11.1.9",
+    "@astrojs/partytown": "^2.1.9",
+    "@astrojs/sitemap": "^3.7.4",
+    "@phosphor-icons/core": "^2.1.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.152.0"
+  },
+  "devDependencies": {
+    "@inlang/cli": "^3.4.4",
+    "@inlang/paraglide-js": "^2.29.1",
+    "@types/node": "^26.6.5",
+    "oxlint": "^1.89.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-tailwindcss": "^0.8.1"
+  }
+}
