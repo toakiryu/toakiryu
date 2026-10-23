@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import cloudflare from '@astrojs/cloudflare';
+// import cloudflare from '@astrojs/cloudflare';
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from '@tailwindcss/vite';
 import { i18n } from '@/data/i18n';
@@ -11,6 +11,9 @@ import { i18n } from '@/data/i18n';
 // https://astro.build/config
 export default defineConfig({
   output: "static",
+  build: {
+    format: "directory",
+  },
   srcDir: './src',
   site: "https://ktoa.me",
   i18n: {
@@ -29,7 +32,7 @@ export default defineConfig({
     }),
     partytown()
   ],
-  adapter: cloudflare(),
+  // adapter: cloudflare(),
   vite: {
     plugins: [
       paraglideVitePlugin({

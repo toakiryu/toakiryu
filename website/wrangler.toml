@@ -5,6 +5,12 @@ upload_source_maps = true
 compatibility_date = "2026-10-19"
 workers_dev = false
 
+main = "worker/index.ts"
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = ["/"]
+
 [route]
 pattern = "ktoa.me/*"
 zone_name = "ktoa.me"

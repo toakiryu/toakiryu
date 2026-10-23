@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { i18n } from "@/data/i18n";
+import * as m from "@/paraglide/messages.js";
+
+export function getStaticPaths() {
+  return i18n.locales.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const lang = Astro.params.lang;
+---
+
+<Layout>
+  <main>
+    <h1>404</h1>
+    <p>
+      {m.page_not_found()}
+    </p>
+    <a href={`/${lang}/`}>
+      {m.back_to_home()}
+    </a>
+  </main>
+</Layout>
