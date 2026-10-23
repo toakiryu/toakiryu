@@ -1,12 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import node from "@astrojs/node";
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import cloudflare from '@astrojs/cloudflare';
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from '@tailwindcss/vite';
+import { i18n } from '@/data/i18n';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,10 +14,8 @@ export default defineConfig({
   srcDir: './src',
   site: "https://ktoa.me",
   i18n: {
-    locales: [
-      "ja", "en"
-    ],
-    defaultLocale: "ja",
+    locales: i18n.locales,
+    defaultLocale: i18n.defaultLocale,
     routing: {
       prefixDefaultLocale: true,
     },
@@ -25,11 +23,8 @@ export default defineConfig({
   integrations: [
     sitemap({
       i18n: {
-        defaultLocale: 'ja',
-        locales: {
-          en: 'en-US',
-          ja: 'ja-JP'
-        }
+        defaultLocale: i18n.defaultLocale,
+        locales: i18n.localesMap,
       }
     }),
     partytown()

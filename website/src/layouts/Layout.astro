@@ -1,15 +1,12 @@
 ---
-import { locales } from "@/paraglide/runtime.js";
+import '@/styles/global.css';
+import { getLocale } from "@/paraglide/runtime.js";
 
-export function getStaticPaths() {
-  return locales.map((lang) => ({
-    params: { lang },
-  }));
-}
+const lang = getLocale();
 ---
 
 <!doctype html>
-<html lang={Astro.params.lang}>
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -18,7 +15,7 @@ export function getStaticPaths() {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Toakiryu</title>
 	</head>
 	<body>
 		<slot />

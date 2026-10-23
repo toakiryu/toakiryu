@@ -1,0 +1,11 @@
+languageIds:
+  - typescript
+  - typescriptreact
+  - javascript
+  - javascriptreact
+  - astro
+
+usageMatchRegex:
+  - '\bm\.({key})\s*\('
+
+monopoly: true
