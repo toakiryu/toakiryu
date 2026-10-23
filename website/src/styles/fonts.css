@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Furifont Sans';
+  src: url('/content/fonts/FurifontSansVF.woff2') format('woff2');
+  font-weight: 250 900;
+  ascent-override: 88%;
+  descent-override: 12%;
+  line-gap-override: 0%;
+  font-display: swap;
+}
+
+ruby {
+  font-feature-settings: 'ss01';
+}

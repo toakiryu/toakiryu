@@ -7,6 +7,8 @@ import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from '@tailwindcss/vite';
 import { i18n } from '@/data/i18n';
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   output: "static",
@@ -22,15 +24,12 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: i18n.defaultLocale,
-        locales: i18n.localesMap,
-      }
-    }),
-    partytown()
-  ],
+  integrations: [sitemap({
+    i18n: {
+      defaultLocale: i18n.defaultLocale,
+      locales: i18n.localesMap,
+    }
+  }), partytown(), react()],
   vite: {
     plugins: [
       paraglideVitePlugin({

@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Button } from '@/components/ui/button';
 import { getLocaleStaticPaths } from "@/i18n/routing";
 import * as m from "@/paraglide/messages.js";
 
@@ -9,4 +10,22 @@ export const getStaticPaths = getLocaleStaticPaths;
 <Layout>
 	<h1 class="text-3xl font-bold">{m.home_title()}</h1>
 	<p>{m.project_description()}</p>
+	<div class="container max-w-xl mx-auto">
+		<div class="flex flex-col pt-14 mb-16">
+			<span class="text-[11px] font-mono text-neutral-500">Last updated: {new Date().toLocaleDateString()}</span>
+			<h1 class="text-4xl sm:text-5xl font-medium font-heading tracking-[-0.02em] mt-4">
+				Toa Kiryu, a web developer based in Japan
+			</h1>
+			<p class="text-lg font-furifont mt-5">
+				私は日本在住の開発者で、主に WEB 開発に携わっています。
+			</p>
+			<div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
+				<Button>Get in touch</Button>
+				<Button variant="link" className="normal-case px-0">See the projects</Button>
+			</div>
+			<span class="text-[11px] font-mono text-neutral-500 mt-7">
+				10,000 commits · 10+ projects · active since 2023
+			</span>
+		</div>
+	</div>
 </Layout>
