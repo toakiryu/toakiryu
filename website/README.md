@@ -1,46 +1,63 @@
-# Astro Starter Kit: Basics
+# Toakiryu website
+
+Astroで静的ページを生成し、Cloudflare WorkersのStatic Assetsで配信するWebサイトです。日本語（`/ja/`）と英語（`/en/`）に対応し、翻訳にはParaglideを使用しています。
+
+## セットアップ
+
+Node.js 22.23.4以上とpnpmが必要です。以下のコマンドは、この`website`ディレクトリで実行します。
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+`pnpm dev`はAstroの開発サーバーをバックグラウンドで起動します。表示されたURLの`/ja/`または`/en/`を開いてください（通常は`http://localhost:4321/ja/`）。`pnpm dev:stop`で停止し、`pnpm dev:status`で状態、`pnpm dev:logs`でログを確認できます。
 
-## 🚀 Project Structure
+AstroとViteがページやスタイルの変更を反映し、翻訳コードはParaglideのViteプラグインが生成します。`public`は直接配信されるため、変更後にブラウザを再読み込みすれば確認できます。変更のたびにサイト全体のビルドやWorker型の生成は行いません。
 
-Inside of your Astro project, you'll see the following folders and files:
+開発サーバーでは`worker/index.ts`は実行されません。`Accept-Language`によるリダイレクト、言語別404、生成されたサイトマップなど、本番の配信動作は`pnpm preview`で確認してください。プレビューは通常`http://localhost:8787`で配信され、Ctrl+Cで停止します。ページや静的ファイルの変更をプレビューへ反映するには、別のターミナルで`pnpm build`を実行するか、プレビューを再起動してください。
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## コマンド
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+| コマンド | 内容 |
+| --- | --- |
+| `pnpm dev` / `pnpm start` | Astroの開発サーバーをバックグラウンドで起動 |
+| `pnpm dev:stop` | 開発サーバーを停止 |
+| `pnpm dev:status` | 開発サーバーの状態を確認 |
+| `pnpm dev:logs` | 開発サーバーのログを表示 |
+| `pnpm build` | 翻訳コードとWorker型を生成し、静的サイトを`dist`に出力 |
+| `pnpm preview` | ビルド後、Wranglerでローカル配信（変更監視なし） |
+| `pnpm types` | Wranglerの設定からWorker型を生成 |
+| `pnpm sync:i18n` | `i18n.config.ts`からinlangの言語設定を同期 |
+| `pnpm astro ...` / `pnpm inlang ...` | 設定を同期してから各CLIを実行 |
+| `pnpm check:i18n` | 翻訳プロジェクトを検査 |
+| `pnpm lint:i18n` | 翻訳メッセージの参照に関するルールを検査 |
+| `pnpm machine-translate` | 翻訳プロジェクトの機械翻訳を実行 |
+| `pnpm deploy` | ビルド後、Cloudflareへデプロイ |
 
-## 🧞 Commands
+## 構成と配信
 
-All commands are run from the root of the project, from a terminal:
+| パス | 役割 |
+| --- | --- |
+| `src/pages/[lang]/` | 言語別の静的ページ |
+| `src/layouts/` | 共通のHTMLレイアウト |
+| `i18n.config.ts` | 対応言語・既定言語の正本 |
+| `scripts/sync-i18n.mjs` | inlangの言語設定の同期スクリプト |
+| `src/data/i18n.ts` | 共通設定をAstro・Worker向けに公開 |
+| `src/i18n/routing.ts` | 言語別ページ生成の共通処理 |
+| `src/middleware.ts` | ページ生成時の翻訳言語を設定 |
+| `messages/` | 言語別の翻訳メッセージ |
+| `project.inlang/settings.json` | 翻訳プロジェクト設定（言語設定のみ自動同期） |
+| `src/paraglide/` | 自動生成される翻訳コード |
+| `public/` | ビルド時にそのままコピーされる静的ファイル |
+| `worker/index.ts` | 言語リダイレクトと404応答 |
+| `wrangler.toml` | Worker・静的配信・ドメインの設定 |
+| `dist/` | ビルド成果物 |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+静的ファイルを優先して配信し、ルート`/`はWorkerで処理します。Workerは`Accept-Language`に応じて言語別URLへリダイレクトし、対応言語の存在しないページにはその言語の404ページを返します。
 
-## 👀 Want to learn more?
+言語設定は`i18n.config.ts`を編集してください。`locales`はURLの言語コードとサイトマップ用の言語タグの対応表、`defaultLocale`は既定言語です。開発・ビルド・inlangの各スクリプトは実行前に、既存の`project.inlang/settings.json`の`locales`と`baseLocale`だけを同期します。`modules`や`plugin.inlang.messageFormat`などは`settings.json`で直接管理し、そのほかの設定も同期時に保持されます。同期結果はコミットしてください。内容に変更がない場合はファイルを書き換えません。設定変更後は`pnpm dev:stop`、`pnpm dev`で開発サーバーを再起動してください。言語を追加する場合は`messages/`に翻訳ファイルも追加します。
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`pnpm deploy`は既定のWorkerを`ktoa.me/*`へデプロイします。事前にCloudflareの認証と対象ゾーンへの権限が必要です。`wrangler.toml`には、別名のWorkerを使用する`staging`（`staging.ktoa.me/*`）と`production`（`ktoa.me/*`）も定義されています。環境を指定する場合は、ビルド後に`pnpm exec wrangler deploy --env staging`または`--env production`を実行します。
+
+Astroの仕様は[公式ドキュメント](https://docs.astro.build)を参照してください。

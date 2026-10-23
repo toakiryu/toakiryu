@@ -1,20 +1,9 @@
-const rc = {
-  locales: {
-    en: 'en-US',
-    ja: 'ja-JP'
-  },
-  defaultLocale: "ja",
-} as const;
+import config from "../../i18n.config";
 
-// キーの配列を取得
-export const localesKeys = Object.keys(rc.locales);
-
-// 型も含めて完全に抽出
-export type LocaleKey = keyof typeof rc.locales;
+export type LocaleKey = keyof typeof config.locales;
 
 export const i18n = {
-  raw: rc,
-  locales: localesKeys as LocaleKey[],
-  localesMap: rc.locales,
-  defaultLocale: rc.defaultLocale as LocaleKey,
+  locales: Object.keys(config.locales) as LocaleKey[],
+  localesMap: config.locales,
+  defaultLocale: config.defaultLocale,
 }

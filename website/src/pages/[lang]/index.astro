@@ -1,13 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { locales } from "@/paraglide/runtime.js";
+import { getLocaleStaticPaths } from "@/i18n/routing";
 import * as m from "@/paraglide/messages.js";
 
-export function getStaticPaths() {
-  return locales.map((lang) => ({
-    params: { lang },
-  }));
-}
+export const getStaticPaths = getLocaleStaticPaths;
 ---
 
 <Layout>
