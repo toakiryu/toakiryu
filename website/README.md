@@ -19,40 +19,40 @@ AstroとViteがページやスタイルの変更を反映し、翻訳コード�
 
 ## コマンド
 
-| コマンド | 内容 |
-| --- | --- |
-| `pnpm dev` / `pnpm start` | Astroの開発サーバーをバックグラウンドで起動 |
-| `pnpm dev:stop` | 開発サーバーを停止 |
-| `pnpm dev:status` | 開発サーバーの状態を確認 |
-| `pnpm dev:logs` | 開発サーバーのログを表示 |
-| `pnpm build` | 翻訳コードとWorker型を生成し、静的サイトを`dist`に出力 |
-| `pnpm preview` | ビルド後、Wranglerでローカル配信（変更監視なし） |
-| `pnpm types` | Wranglerの設定からWorker型を生成 |
-| `pnpm sync:i18n` | `i18n.config.ts`からinlangの言語設定を同期 |
-| `pnpm astro ...` / `pnpm inlang ...` | 設定を同期してから各CLIを実行 |
-| `pnpm check:i18n` | 翻訳プロジェクトを検査 |
-| `pnpm lint:i18n` | 翻訳メッセージの参照に関するルールを検査 |
-| `pnpm machine-translate` | 翻訳プロジェクトの機械翻訳を実行 |
-| `pnpm deploy` | ビルド後、Cloudflareへデプロイ |
+| コマンド                             | 内容                                                   |
+| ------------------------------------ | ------------------------------------------------------ |
+| `pnpm dev` / `pnpm start`            | Astroの開発サーバーをバックグラウンドで起動            |
+| `pnpm dev:stop`                      | 開発サーバーを停止                                     |
+| `pnpm dev:status`                    | 開発サーバーの状態を確認                               |
+| `pnpm dev:logs`                      | 開発サーバーのログを表示                               |
+| `pnpm build`                         | 翻訳コードとWorker型を生成し、静的サイトを`dist`に出力 |
+| `pnpm preview`                       | ビルド後、Wranglerでローカル配信（変更監視なし）       |
+| `pnpm types`                         | Wranglerの設定からWorker型を生成                       |
+| `pnpm sync:i18n`                     | `i18n.config.ts`からinlangの言語設定を同期             |
+| `pnpm astro ...` / `pnpm inlang ...` | 設定を同期してから各CLIを実行                          |
+| `pnpm check:i18n`                    | 翻訳プロジェクトを検査                                 |
+| `pnpm lint:i18n`                     | 翻訳メッセージの参照に関するルールを検査               |
+| `pnpm machine-translate`             | 翻訳プロジェクトの機械翻訳を実行                       |
+| `pnpm deploy`                        | ビルド後、Cloudflareへデプロイ                         |
 
 ## 構成と配信
 
-| パス | 役割 |
-| --- | --- |
-| `src/pages/[lang]/` | 言語別の静的ページ |
-| `src/layouts/` | 共通のHTMLレイアウト |
-| `i18n.config.ts` | 対応言語・既定言語の正本 |
-| `scripts/sync-i18n.mjs` | inlangの言語設定の同期スクリプト |
-| `src/data/i18n.ts` | 共通設定をAstro・Worker向けに公開 |
-| `src/i18n/routing.ts` | 言語別ページ生成の共通処理 |
-| `src/middleware.ts` | ページ生成時の翻訳言語を設定 |
-| `messages/` | 言語別の翻訳メッセージ |
+| パス                           | 役割                                         |
+| ------------------------------ | -------------------------------------------- |
+| `src/pages/[lang]/`            | 言語別の静的ページ                           |
+| `src/layouts/`                 | 共通のHTMLレイアウト                         |
+| `i18n.config.ts`               | 対応言語・既定言語の正本                     |
+| `scripts/sync-i18n.mjs`        | inlangの言語設定の同期スクリプト             |
+| `src/data/i18n.ts`             | 共通設定をAstro・Worker向けに公開            |
+| `src/i18n/routing.ts`          | 言語別ページ生成の共通処理                   |
+| `src/middleware.ts`            | ページ生成時の翻訳言語を設定                 |
+| `messages/`                    | 言語別の翻訳メッセージ                       |
 | `project.inlang/settings.json` | 翻訳プロジェクト設定（言語設定のみ自動同期） |
-| `src/paraglide/` | 自動生成される翻訳コード |
-| `public/` | ビルド時にそのままコピーされる静的ファイル |
-| `worker/index.ts` | 言語リダイレクトと404応答 |
-| `wrangler.toml` | Worker・静的配信・ドメインの設定 |
-| `dist/` | ビルド成果物 |
+| `src/paraglide/`               | 自動生成される翻訳コード                     |
+| `public/`                      | ビルド時にそのままコピーされる静的ファイル   |
+| `worker/index.ts`              | 言語リダイレクトと404応答                    |
+| `wrangler.toml`                | Worker・静的配信・ドメインの設定             |
+| `dist/`                        | ビルド成果物                                 |
 
 静的ファイルを優先して配信し、ルート`/`はWorkerで処理します。Workerは`Accept-Language`に応じて言語別URLへリダイレクトし、対応言語の存在しないページにはその言語の404ページを返します。
 

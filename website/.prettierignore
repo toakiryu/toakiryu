@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+
+/project.inlang/**/*
+!/project.inlang/settings.json
+/src/paraglide/**/*
+
+worker-configuration.d.ts

@@ -1,7 +1,7 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import { getLocaleStaticPaths } from "@/i18n/routing";
-import * as m from "@/paraglide/messages.js";
+import Layout from '@/layouts/Layout.astro';
+import { getLocaleStaticPaths } from '@/i18n/routing';
+import * as m from '@/paraglide/messages.js';
 
 export const getStaticPaths = getLocaleStaticPaths;
 
@@ -11,11 +11,7 @@ const lang = Astro.params.lang;
 <Layout>
   <main>
     <h1>404</h1>
-    <p>
-      {m.page_not_found()}
-    </p>
-    <a href={`/${lang}/`}>
-      {m.back_to_home()}
-    </a>
+    <p>{m.page_not_found()}</p>
+    <a href={`/${lang}/`}>{m.back_to_home()}</a>
   </main>
 </Layout>

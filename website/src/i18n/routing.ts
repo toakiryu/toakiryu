@@ -1,4 +1,4 @@
-import { i18n } from "@/data/i18n";
+import { i18n } from '@/data/i18n';
 
 export const locales = i18n.locales;
 

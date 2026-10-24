@@ -20,7 +20,8 @@
     "inlang": "pnpm sync:i18n && inlang",
     "check:i18n": "pnpm sync:i18n && inlang check --project ./project.inlang",
     "machine-translate": "pnpm sync:i18n && inlang machine translate --project project.inlang",
-    "lint:i18n": "oxlint --config ./.oxlintrc.paraglide.json ."
+    "lint:i18n": "oxlint --config ./.oxlintrc.paraglide.json .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/node": "^11.1.9",

@@ -1,0 +1,34 @@
+/*
+ * 例
+ * - 縦書きのスタイルの場合: `t-orient-mixed writing-mode-vertical-rl`
+*/
+
+@utility t-orient-* {
+  text-orientation: --value(
+    'mixed',
+    'upright',
+    'sideways',
+    'sideways-right',
+    'sideways-left',
+    'inherit',
+    'initial',
+    'revert',
+    'revert-layer',
+    'unset'
+  );
+}
+
+@utility writing-mode-* {
+  writing-mode: --value(
+    'horizontal-tb',
+    'vertical-rl',
+    'vertical-lr',
+    'sideways-rl',
+    'sideways-lr',
+    'inherit',
+    'initial',
+    'revert',
+    'revert-layer',
+    'unset'
+  );
+}

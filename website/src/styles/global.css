@@ -1,10 +1,11 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
 @import '@fontsource-variable/public-sans';
 
-@import "fonts.css";
+@import 'fonts.css';
+@import 'text.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -124,11 +125,34 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
   body {
     @apply bg-background text-foreground;
-    }
+  }
   html {
     @apply font-sans;
+  }
+}
+
+@utility rail {
+  counter-reset: rail;
+}
+
+@utility rail-section {
+  counter-increment: rail;
+  @media (width >= --theme(--breakpoint-md)) {
+    &:not(.rail-section--inline) {
+      grid-template-columns: var(--rail-width) minmax(0, 1fr);
+      column-gap: var(--rail-gap);
+      display: grid;
     }
+  }
+}
+
+@utility rail-label {
+  @apply block sticky top-0.5 self-start items-baseline mb-3 text-sm uppercase;
+}
+
+@utility rail-body {
+  @apply max-w-xl;
 }

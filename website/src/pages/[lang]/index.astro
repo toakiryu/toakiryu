@@ -1,31 +1,68 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { Button } from '@/components/ui/button';
-import { getLocaleStaticPaths } from "@/i18n/routing";
-import * as m from "@/paraglide/messages.js";
+import { getLocaleStaticPaths } from '@/i18n/routing';
+import * as m from '@/paraglide/messages.js';
+import {
+  RailBody,
+  RailContent,
+  RailLabel,
+  RailSection,
+  RailTitle,
+} from '@/components/ui/rail';
 
 export const getStaticPaths = getLocaleStaticPaths;
 ---
 
 <Layout>
-	<h1 class="text-3xl font-bold">{m.home_title()}</h1>
-	<p>{m.project_description()}</p>
-	<div class="container max-w-xl mx-auto">
-		<div class="flex flex-col pt-14 mb-16">
-			<span class="text-[11px] font-mono text-neutral-500">Last updated: {new Date().toLocaleDateString()}</span>
-			<h1 class="text-4xl sm:text-5xl font-medium font-heading tracking-[-0.02em] mt-4">
-				Toa Kiryu, a web developer based in Japan
-			</h1>
-			<p class="text-lg font-furifont mt-5">
-				私は日本在住の開発者で、主に WEB 開発に携わっています。
-			</p>
-			<div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
-				<Button>Get in touch</Button>
-				<Button variant="link" className="normal-case px-0">See the projects</Button>
-			</div>
-			<span class="text-[11px] font-mono text-neutral-500 mt-7">
-				10,000 commits · 10+ projects · active since 2023
-			</span>
-		</div>
-	</div>
+  <h1 class="text-3xl font-bold">{m.home_title()}</h1>
+  <p>{m.project_description()}</p>
+  <main class="flex-1">
+    <div class="container max-w-4xl px-4 mx-auto [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+      <div class="flex flex-col rail-body md:ml-[calc(var(--rail-width)+var(--rail-gap))] pt-14 pb-16">
+        <span class="text-[11px] font-mono text-neutral-500">
+          Last updated: {new Date().toLocaleDateString()}
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-medium font-heading tracking-tight mt-4">
+          Toa Kiryu, a web developer based in Japan
+        </h1>
+        <p class="text-lg font-furifont mt-5">
+          私は日本在住の開発者で、主に WEB 開発に携わっています。
+        </p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
+          <Button>Get in touch</Button>
+          <Button variant="link" className="normal-case px-0">
+            See the projects
+          </Button>
+        </div>
+        <span class="text-[11px] font-mono text-neutral-500 mt-7">
+          10,000 commits · 10+ projects · active since 2023
+        </span>
+      </div>
+      <div class="rail pt-16 border-t">
+        <RailSection>
+          <RailLabel>News</RailLabel>
+          <RailBody>
+            <RailTitle>最新のお知らせフィード</RailTitle>
+            <RailContent className="border-t">
+              <li class="border-border flex items-start gap-x-6 gap-y-1 border-b py-4">
+                <span class="flex flex-col-reverse text-sm tabular-nums t-orient-mixed writing-mode-vertical-rl">
+                  <p class="text-xs">26</p>
+                  <p class="font-medium">10/24</p>
+                </span>
+                <div class="min-w-0">
+                  <p class="text-sm font-medium truncate">
+                    新しいポートフォリオ
+                  </p>
+                  <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
+                    長期間放置されていた旧サイトを再構築しました。
+                  </p>
+                </div>
+              </li>
+            </RailContent>
+          </RailBody>
+        </RailSection>
+      </div>
+    </div>
+  </main>
 </Layout>

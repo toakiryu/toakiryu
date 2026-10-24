@@ -1,4 +1,4 @@
-import { i18n } from "../src/data/i18n";
+import { i18n } from '../src/data/i18n';
 
 interface Env {
   ASSETS: Fetcher;
@@ -12,13 +12,13 @@ function resolveLocale(acceptLanguage: string | null): string {
   }
 
   const preferences = acceptLanguage
-    .split(",")
+    .split(',')
     .map((entry) => {
-      const [tag, ...parameters] = entry.trim().split(";");
+      const [tag, ...parameters] = entry.trim().split(';');
 
       const quality = parameters
         .map((parameter) => parameter.trim())
-        .find((parameter) => parameter.startsWith("q="));
+        .find((parameter) => parameter.startsWith('q='));
 
       return {
         tag: tag.toLowerCase(),
@@ -29,11 +29,11 @@ function resolveLocale(acceptLanguage: string | null): string {
     .sort((a, b) => b.q - a.q);
 
   for (const { tag } of preferences) {
-    if (tag === "*") {
+    if (tag === '*') {
       return i18n.defaultLocale;
     }
 
-    const language = tag.split("-")[0];
+    const language = tag.split('-')[0];
 
     if (locales.has(language)) {
       return language;
@@ -44,16 +44,13 @@ function resolveLocale(acceptLanguage: string | null): string {
 }
 
 function getPathLocale(pathname: string): string | null {
-  const segment = pathname.split("/")[1];
+  const segment = pathname.split('/')[1];
 
   return locales.has(segment) ? segment : null;
 }
 
 function isAssetPath(pathname: string): boolean {
-  return (
-    pathname.startsWith("/_astro/") ||
-    /\/[^/]+\.[^/]+$/.test(pathname)
-  );
+  return pathname.startsWith('/_astro/') || /\/[^/]+\.[^/]+$/.test(pathname);
 }
 
 export default {
@@ -74,7 +71,7 @@ export default {
       );
 
       if (!response.ok) {
-        return new Response("Not Found", { status: 404 });
+        return new Response('Not Found', { status: 404 });
       }
 
       return new Response(response.body, {
@@ -89,23 +86,23 @@ export default {
     }
 
     // GET / HEAD 以外はリダイレクトしない
-    if (request.method !== "GET" && request.method !== "HEAD") {
-      return new Response("Method Not Allowed", {
+    if (request.method !== 'GET' && request.method !== 'HEAD') {
+      return new Response('Method Not Allowed', {
         status: 405,
-        headers: { Allow: "GET, HEAD" },
+        headers: { Allow: 'GET, HEAD' },
       });
     }
 
     const preferredLocale = resolveLocale(
-      request.headers.get("Accept-Language"),
+      request.headers.get('Accept-Language'),
     );
 
     url.pathname = `/${preferredLocale}${pathname}`;
 
     const headers = new Headers({
       Location: url.toString(),
-      Vary: "Accept-Language",
-      "Cache-Control": "private, no-store",
+      Vary: 'Accept-Language',
+      'Cache-Control': 'private, no-store',
     });
 
     return new Response(null, {
