@@ -1,0 +1,63 @@
+---
+import {
+  RailBody,
+  RailContent,
+  RailLabel,
+  RailSection,
+  RailTitle,
+} from '@/components/ui/rail';
+import { Icon } from './icon';
+
+import { getCollection } from 'astro:content';
+
+const news = await getCollection('news', ({ data }) => data.public === true);
+---
+
+<RailSection>
+  <RailLabel>
+    <span class="font-semibold">
+      News
+      <br />
+    </span>
+    <span class="text-sm text-muted-foreground">
+      Announcements
+      <br />
+      Releases
+      <br />
+      Other
+    </span>
+  </RailLabel>
+  <RailBody>
+    <RailTitle>最新のお知らせフィード</RailTitle>
+    <RailContent className="border-t">
+      {news.map((c) => {
+        const str = c.data.created_at.toISOString();
+        // idx 2~4 の手前（"2026" の "26"）
+        const year = str.slice(2, 4);
+        // idx 5~7 の手前（"2026-06-01" の "06"） + "/" + idx 8~10 の手前（"2026-06-01" の "01"）
+        const monthDay = str.slice(5, 7) + '/' + str.slice(8, 10);
+
+        return (
+          <li class="border-border flex flex-raw items-baseline justify-between gap-x-6 gap-y-1 border-b py-4">
+            <div class="w-full flex gap-x-6 gap-y-1">
+              <span class="pl-3 my-auto">
+                <Icon category={c.data.category} size={24} />
+                <span class="sr-only">{c.data.category}</span>
+              </span>
+              <div class="min-w-0">
+                <span class="text-sm font-medium truncate">{c.data.title}</span>
+                <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
+                  {c.data.description}
+                </p>
+              </div>
+            </div>
+            <span class="hidden md:flex flex-col-reverse text-sm tabular-nums t-orient-mixed writing-mode-vertical-rl">
+              <p class="text-xs">{year}</p>
+              <p class="font-medium">{monthDay}</p>
+            </span>
+          </li>
+        );
+      })}
+    </RailContent>
+  </RailBody>
+</RailSection>

@@ -24,7 +24,7 @@ function RailLabel({ children, className }: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn(
-        'block sticky top-0.5 self-start items-baseline mb-3 text-sm uppercase',
+        'block sticky top-0.5 self-start items-baseline mb-3 font-heading text-sm uppercase md:t-orient-mixed md:writing-mode-vertical-rl',
         className,
       )}
     >

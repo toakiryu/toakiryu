@@ -2,6 +2,8 @@
 
 Astroで静的ページを生成し、Cloudflare WorkersのStatic Assetsで配信するWebサイトです。日本語（`/ja/`）と英語（`/en/`）に対応し、翻訳にはParaglideを使用しています。
 
+![screenshot v202610251](/website/public/content/uploads/202610251.png)
+
 ## セットアップ
 
 Node.js 22.23.4以上とpnpmが必要です。以下のコマンドは、この`website`ディレクトリで実行します。
