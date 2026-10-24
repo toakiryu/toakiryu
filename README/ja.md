@@ -15,7 +15,7 @@
 <h1 align="center">
   <img src="https://avatars.githubusercontent.com/u/141471450?s=400&u=d41619c3703941f545528e6928c3e5cdf64f327e&v=4" alt="toakiryu logo" width="96px"/>
   
-  [👋 こんにちは！桐生トアです。](https://toakiryu.com)
+  [👋 こんにちは！桐生トアです。](https://ktoa.me)
   
   <div>
     <a href="https://github.com/toakiryu?tab=followers">
@@ -24,6 +24,9 @@
     <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/toakiryu">
     <a href="https://x.com/toakiryu">
       <img alt="X (formerly Twitter) Follow" src="https://img.shields.io/twitter/follow/toakiryu">
+    </a>
+    <a href="https://bsky.app/profile/ktoa.me">
+      <img alt="Bluesky followers" src="https://img.shields.io/bluesky/followers/ktoa.me">
     </a>
     <!-- <a href="https://www.youtube.com/channel/UCT34DhsVlYoyV8Y4c-MTTrQ">
       <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCT34DhsVlYoyV8Y4c-MTTrQ">
@@ -46,11 +49,11 @@
 
 ### 日本在住の情熱的なプログラマー
 
-- **年齢**: 16
+- **年齢**: 17
 
 ### 📫 連絡先:
 
-[![Email][gmail-img]](https://toakiryu.com/contact)
+[![Bluesky][gmail-img]](https://bsky.app/profile/ktoa.me)
 [![Twitter(x)][twitter-img]](https://twitter.com/toakiryu)
 
 ### 🌱 現在学んでいること
@@ -62,10 +65,11 @@
 # 🔗 リンク
 
 [![NPM][npm-img]](https://www.npmjs.com/~toakiryu)
-[![Discord][discord-img]](https://l.toakiryu.com/discord)
-[![Youtube][youtube-img]](https://l.toakiryu.com/youtube)
-[![Twitter(x)][twitter-img]](https://l.toakiryu.com/x)
-[![Scratch][scratch-img]](https://scratch.mit.edu/users/Fun_117/)
+[![Discord][discord-img]](https://discord.com/users/990984460365365258)
+[![Youtube][youtube-img]](https://www.youtube.com/@toakiryu)
+[![Twitter(x)][twitter-img]](https://x.com/toakiryu)
+[![Scratch (旧][scratch-img]](https://scratch.mit.edu/users/Fun_117/)
+[![Scratch (新][scratch-img]](https://scratch.mit.edu/users/Toakiryu/)
 [![Minecraft][minecraft-img]](https://ja.namemc.com/profile/toakiryu)
 
 <p align="center">
