@@ -1,6 +1,7 @@
 /*
  * 例
  * - 縦書きのスタイルの場合: `t-orient-mixed writing-mode-vertical-rl`
+ * 参照：https://github.com/toakiryu/ktoa.me/blob/main/src/styles/text.css
 */
 
 @utility t-orient-* {

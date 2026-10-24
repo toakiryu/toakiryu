@@ -19,7 +19,7 @@ export const getStaticPaths = getLocaleStaticPaths;
   <p>{m.project_description()}</p>
   <main class="flex-1">
     <div class="container max-w-4xl px-4 mx-auto [--rail-width:8.5rem] [--rail-gap:3.5rem]">
-      <div class="flex flex-col rail-body md:ml-[calc(var(--rail-width)+var(--rail-gap))] pt-14 pb-16">
+      <div class="flex flex-col max-w-xl md:ml-[calc(var(--rail-width)+var(--rail-gap))] pt-14 pb-16">
         <span class="text-[11px] font-mono text-neutral-500">
           Last updated: {new Date().toLocaleDateString()}
         </span>
@@ -39,7 +39,7 @@ export const getStaticPaths = getLocaleStaticPaths;
           10,000 commits · 10+ projects · active since 2023
         </span>
       </div>
-      <div class="rail pt-16 border-t">
+      <div class="[counter-reset:rail] pt-16 border-t">
         <RailSection>
           <RailLabel>News</RailLabel>
           <RailBody>

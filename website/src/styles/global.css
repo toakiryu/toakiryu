@@ -133,26 +133,3 @@
     @apply font-sans;
   }
 }
-
-@utility rail {
-  counter-reset: rail;
-}
-
-@utility rail-section {
-  counter-increment: rail;
-  @media (width >= --theme(--breakpoint-md)) {
-    &:not(.rail-section--inline) {
-      grid-template-columns: var(--rail-width) minmax(0, 1fr);
-      column-gap: var(--rail-gap);
-      display: grid;
-    }
-  }
-}
-
-@utility rail-label {
-  @apply block sticky top-0.5 self-start items-baseline mb-3 text-sm uppercase;
-}
-
-@utility rail-body {
-  @apply max-w-xl;
-}
