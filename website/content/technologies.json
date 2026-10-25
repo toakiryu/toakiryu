@@ -1,0 +1,36 @@
+[
+  { "id": "HTML", "icon": "devicon:html5" },
+  { "id": "CSS", "icon": "devicon:css3" },
+  { "id": "TypeScript", "icon": "devicon:typescript" },
+  { "id": "JavaScript", "icon": "devicon:javascript" },
+  { "id": "TailwindCSS", "icon": "devicon:tailwindcss" },
+  { "id": "Python", "icon": "devicon:python" },
+  { "id": "Rust", "icon": "devicon:rust" },
+  { "id": "Kotlin", "icon": "devicon:kotlin" },
+
+  { "id": "Node.js", "icon": "devicon:nodejs" },
+  { "id": "Bun", "icon": "devicon:bun" },
+  { "id": "Hono", "icon": "logos:hono" },
+
+  { "id": "Vite", "icon": "thesvg-color:vite" },
+  { "id": "Vitest", "icon": "logos:vitest" },
+  { "id": "React", "icon": "devicon:react" },
+  { "id": "Astro", "icon": "devicon:astro" },
+  { "id": "Next.js", "icon": "devicon:nextjs" },
+
+  { "id": "PostgreSQL", "icon": "devicon:postgresql" },
+  { "id": "Redis", "icon": "simple-icons:redis" },
+
+  { "id": "Docker", "icon": "devicon:docker" },
+  { "id": "AWS", "icon": "logos:aws" },
+  { "id": "GCP", "icon": "devicon:googlecloud" },
+  { "id": "Cloudflare", "icon": "devicon:cloudflare" },
+
+  { "id": "Git", "icon": "devicon:git" },
+  { "id": "GitHub", "icon": "devicon:github" },
+
+  { "id": "VS Code", "icon": "devicon:vscode" },
+  { "id": "Figma", "icon": "devicon:figma" },
+  { "id": "Affinity", "icon": "vscode-icons:file-type-affinity" },
+  { "id": "Krita", "icon": "vscode-icons:file-type-krita" }
+]

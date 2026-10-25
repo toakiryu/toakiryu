@@ -24,9 +24,26 @@ function RailLabel({ children, className }: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn(
-        'block sticky top-0.5 self-start items-baseline mb-3 font-heading text-sm uppercase md:t-orient-mixed md:writing-mode-vertical-rl',
+        'flex gap-2 md:block sticky top-0.5 self-start items-baseline mb-3 font-heading text-sm uppercase',
+        'before:block before:content-[counter(rail,decimal-leading-zero)]',
         className,
       )}
+    >
+      <span className="hidden md:block w-7 my-2.5 border-y" />
+      <span className="md:t-orient-mixed md:writing-mode-vertical-rl">
+        {children}
+      </span>
+    </span>
+  );
+}
+
+function RailLabelSubtitle({
+  children,
+  className,
+}: HTMLAttributes<HTMLSpanElement>) {
+  return (
+    <span
+      className={cn('hidden md:block text-xs text-muted-foreground', className)}
     >
       {children}
     </span>
@@ -42,9 +59,25 @@ function RailTitle({
   className,
 }: HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h2 className={cn('text-2xl font-medium tracking-tight', className)}>
+    <h2
+      className={cn(
+        'text-2xl font-medium font-heading tracking-tight',
+        className,
+      )}
+    >
       {children}
     </h2>
+  );
+}
+
+function RailDescription({
+  children,
+  className,
+}: HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p className={cn('text-sm text-muted-foreground mt-4', className)}>
+      {children}
+    </p>
   );
 }
 
@@ -52,4 +85,12 @@ function RailContent({ children, className }: HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('mt-7', className)}>{children}</div>;
 }
 
-export { RailSection, RailLabel, RailBody, RailTitle, RailContent };
+export {
+  RailSection,
+  RailLabel,
+  RailLabelSubtitle,
+  RailBody,
+  RailTitle,
+  RailDescription,
+  RailContent,
+};

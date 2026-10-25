@@ -1,0 +1,27 @@
+---
+import { Button } from '@/components/ui/button';
+---
+
+<div class="flex flex-col max-w-xl md:ml-[calc(var(--rail-width)+var(--rail-gap))] pt-14 pb-16">
+  <span class="text-[11px] font-mono text-neutral-500">
+    Last updated: {new Date().toLocaleDateString()}
+  </span>
+  <h1 class="text-4xl sm:text-5xl font-medium font-heading tracking-tight mt-4">
+    Toa Kiryu, a web developer based in Japan
+  </h1>
+  <p class="text-lg font-furifont mt-5">
+    私は日本在住の開発者で、主に WEB 開発に携わっています。
+  </p>
+  <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
+    <Button size="sm">Get in touch</Button>
+    <a
+      href="/projects"
+      class="normal-case text-sm underline underline-offset-[0.15em]"
+    >
+      See the projects
+    </a>
+  </div>
+  <span class="text-[11px] font-mono text-neutral-500 mt-7">
+    10,000 commits · 10+ projects · active since 2023
+  </span>
+</div>

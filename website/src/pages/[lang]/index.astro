@@ -1,41 +1,24 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import { getLocaleStaticPaths } from '@/i18n/routing';
 import * as m from '@/paraglide/messages.js';
 export const getStaticPaths = getLocaleStaticPaths;
 
-import News from '@/components/page/home/news.astro';
+import About from '@/components/page/home/about.astro';
+import Latest from '@/components/page/home/latest.astro';
+import TechStack from '@/components/page/home/tech-stack.astro';
+import Footer from '@/components/footer.astro';
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold">{m.home_title()}</h1>
-  <p>{m.project_description()}</p>
-  <main class="flex-1">
-    <div class="container max-w-200 px-4 mx-auto [--rail-width:8.5rem] [--rail-gap:3.5rem]">
-      <div class="flex flex-col max-w-xl md:ml-[calc(var(--rail-width)+var(--rail-gap))] pt-14 pb-16">
-        <span class="text-[11px] font-mono text-neutral-500">
-          Last updated: {new Date().toLocaleDateString()}
-        </span>
-        <h1 class="text-4xl sm:text-5xl font-medium font-heading tracking-tight mt-4">
-          Toa Kiryu, a web developer based in Japan
-        </h1>
-        <p class="text-lg font-furifont mt-5">
-          私は日本在住の開発者で、主に WEB 開発に携わっています。
-        </p>
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8">
-          <Button>Get in touch</Button>
-          <Button variant="link" className="normal-case px-0">
-            See the projects
-          </Button>
-        </div>
-        <span class="text-[11px] font-mono text-neutral-500 mt-7">
-          10,000 commits · 10+ projects · active since 2023
-        </span>
-      </div>
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <About />
       <div class="[counter-reset:rail] pt-16 border-t">
-        <News />
+        <Latest />
+        <TechStack />
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>

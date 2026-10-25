@@ -1,11 +1,11 @@
 import { defineCollection } from 'astro:content';
 
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 import { z } from 'astro/zod';
 
-const news = defineCollection({
-  loader: glob({ base: './content/news', pattern: '**/*.{md,mdx}' }),
+const latest = defineCollection({
+  loader: glob({ base: './content/latest', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     public: z.boolean(),
     title: z.string(),
@@ -16,4 +16,12 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { news };
+const technologies = defineCollection({
+  loader: file('./content/technologies.json'),
+  schema: z.object({
+    id: z.string(),
+    icon: z.string(),
+  }),
+});
+
+export const collections = { latest, technologies };

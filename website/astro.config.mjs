@@ -9,6 +9,10 @@ import { i18n } from '@/data/i18n';
 
 import react from '@astrojs/react';
 
+import icon from 'astro-icon';
+
+import metaTags from 'astro-meta-tags';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
@@ -35,6 +39,8 @@ export default defineConfig({
     }),
     partytown(),
     react(),
+    icon(),
+    metaTags(),
   ],
   vite: {
     plugins: [

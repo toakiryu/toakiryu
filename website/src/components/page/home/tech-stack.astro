@@ -1,0 +1,45 @@
+---
+import {
+  RailBody,
+  RailContent,
+  RailLabel,
+  RailLabelSubtitle,
+  RailSection,
+  RailTitle,
+  RailDescription,
+} from '@/components/ui/rail';
+import { Icon } from 'astro-icon/components';
+
+import { getCollection, getEntry } from 'astro:content';
+
+const technologies = await getCollection('technologies');
+---
+
+<RailSection className="mt-24">
+  <RailLabel>
+    <span class="font-semibold">Tech Stack</span>
+    <RailLabelSubtitle>
+      libraries
+      <br />
+      tools
+    </RailLabelSubtitle>
+  </RailLabel>
+  <RailBody>
+    <RailTitle>技術スタック</RailTitle>
+    <RailDescription className="font-furifont">
+      以下は私が使用している主な技術スタックです。
+    </RailDescription>
+    <RailContent className="border-t">
+      <ul class="flex flex-wrap gap-4 mt-4">
+        {technologies.map((tech) => (
+          <li class="flex items-center gap-x-3">
+            <div class="border border-dashed hover:border-primary">
+              <Icon name={tech.data.icon} size={40} />
+              <span class="sr-only">{tech.data.id}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </RailContent>
+  </RailBody>
+</RailSection>

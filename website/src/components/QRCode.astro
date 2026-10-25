@@ -1,0 +1,21 @@
+---
+import { renderSVG } from 'uqr';
+import { cn } from 'cn';
+
+interface Props {
+  value: string;
+  className?: string;
+}
+
+const { value, className } = Astro.props;
+
+const svg = renderSVG(value, {
+  ecc: 'M',
+  border: 2,
+});
+---
+
+<div
+  class={cn('w-full h-full [&_svg]:w-full [&_svg]:h-full', className)}
+  set:html={svg}
+/>

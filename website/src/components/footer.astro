@@ -1,0 +1,28 @@
+---
+import QRCode from '@/components/QRCode.astro';
+import { GithubLogoIcon } from '@phosphor-icons/react';
+---
+
+<footer class="mt-24 border-t">
+  <div class="container max-w-200 mx-auto px-4 py-12">
+    <div>
+      <QRCode value="https://ktoa.me" className="w-fit max-w-[15%]" />
+    </div>
+    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-6 mt-10 border-t font-mono text-xs text-muted-foreground">
+      <p>&copy; 2026 Toa Kiryu. All rights reserved.</p>
+      <ul class="flex items-center gap-4">
+        <li>
+          <a
+            class="w-fit h-fit inline-flex shrink-0 items-center justify-center rounded-none border border-transparent bg-clip-padding text-xs transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5 p-1 hover:border-muted-foreground border-dotted"
+            href="https://github.com/toakiryu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <GithubLogoIcon />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
