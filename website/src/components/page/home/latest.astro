@@ -33,9 +33,9 @@ const latest = await getCollection(
     <RailContent className="border-t">
       {latest.map((c) => {
         const str = c.data.created_at.toISOString();
-        // idx 2~4 の手前（"2026" の "26"）
+        // idx 2~4 の手前
         const year = str.slice(2, 4);
-        // idx 5~7 の手前（"2026-06-01" の "06"） + "/" + idx 8~10 の手前（"2026-06-01" の "01"）
+        // idx 5~7 の手前
         const monthDay = str.slice(5, 7) + '/' + str.slice(8, 10);
 
         return (
@@ -46,7 +46,12 @@ const latest = await getCollection(
                 <span class="sr-only">{c.data.category}</span>
               </span>
               <div class="min-w-0">
-                <span class="text-sm font-medium truncate">{c.data.title}</span>
+                <a
+                  href={`/latest/${c.id}`}
+                  class="text-sm font-medium truncate hover:underline underline-offset-[0.15em]"
+                >
+                  {c.data.title}
+                </a>
                 <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
                   {c.data.description}
                 </p>
@@ -62,7 +67,7 @@ const latest = await getCollection(
     </RailContent>
     <p class="mt-5 text-sm">
       <a href="/latest" class="underline underline-offset-[0.15em]">
-        View all latest
+        View all latest updates
       </a>
     </p>
   </RailBody>

@@ -13,29 +13,13 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm dev`はAstroの開発サーバーをバックグラウンドで起動します。表示されたURLの`/ja/`または`/en/`を開いてください（通常は`http://localhost:4321/ja/`）。`pnpm dev:stop`で停止し、`pnpm dev:status`で状態、`pnpm dev:logs`でログを確認できます。
+`pnpm dev`でAstroとWorkerをまとめて起動します。事前ビルドは不要です。通常は`http://localhost:4321/`を開くと、ブラウザの言語に応じて`/ja/`または`/en/`へ移動します。`pnpm dev:bg`でバックグラウンド起動し、`pnpm dev:stop`で停止、`pnpm dev:status`で状態、`pnpm dev:logs`でログを確認できます。
 
 AstroとViteがページやスタイルの変更を反映し、翻訳コードはParaglideのViteプラグインが生成します。`public`は直接配信されるため、変更後にブラウザを再読み込みすれば確認できます。変更のたびにサイト全体のビルドやWorker型の生成は行いません。
 
-開発サーバーでは`worker/index.ts`は実行されません。`Accept-Language`によるリダイレクト、言語別404、生成されたサイトマップなど、本番の配信動作は`pnpm preview`で確認してください。プレビューは通常`http://localhost:8787`で配信され、Ctrl+Cで停止します。ページや静的ファイルの変更をプレビューへ反映するには、別のターミナルで`pnpm build`を実行するか、プレビューを再起動してください。
+開発時は`astro.dev.config.mjs`で公式Cloudflareアダプターを有効にし、Workerを`workerd`で実行します。`worker/dev.ts`は、静的ファイルに相当するリクエストをAstroでその都度レンダリングし、見つからない場合は本番と同じ`worker/index.ts`へ渡します。言語リダイレクト、言語別404、Workerの変更反映も開発サーバーで確認できます。ページはHMR、WorkerはViteのモジュール再読み込みで更新し、全体ビルドの監視プロセスは使いません。
 
-## コマンド
-
-| コマンド                             | 内容                                                   |
-| ------------------------------------ | ------------------------------------------------------ |
-| `pnpm dev` / `pnpm start`            | Astroの開発サーバーをバックグラウンドで起動            |
-| `pnpm dev:stop`                      | 開発サーバーを停止                                     |
-| `pnpm dev:status`                    | 開発サーバーの状態を確認                               |
-| `pnpm dev:logs`                      | 開発サーバーのログを表示                               |
-| `pnpm build`                         | 翻訳コードとWorker型を生成し、静的サイトを`dist`に出力 |
-| `pnpm preview`                       | ビルド後、Wranglerでローカル配信（変更監視なし）       |
-| `pnpm types`                         | Wranglerの設定からWorker型を生成                       |
-| `pnpm sync:i18n`                     | `i18n.config.ts`からinlangの言語設定を同期             |
-| `pnpm astro ...` / `pnpm inlang ...` | 設定を同期してから各CLIを実行                          |
-| `pnpm check:i18n`                    | 翻訳プロジェクトを検査                                 |
-| `pnpm lint:i18n`                     | 翻訳メッセージの参照に関するルールを検査               |
-| `pnpm machine-translate`             | 翻訳プロジェクトの機械翻訳を実行                       |
-| `pnpm deploy`                        | ビルド後、Cloudflareへデプロイ                         |
+本番ビルドは従来どおり`astro.config.mjs`と`wrangler.toml`を使用した静的配信です。生成されたサイトマップや本番成果物の配信動作は`pnpm preview`で確認してください。プレビューは通常`http://localhost:8787`で配信され、Ctrl+Cで停止します。ページや静的ファイルの変更をプレビューへ反映するには、別のターミナルで`pnpm build`を実行するか、プレビューを再起動してください。
 
 ## 構成と配信
 
@@ -53,6 +37,9 @@ AstroとViteがページやスタイルの変更を反映し、翻訳コード�
 | `src/paraglide/`               | 自動生成される翻訳コード                     |
 | `public/`                      | ビルド時にそのままコピーされる静的ファイル   |
 | `worker/index.ts`              | 言語リダイレクトと404応答                    |
+| `worker/dev.ts`                | 開発時のAstroと本番Workerの接続              |
+| `astro.dev.config.mjs`         | 開発時のみCloudflareアダプターを有効化       |
+| `wrangler.dev.toml`            | 開発用Workerの設定                           |
 | `wrangler.toml`                | Worker・静的配信・ドメインの設定             |
 | `dist/`                        | ビルド成果物                                 |
 

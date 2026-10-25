@@ -1,7 +1,7 @@
 import { i18n } from '../src/data/i18n';
 
 interface Env {
-  ASSETS: Fetcher;
+  ASSETS: Pick<Fetcher, 'fetch'>;
 }
 
 const locales = new Set<string>(i18n.locales);
@@ -54,7 +54,7 @@ function isAssetPath(pathname: string): boolean {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request: Request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
