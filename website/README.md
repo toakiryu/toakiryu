@@ -2,7 +2,7 @@
 
 Astroで静的ページを生成し、Cloudflare WorkersのStatic Assetsで配信するWebサイトです。日本語（`/ja/`）と英語（`/en/`）に対応し、翻訳にはParaglideを使用しています。
 
-![screenshot v202610251](/website/public/content/uploads/202610251.png)
+![screenshot v202610251](/website/public/static/uploads/202610251.png)
 
 ## セットアップ
 

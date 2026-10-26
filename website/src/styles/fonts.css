@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Furifont Sans';
-  src: url('/content/fonts/FurifontSansVF.woff2') format('woff2');
+  src: url('/static/fonts/FurifontSansVF.woff2') format('woff2');
   font-weight: 250 900;
   ascent-override: 88%;
   descent-override: 12%;

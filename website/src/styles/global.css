@@ -6,6 +6,7 @@
 
 @import 'fonts.css';
 @import 'text.css';
+@import 'animations.css';
 
 @custom-variant dark (&:is(.dark *));
 
