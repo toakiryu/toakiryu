@@ -1,16 +1,16 @@
 ---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
 import {
   RailBody,
   RailContent,
+  RailDescription,
   RailLabel,
   RailLabelSubtitle,
   RailSection,
   RailTitle,
-  RailDescription,
 } from '@/components/ui/rail';
-import { Icon } from 'astro-icon/components';
-
-import { getCollection } from 'astro:content';
 
 const technologies = await getCollection('technologies');
 ---

@@ -1,17 +1,14 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-
-import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
+import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import tailwindcss from '@tailwindcss/vite';
-import { i18n } from '@/data/i18n';
-
-import react from '@astrojs/react';
-
 import icon from 'astro-icon';
-
 import metaTags from 'astro-meta-tags';
+import { defineConfig } from 'astro/config';
+
+import { i18n } from '@/data/i18n';
 
 // https://astro.build/config
 export default defineConfig({

@@ -1,8 +1,6 @@
-import { defineCollection } from 'astro:content';
-
-import { glob, file } from 'astro/loaders';
-
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { defineCollection } from 'astro:content';
 
 const latest = defineCollection({
   loader: glob({ base: './content/latest', pattern: '**/*.{md,mdx}' }),

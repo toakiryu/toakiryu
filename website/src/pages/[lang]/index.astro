@@ -1,11 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { getLocaleStaticPaths } from '@/i18n/routing';
-export const getStaticPaths = getLocaleStaticPaths;
-
 import About from '@/components/page/home/about.astro';
 import Latest from '@/components/page/home/latest.astro';
 import TechStack from '@/components/page/home/tech-stack.astro';
+import { getLocaleStaticPaths } from '@/i18n/routing';
+import Layout from '@/layouts/Layout.astro';
+
+export const getStaticPaths = getLocaleStaticPaths;
 ---
 
 <Layout>

@@ -26,7 +26,7 @@ function resolveLocale(acceptLanguage: string | null): string {
       };
     })
     .filter(({ q }) => Number.isFinite(q) && q > 0 && q <= 1)
-    .sort((a, b) => b.q - a.q);
+    .toSorted((a, b) => b.q - a.q);
 
   for (const { tag } of preferences) {
     if (tag === '*') {

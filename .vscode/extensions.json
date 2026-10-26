@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "astro-build.astro-vscode",
+    "oxc.oxc-vscode",
     "inlang.vs-code-extension"
   ],
   "unwantedRecommendations": []

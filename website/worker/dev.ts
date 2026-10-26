@@ -1,4 +1,5 @@
 import { handle } from '@astrojs/cloudflare/handler';
+
 import worker from './index';
 
 export default {

@@ -1,4 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 import {
   RailBody,
   RailContent,
@@ -7,11 +10,9 @@ import {
   RailSection,
   RailTitle,
 } from '@/components/ui/rail';
-import { Icon } from './icon';
-
-import { getCollection } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import { i18n } from '@/data/i18n';
+
+import { Icon } from './icon';
 
 const locale = Astro.currentLocale ?? i18n.defaultLocale;
 

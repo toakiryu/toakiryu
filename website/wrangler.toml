@@ -18,13 +18,13 @@ zone_name = "ktoa.me"
 [env.staging]
 name = "toakiryu-website-staging"
 
-  [env.staging.route]
-  pattern = "staging.ktoa.me/*"
-  zone_name = "ktoa.me"
+[env.staging.route]
+pattern = "staging.ktoa.me/*"
+zone_name = "ktoa.me"
 
 [env.production]
 name = "toakiryu-website-production"
 
-  [env.production.route]
-  pattern = "ktoa.me/*"
-  zone_name = "ktoa.me"
+[env.production.route]
+pattern = "ktoa.me/*"
+zone_name = "ktoa.me"

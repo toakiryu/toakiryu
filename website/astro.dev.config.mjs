@@ -1,6 +1,7 @@
 // Keep production builds static; use workerd only for the development server.
-import { mergeConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
+import { mergeConfig } from 'astro/config';
+
 import config from './astro.config.mjs';
 
 export default mergeConfig(config, {

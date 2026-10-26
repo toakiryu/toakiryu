@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "printWidth": 80,
+  "sortPackageJson": false,
+  "astro": true,
+  "sortImports": {
+    "internalPattern": ["@/"],
+    "groups": [
+      "builtin",
+      "external",
+      "internal",
+      ["parent", "sibling", "index"],
+      "unknown"
+    ]
+  },
+  "ignorePatterns": [
+    "pnpm-lock.yaml",
+    "/dist/",
+    "/.astro/",
+    "/.wrangler/",
+    "/project.inlang/**/*",
+    "!/project.inlang/settings.json",
+    "/src/paraglide/**/*",
+    "worker-configuration.d.ts"
+  ]
+}
