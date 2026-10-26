@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { localeStaticPaths } from '@/i18n/routing';
+
+import Latest from '@/components/page/latest/page.astro';
+
+import { getCollection } from 'astro:content';
+import { MergeStaticPaths } from '@/utils/static-paths';
+
+export async function getStaticPaths() {
+  const latest = await getCollection(
+    'latest',
+    ({ data }) => data.public === true,
+  );
+
+  const latestStaticPaths = latest.map((c) => ({
+    params: { latestId: c.id },
+  }));
+
+  const paths = MergeStaticPaths(localeStaticPaths, latestStaticPaths)();
+  console.log('getStaticPaths', paths);
+  return paths;
+}
+
+const { latestId } = Astro.params;
+---
+
+<Layout>
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <Latest latestId={latestId} />
+    </div>
+  </main>
+</Layout>

@@ -9,3 +9,5 @@ export function getLocaleStaticPaths() {
     params: { lang },
   }));
 }
+
+export const localeStaticPaths = getLocaleStaticPaths();

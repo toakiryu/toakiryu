@@ -15,7 +15,10 @@ const svg = renderSVG(value, {
 });
 ---
 
-<div
-  class={cn('w-full h-full [&_svg]:w-full [&_svg]:h-full', className)}
-  set:html={svg}
-/>
+<span>
+  <div
+    class={cn('w-full h-full [&_svg]:w-full [&_svg]:h-full', className)}
+    set:html={svg}
+  />
+  <span class="sr-only">QR Code（{value}）</span>
+</span>

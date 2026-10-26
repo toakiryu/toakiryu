@@ -1,0 +1,58 @@
+---
+import { getEntry } from 'astro:content';
+import {
+  Shell,
+  ShellBanner,
+  ShellTitle,
+  ShellDescription,
+  ShellActions,
+  ShellFooter,
+} from '@/components/ui/shell';
+import { render } from 'astro:content';
+import { CalendarDotsIcon, FunnelIcon } from '@phosphor-icons/react';
+
+interface Props {
+  latestId: string;
+}
+
+const { latestId } = Astro.props;
+
+const latest = await getEntry('latest', latestId);
+
+if (!latest) {
+  return Astro.redirect('/404', 302);
+}
+
+const { Content, remarkPluginFrontmatter } = await render(latest);
+const { title, description, category, created_at, updated_at } = latest.data;
+
+const date = {
+  created: created_at.toDateString(),
+  updated: updated_at?.toLocaleDateString() ?? created_at.toDateString(),
+};
+
+console.log('latest', latest);
+---
+
+<article>
+  <Shell>
+    <ShellBanner>Last updated: {date.updated}</ShellBanner>
+    <ShellTitle>{latest.data.title}</ShellTitle>
+    <ShellDescription>{latest.data.description}</ShellDescription>
+    <ShellFooter className="flex flex-wrap gap-5">
+      <span class="inline-flex items-center gap-1">
+        <CalendarDotsIcon />
+        <span class="sr-only">created at:</span>
+        {date.created}
+      </span>
+      <span class="inline-flex items-center gap-1 capitalize">
+        <span class="sr-only">category:</span>
+        <FunnelIcon />
+        {latest.data.category}
+      </span>
+    </ShellFooter>
+    <div class="prose border-border mt-9 border-t pt-9">
+      <Content />
+    </div>
+  </Shell>
+</article>

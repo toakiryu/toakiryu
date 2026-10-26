@@ -1,13 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getLocaleStaticPaths } from '@/i18n/routing';
-import * as m from '@/paraglide/messages.js';
 export const getStaticPaths = getLocaleStaticPaths;
 
 import About from '@/components/page/home/about.astro';
 import Latest from '@/components/page/home/latest.astro';
 import TechStack from '@/components/page/home/tech-stack.astro';
-import Footer from '@/components/footer.astro';
 ---
 
 <Layout>
@@ -20,5 +18,4 @@ import Footer from '@/components/footer.astro';
       </div>
     </div>
   </main>
-  <Footer />
 </Layout>
