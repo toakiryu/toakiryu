@@ -1,4 +1,6 @@
+import redirect from '../redirect.config';
 import { i18n } from '../src/data/i18n';
+import { isRedirectExcluded } from '../src/i18n/paths';
 
 interface Env {
   ASSETS: Pick<Fetcher, 'fetch'>;
@@ -49,14 +51,16 @@ function getPathLocale(pathname: string): string | null {
   return locales.has(segment) ? segment : null;
 }
 
-function isAssetPath(pathname: string): boolean {
-  return pathname.startsWith('/_astro/') || /\/[^/]+\.[^/]+$/.test(pathname);
-}
-
 export default {
   async fetch(request: Request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
+
+    // Apply exclusions before locale-specific 404 handling, including for
+    // asset URLs that happen to start with a locale such as /ja/image.png.
+    if (isRedirectExcluded(pathname)) {
+      return env.ASSETS.fetch(request);
+    }
 
     const locale = getPathLocale(pathname);
 
@@ -80,8 +84,7 @@ export default {
       });
     }
 
-    // 静的アセットには言語を付与しない
-    if (isAssetPath(pathname)) {
+    if (!redirect.enabled) {
       return env.ASSETS.fetch(request);
     }
 
@@ -106,7 +109,7 @@ export default {
     });
 
     return new Response(null, {
-      status: 302,
+      status: redirect.status,
       headers,
     });
   },

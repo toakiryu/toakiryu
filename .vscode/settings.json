@@ -1,16 +1,9 @@
 {
     "vscord.status.buttons.button1.active.enabled": true,
-    "i18n-ally.localesPaths": ["website/messages"],
-    "i18n-ally.sourceLanguage": "ja",
-    "i18n-ally.displayLanguage": "ja",
-    "i18n-ally.enabledFrameworks": [
-        "general",
-        "custom"
-    ],
-    "i18n-ally.keystyle": "flat",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "[astro]": {
         "editor.defaultFormatter": "oxc.oxc-vscode"
-    }
+    },
+    "x18n.displayLocale": "ja"
 }
