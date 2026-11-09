@@ -1,0 +1,72 @@
+---
+import {
+  RailBody,
+  RailContent,
+  RailLabel,
+  RailLabelSubtitle,
+  RailSection,
+  RailTitle,
+} from '@/components/ui/rail';
+import { i18nl } from '@/utils/link';
+import { getPublicPosts } from '@/utils/posts';
+
+import { Icon } from './icon';
+
+const posts = await getPublicPosts();
+---
+
+<RailSection id="posts">
+  <RailLabel>
+    <span class="font-semibold">Latest</span>
+    <RailLabelSubtitle>
+      Announcements
+      <br />
+      Releases
+      <br />
+      Other
+    </RailLabelSubtitle>
+  </RailLabel>
+  <RailBody>
+    <RailTitle>最新情報</RailTitle>
+    <RailContent className="border-t">
+      {posts.map((c) => {
+        const str = c.data.created_at.toISOString();
+        // idx 2~4 の手前
+        const year = str.slice(2, 4);
+        // idx 5~7 の手前
+        const monthDay = str.slice(5, 7) + '/' + str.slice(8, 10);
+
+        return (
+          <li class="border-border flex flex-raw items-baseline justify-between gap-x-6 gap-y-1 border-b py-4">
+            <div class="w-full flex gap-x-6 gap-y-1 items-center">
+              <span class="pl-3 my-auto">
+                <Icon category={c.data.category} size={24} />
+                <span class="sr-only">{c.data.category}</span>
+              </span>
+              <div class="min-w-0">
+                <a
+                  href={i18nl('/latest', c.id)}
+                  class="text-sm font-medium truncate hover:underline underline-offset-[0.15em]"
+                >
+                  {c.data.title}
+                </a>
+                <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
+                  {c.data.description}
+                </p>
+              </div>
+            </div>
+            <span class="hidden md:flex flex-col-reverse mx-auto text-sm tabular-nums t-orient-mixed writing-mode-vertical-rl">
+              <p class="text-xs">{year}</p>
+              <p class="font-medium">{monthDay}</p>
+            </span>
+          </li>
+        );
+      })}
+    </RailContent>
+    <p class="mt-5 text-sm">
+      <a href={i18nl('/latest')} class="underline underline-offset-[0.15em]">
+        View all latest updates
+      </a>
+    </p>
+  </RailBody>
+</RailSection>

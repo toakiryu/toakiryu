@@ -1,0 +1,29 @@
+---
+import { Button } from '@/components/ui/button';
+import {
+  Shell,
+  ShellActions,
+  ShellBanner,
+  ShellDescription,
+  ShellFooter,
+  ShellTitle,
+} from '@/components/ui/shell';
+---
+
+<Shell>
+  <ShellBanner>Last updated: {new Date().toLocaleDateString()}</ShellBanner>
+  <ShellTitle>Toa Kiryu, a web developer based in Japan</ShellTitle>
+  <ShellDescription>
+    私は日本在住の開発者で、主に WEB 開発に携わっています。
+  </ShellDescription>
+  <ShellActions>
+    <Button size="sm">Get in touch</Button>
+    <a
+      href="/projects"
+      class="normal-case text-sm underline underline-offset-[0.15em]"
+    >
+      See the projects
+    </a>
+  </ShellActions>
+  <ShellFooter>10,000 commits · 10+ projects · active since 2023</ShellFooter>
+</Shell>

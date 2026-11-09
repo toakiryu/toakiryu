@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "pull-request-header": "リリースの準備ができました。\n\n### 本番デプロイ\n\n- [ ] Cloudflareへの本番デプロイをスキップする\n\nチェックすると、リリースは作成しますが、本番にはデプロイしません。Lint・ビルド・デプロイ検証は実行します。PRの自動更新でチェックが戻る場合があるため、マージ直前に確認してください。今回デプロイしない変更も、次回の本番デプロイに含まれます。",
+  "pull-request-footer": "このPRはrelease-pleaseが自動作成しました。",
+  "packages": {
+    "website": {
+      "release-type": "node",
+      "include-component-in-tag": false,
+      "include-v-in-tag": true,
+      "bump-minor-pre-major": true,
+      "changelog-sections": [
+        { "type": "feat", "section": "新機能" },
+        { "type": "fix", "section": "不具合修正" },
+        { "type": "perf", "section": "パフォーマンス改善" },
+        { "type": "docs", "section": "ドキュメント" },
+        { "type": "refactor", "section": "リファクタリング" }
+      ]
+    }
+  }
+}

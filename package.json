@@ -1,0 +1,20 @@
+{
+  "name": "toakiryu",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "preview": "turbo run preview",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check"
+  },
+  "devDependencies": {
+    "@vitejs/devtools-oxc": "^0.8.2",
+    "turbo": "^2.11.10"
+  },
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=24"
+  }
+}

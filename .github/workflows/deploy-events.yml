@@ -1,0 +1,115 @@
+name: デプロイ
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      release_created: ${{ steps.release.outputs['website--release_created'] }}
+      skip_deployment: ${{ steps.deployment.outputs.skip_deployment }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: リリースPRを作成・更新し、マージ済みリリースを公開
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          target-branch: main
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+      - name: マージ済みリリースPRのデプロイ設定を確認
+        id: deployment
+        if: steps.release.outputs['website--release_created'] == 'true'
+        uses: actions/github-script@v7
+        env:
+          RELEASE_SHA: ${{ steps.release.outputs['website--sha'] }}
+        with:
+          script: |
+            const sha = process.env.RELEASE_SHA;
+            if (!sha) {
+              throw new Error('リリースのコミットSHAが取得できないため、デプロイを中止します。');
+            }
+            const pulls = await github.paginate(github.rest.repos.listPullRequestsAssociatedWithCommit, {
+              ...context.repo,
+              commit_sha: sha,
+              per_page: 100,
+            });
+            const releasePr = pulls.find(pr =>
+              pr.merged_at && pr.base.ref === 'main' && pr.merge_commit_sha === sha
+            );
+            if (!releasePr) {
+              throw new Error('マージ済みのリリースPRが見つからないため、デプロイを中止します。');
+            }
+            const skip = /^\s*- \[[xX]\] Cloudflareへの本番デプロイをスキップする\s*$/m.test(releasePr.body || '');
+            core.setOutput('skip_deployment', String(skip));
+            await core.summary
+              .addHeading('本番デプロイ')
+              .addRaw(`リリースPR #${releasePr.number}: ${skip ? 'チェック項目により本番デプロイをスキップ（リリースは公開済み）' : '本番デプロイを実行'}.`)
+              .write();
+
+  deploy:
+    needs: release
+    if: ${{ !cancelled() && (needs.release.result == 'success' || needs.release.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: miseでツールをセットアップ
+        uses: jdx/mise-action@v5
+        with:
+          working_directory: .
+          cache: true
+      - name: 依存関係をインストール
+        working-directory: .
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: このコミットの公開済みリリースを確認
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          while IFS= read -r tag; do
+            if [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][A-Za-z0-9.-]+)?$ ]]; then
+              if [[ "$(gh release view "$tag" --json isDraft --jq '.isDraft' 2>/dev/null)" == "false" ]]; then
+                printf 'PUBLIC_BUILD_RELEASE=%s\n' "$tag" >> "$GITHUB_ENV"
+                break
+              fi
+            fi
+          done < <(git tag --points-at HEAD --sort=-version:refname)
+      - name: ビルド
+        run: pnpm build
+        env:
+          PUBLIC_BUILD_SHA: ${{ github.sha }}
+      - name: デプロイ内容を検証
+        run: pnpm exec wrangler deploy --dry-run --env=""
+      - name: Cloudflareの本番環境へデプロイ
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.release.outputs.release_created == 'true' && needs.release.outputs.skip_deployment == 'false'
+        run: pnpm exec wrangler deploy --env=""
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

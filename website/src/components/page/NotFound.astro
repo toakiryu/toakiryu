@@ -1,0 +1,25 @@
+---
+import { Button } from '@/components/ui/button';
+import {
+  Shell,
+  ShellActions,
+  ShellBanner,
+  ShellDescription,
+  ShellFooter,
+  ShellTitle,
+} from '@/components/ui/shell';
+---
+
+<Shell>
+  <ShellBanner>404</ShellBanner>
+  <ShellTitle>Nothing is indexed here.</ShellTitle>
+  <ShellDescription>
+    ご希望のページは当サイトにはございません。ページが移動したか、リンクが誤って記載されている可能性があります。
+  </ShellDescription>
+  <ShellActions>
+    <a href="/" class="normal-case text-sm underline underline-offset-[0.15em]">
+      Go back to the home page
+    </a>
+  </ShellActions>
+  <ShellFooter>Japan · active since 2026</ShellFooter>
+</Shell>

@@ -1,0 +1,21 @@
+---
+import '@/styles/global.css';
+import Footer from '@/components/footer.astro';
+import SEO from '@/components/seo.astro';
+import { getLocale } from '@/paraglide/runtime.js';
+
+const lang = getLocale();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <SEO locale={lang} />
+  </head>
+  <body class="bg-noise bg-neutral-50 dark:bg-neutral-950">
+    <slot />
+    <Footer />
+  </body>
+</html>

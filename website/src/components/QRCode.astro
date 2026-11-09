@@ -1,0 +1,25 @@
+---
+import { cn } from 'cn';
+import { renderSVG } from 'uqr';
+
+interface Props {
+  value: string;
+  container?: string;
+  className?: string;
+}
+
+const { value, container, className } = Astro.props;
+
+const svg = renderSVG(value, {
+  ecc: 'M',
+  border: 2,
+});
+---
+
+<span class={cn('inline-block w-fit h-fit', container)}>
+  <div
+    class={cn('w-full h-full [&_svg]:w-full [&_svg]:h-full', className)}
+    set:html={svg}
+  />
+  <span class="sr-only">QR Code（{value}）</span>
+</span>

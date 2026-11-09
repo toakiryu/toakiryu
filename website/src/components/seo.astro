@@ -1,0 +1,47 @@
+---
+import site from '@/site.config';
+
+interface Props {
+  locale: string;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  title,
+  description = site.description,
+  noindex = false,
+} = Astro.props;
+
+// タイトルテンプレートが指定されている場合は、テンプレートを使用してタイトルを生成する
+const fullTitle = title
+  ? site.title.template.replace('%s', title)
+  : site.title.default;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+
+<meta name="generator" content={Astro.generator} />
+
+{noindex ? (
+  <meta name="robots" content="noindex" />
+) : (
+  <link rel="canonical" href={canonical} />
+)}
+
+<link rel="robots" href="/robots.txt" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={site.url}
+  href="/rss.xml"
+/>
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />

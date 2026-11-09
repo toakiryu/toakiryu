@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../node_modules/@x18n/core/schema/plugin.json
+name: custom
+scanners:
+  regex:
+    - extensions:
+        - ts
+        - mts
+        - cts
+        - tsx
+        - js
+        - mjs
+        - cjs
+        - jsx
+        - astro
+      patterns:
+        - \bm\.({key})\s*\(

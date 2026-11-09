@@ -1,0 +1,21 @@
+---
+import About from '@/components/page/home/about.astro';
+import Posts from '@/components/page/home/posts.astro';
+import TechStack from '@/components/page/home/tech-stack.astro';
+import { getLocaleStaticPaths } from '@/i18n/routing';
+
+export const getStaticPaths = getLocaleStaticPaths;
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <About />
+      <div class="[counter-reset:rail] pt-16 border-t">
+        <Posts />
+        <TechStack />
+      </div>
+    </div>
+  </main>
+</Layout>
