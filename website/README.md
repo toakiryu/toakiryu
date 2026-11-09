@@ -15,7 +15,7 @@ pnpm dev
 
 開発URLは通常`http://localhost:4321/`です。コマンド一覧と説明は[package.json](./package.json)の`scripts`を参照してください。
 
-開発中はページ内のDevframeからX18nの翻訳用DevToolsを利用できます。認証にはサーバーログに表示される6桁のコードを使います。DevToolsは`integrations/devframe/`で管理し、本番には含めません。
+開発中はページ内のVite DevToolsからX18nの翻訳用DevToolsを利用できます。認証にはサーバーログに表示される6桁のコードを使います。DevToolsは`integrations/devtools/`で管理し、本番には含めません。
 
 ## 主な設定
 
@@ -25,7 +25,7 @@ pnpm dev
 | `redirect.config.ts`                         | 言語リダイレクト・静的ファイルなどの除外 |
 | `messages/`                                  | 言語別の翻訳メッセージ                   |
 | `x18n.config.ts`                             | X18nのリソース・キー参照の検出           |
-| `astro.config.mjs`                           | Astro・Vite・Devframe                    |
+| `astro.config.mjs`                           | Astro・Vite・Vite DevTools               |
 | `astro.dev.config.mjs` / `wrangler.dev.toml` | 開発用Worker                             |
 | `wrangler.toml`                              | 本番Worker・静的配信・ドメイン           |
 | `oxlint.config.ts` / `.oxfmtrc.json`         | コードの検査・整形                       |

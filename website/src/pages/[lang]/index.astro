@@ -1,11 +1,11 @@
 ---
 import About from '@/components/page/home/about.astro';
-import Latest from '@/components/page/home/latest.astro';
+import Posts from '@/components/page/home/posts.astro';
 import TechStack from '@/components/page/home/tech-stack.astro';
 import { getLocaleStaticPaths } from '@/i18n/routing';
-import Layout from '@/layouts/Layout.astro';
 
 export const getStaticPaths = getLocaleStaticPaths;
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout>
@@ -13,7 +13,7 @@ export const getStaticPaths = getLocaleStaticPaths;
     <div class="container max-w-200 px-4 mx-auto">
       <About />
       <div class="[counter-reset:rail] pt-16 border-t">
-        <Latest />
+        <Posts />
         <TechStack />
       </div>
     </div>

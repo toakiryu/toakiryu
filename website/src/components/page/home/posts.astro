@@ -1,7 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-
 import {
   RailBody,
   RailContent,
@@ -10,19 +7,15 @@ import {
   RailSection,
   RailTitle,
 } from '@/components/ui/rail';
-import { i18n } from '@/data/i18n';
+import { i18nl } from '@/utils/link';
+import { getPublicPosts } from '@/utils/posts';
 
 import { Icon } from './icon';
 
-const locale = Astro.currentLocale ?? i18n.defaultLocale;
-
-const latest = await getCollection(
-  'latest',
-  ({ data }) => data.public === true,
-);
+const posts = await getPublicPosts();
 ---
 
-<RailSection>
+<RailSection id="posts">
   <RailLabel>
     <span class="font-semibold">Latest</span>
     <RailLabelSubtitle>
@@ -36,7 +29,7 @@ const latest = await getCollection(
   <RailBody>
     <RailTitle>最新情報</RailTitle>
     <RailContent className="border-t">
-      {latest.map((c) => {
+      {posts.map((c) => {
         const str = c.data.created_at.toISOString();
         // idx 2~4 の手前
         const year = str.slice(2, 4);
@@ -52,7 +45,7 @@ const latest = await getCollection(
               </span>
               <div class="min-w-0">
                 <a
-                  href={getRelativeLocaleUrl(locale, `latest/${c.id}`)}
+                  href={i18nl('/latest', c.id)}
                   class="text-sm font-medium truncate hover:underline underline-offset-[0.15em]"
                 >
                   {c.data.title}
@@ -71,10 +64,7 @@ const latest = await getCollection(
       })}
     </RailContent>
     <p class="mt-5 text-sm">
-      <a
-        href={getRelativeLocaleUrl(locale, 'latest')}
-        class="underline underline-offset-[0.15em]"
-      >
+      <a href={i18nl('/latest')} class="underline underline-offset-[0.15em]">
         View all latest updates
       </a>
     </p>

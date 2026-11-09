@@ -1,14 +1,31 @@
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { defineCollection } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 
-const latest = defineCollection({
-  loader: glob({ base: './content/latest', pattern: '**/*.{md,mdx}' }),
+const nameSchema = z.object({
+  hiragana: z.string(),
+  kanji: z.string().optional(),
+  romaji: z.string().optional(),
+});
+
+const authors = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './content/authors' }),
+  schema: z.object({
+    firstname: nameSchema,
+    lastname: nameSchema,
+    url: z.url(),
+  }),
+});
+
+const posts = defineCollection({
+  loader: glob({ base: './content/posts', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     public: z.boolean(),
+    author: reference('authors'),
     title: z.string(),
     description: z.string(),
     category: z.enum(['announcement', 'release', 'other']),
+    tags: z.array(z.string()).optional(),
     created_at: z.coerce.date(),
     updated_at: z.coerce.date().optional(),
   }),
@@ -22,4 +39,4 @@ const technologies = defineCollection({
   }),
 });
 
-export const collections = { latest, technologies };
+export const collections = { authors, posts, technologies };

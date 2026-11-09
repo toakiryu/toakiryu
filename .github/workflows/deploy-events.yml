@@ -1,0 +1,85 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      release_created: ${{ steps.release.outputs['website--release_created'] }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Create or update release PR and publish merged releases
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          target-branch: main
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  deploy:
+    needs: release
+    if: ${{ !cancelled() && (needs.release.result == 'success' || needs.release.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Set up tools with mise
+        uses: jdx/mise-action@v5
+        with:
+          working_directory: .
+          cache: true
+      - name: Install dependencies
+        working-directory: .
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Detect published release for this commit
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          while IFS= read -r tag; do
+            if [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][A-Za-z0-9.-]+)?$ ]]; then
+              if [[ "$(gh release view "$tag" --json isDraft --jq '.isDraft' 2>/dev/null)" == "false" ]]; then
+                printf 'PUBLIC_BUILD_RELEASE=%s\n' "$tag" >> "$GITHUB_ENV"
+                break
+              fi
+            fi
+          done < <(git tag --points-at HEAD --sort=-version:refname)
+      - name: Build
+        run: pnpm build
+        env:
+          PUBLIC_BUILD_SHA: ${{ github.sha }}
+      - name: Validate deployment package
+        run: pnpm exec wrangler deploy --dry-run --env=""
+      - name: Deploy to Cloudflare
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.release.outputs.release_created == 'true'
+        run: pnpm exec wrangler deploy --env=""
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

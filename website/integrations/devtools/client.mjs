@@ -2,7 +2,7 @@
 let dispose;
 
 /** @param {string} base */
-export function bootDevframe(base) {
+export function bootDevTools(base) {
   dispose?.();
   const script = document.createElement('script');
   script.type = 'module';

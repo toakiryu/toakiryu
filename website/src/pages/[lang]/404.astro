@@ -5,13 +5,13 @@ import * as m from '@/paraglide/messages.js';
 
 export const getStaticPaths = getLocaleStaticPaths;
 
-const lang = Astro.params.lang;
+import NotFound from '@/components/page/NotFound.astro';
 ---
 
-<Layout>
-  <main>
-    <h1>404</h1>
-    <p>{m.page_not_found()}</p>
-    <a href={`/${lang}/`}>{m.back_to_home()}</a>
+<Layout title={m.page_not_found()} noindex>
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <NotFound />
+    </div>
   </main>
 </Layout>

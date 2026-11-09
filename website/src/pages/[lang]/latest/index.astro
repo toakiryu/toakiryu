@@ -1,0 +1,84 @@
+---
+import {
+  Shell,
+  ShellDescription,
+  ShellFooter,
+  ShellTitle,
+} from '@/components/ui/shell';
+import { getLocaleStaticPaths } from '@/i18n/routing';
+import Layout from '@/layouts/Layout.astro';
+import { i18nl } from '@/utils/link';
+import { getPublicPosts } from '@/utils/posts';
+export const getStaticPaths = getLocaleStaticPaths;
+
+const posts = await getPublicPosts();
+
+const tags = Array.from(
+  new Set(posts.flatMap((post) => post.data.tags ?? [])),
+).toSorted();
+---
+
+<Layout title="投稿一覧">
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <Shell>
+        <ShellTitle>最新情報</ShellTitle>
+        <ShellDescription>あ～、投稿の一覧です。</ShellDescription>
+        <ShellFooter className="flex flex-wrap gap-5">
+          <ul class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li>
+                <a
+                  class="text-xs no-underline text-muted-foreground hover:text-primary"
+                  href={i18nl('/latest/tag', tag)}
+                >
+                  {tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </ShellFooter>
+      </Shell>
+      <Shell className="pt-0">
+        <ul class="border-t">
+          {posts.map((c) => {
+            return (
+              <li class="border-border flex flex-col gap-x-6 gap-y-1 border-b py-4">
+                <span class="text-[11px] font-mono text-neutral-500">
+                  {c.data.created_at.toDateString()}
+                </span>
+                <div class="w-full flex gap-x-6 gap-y-1">
+                  <div class="min-w-0">
+                    <h2>
+                      <a
+                        href={i18nl('/latest', c.id)}
+                        class="text-sm font-medium font-heading truncate hover:underline underline-offset-[0.15em]"
+                      >
+                        {c.data.title}
+                      </a>
+                    </h2>
+                    <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
+                      {c.data.description}
+                    </p>
+                  </div>
+                </div>
+                <ul class="flex flex-wrap gap-2">
+                  {c.data.tags?.map((tag) => (
+                    <li>
+                      <a
+                        class="text-xs no-underline text-muted-foreground hover:text-primary"
+                        href={i18nl('/latest/tag', tag)}
+                      >
+                        {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </Shell>
+    </div>
+  </main>
+</Layout>

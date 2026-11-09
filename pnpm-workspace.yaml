@@ -1,0 +1,10 @@
+packages:
+  - website
+
+# Keep Devframe's optional agentic peer aligned with the DevTools host.
+overrides:
+  '@devframes/agentic': 1.3.2
+
+allowBuilds:
+  esbuild: false
+  workerd: false

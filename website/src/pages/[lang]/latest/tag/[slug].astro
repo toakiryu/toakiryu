@@ -1,0 +1,80 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+
+import { Shell, ShellDescription, ShellTitle } from '@/components/ui/shell';
+import { localeStaticPaths } from '@/i18n/routing';
+import Layout from '@/layouts/Layout.astro';
+import { i18nl } from '@/utils/link';
+import { getPublicPosts } from '@/utils/posts';
+import { MergeStaticPaths } from '@/utils/static-paths';
+
+export const getStaticPaths = (async () => {
+  const posts = await getPublicPosts();
+
+  const byTag = new Map<string, CollectionEntry<'posts'>[]>();
+  for (const post of posts) {
+    for (const tag of new Set(post.data.tags ?? [])) {
+      const group = byTag.get(tag);
+      if (group) group.push(post);
+      else byTag.set(tag, [post]);
+    }
+  }
+  const tagPaths = [...byTag].map(([tag, taggedPosts]) => ({
+    params: { slug: tag },
+    props: { tag, posts: taggedPosts },
+  }));
+  return MergeStaticPaths(localeStaticPaths, tagPaths)();
+}) satisfies GetStaticPaths;
+
+const { tag, posts } = Astro.props;
+---
+
+<Layout title={`${tag} の投稿`}>
+  <main class="flex-1 [--rail-width:8.5rem] [--rail-gap:3.5rem]">
+    <div class="container max-w-200 px-4 mx-auto">
+      <Shell>
+        <ShellTitle>{tag}</ShellTitle>
+        <ShellDescription>タグ検索に該当する投稿の一覧です。</ShellDescription>
+        <p class="text-muted-foreground mt-5">
+          {posts.length} post.
+          {` `}
+          <a
+            href={i18nl('/latest')}
+            class="font-heading underline hover:text-primary underline-offset-[0.15em]"
+          >
+            All posts
+          </a>
+        </p>
+      </Shell>
+      <Shell className="pt-0">
+        <ul class="border-t">
+          {posts.map((c) => {
+            return (
+              <li class="border-border flex flex-col gap-x-6 gap-y-1 border-b py-4">
+                <span class="text-[11px] font-mono text-neutral-500">
+                  {c.data.created_at.toDateString()}
+                </span>
+                <div class="w-full flex gap-x-6 gap-y-1">
+                  <div class="min-w-0">
+                    <h2>
+                      <a
+                        href={i18nl('/latest', c.id)}
+                        class="text-sm font-medium font-heading truncate hover:underline underline-offset-[0.15em]"
+                      >
+                        {c.data.title}
+                      </a>
+                    </h2>
+                    <p class="text-muted-foreground mt-1 text-sm text-nowrap truncate">
+                      {c.data.description}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </Shell>
+    </div>
+  </main>
+</Layout>

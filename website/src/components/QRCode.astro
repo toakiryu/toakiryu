@@ -4,10 +4,11 @@ import { renderSVG } from 'uqr';
 
 interface Props {
   value: string;
+  container?: string;
   className?: string;
 }
 
-const { value, className } = Astro.props;
+const { value, container, className } = Astro.props;
 
 const svg = renderSVG(value, {
   ecc: 'M',
@@ -15,7 +16,7 @@ const svg = renderSVG(value, {
 });
 ---
 
-<span>
+<span class={cn('inline-block w-fit h-fit', container)}>
   <div
     class={cn('w-full h-full [&_svg]:w-full [&_svg]:h-full', className)}
     set:html={svg}

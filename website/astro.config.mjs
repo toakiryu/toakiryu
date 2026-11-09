@@ -11,7 +11,7 @@ import { defineConfig } from 'astro/config';
 
 import { i18n } from '@/data/i18n';
 
-import devframe from './integrations/devframe/index.mjs';
+import devtools from './integrations/devtools/index.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,10 +41,7 @@ export default defineConfig({
     react(),
     icon(),
     metaTags(),
-    devframe({
-      // Cloudflare forwards app-server WebSocket upgrades to workerd.
-      // Give Devframe a separate, OS-assigned port to avoid that interception.
-      port: 0,
+    devtools({
       devframes: [createX18nDevframe()],
     }),
   ],
