@@ -1,43 +1,20 @@
-[npm-img]: ../assets/icons/npm.png
-[discord-img]: ../assets/icons/discord.png
-[youtube-img]: ../assets/icons/youtube.png
-[twitter-img]: ../assets/icons/twitter.png
-[gmail-img]: ../assets/icons/gmail.png
-[go-img]: ../assets/icons/go.png
-[python-img]: ../assets/icons/python.png
-[swift-img]: ../assets/icons/swift.png
-[scratch-img]: ../assets/icons/scratch.png
-[minecraft-img]: ../assets/icons/minecraft.png
+<picture>
+    <img
+        alt="Toakiryu Banner image"
+        src="/profile/banner.png">
+</picture>
 
-<div align="center">
-  <img src="../assets/svg/welcome.ja.svg" alt="Welcome"/>
-</div>
-<h1 align="center">
-  <img src="https://avatars.githubusercontent.com/u/141471450?s=400&u=d41619c3703941f545528e6928c3e5cdf64f327e&v=4" alt="toakiryu logo" width="96px"/>
-  
-  [👋 こんにちは！桐生トアです。](https://ktoa.me)
-  
-  <div>
-    <a href="https://github.com/toakiryu?tab=followers">
-      <img alt="GitHub followers" src="https://img.shields.io/github/followers/toakiryu">
-    </a>
-    <img alt="GitHub User's stars" src="https://img.shields.io/github/stars/toakiryu">
-    <a href="https://x.com/toakiryu">
-      <img alt="X (formerly Twitter) Follow" src="https://img.shields.io/twitter/follow/toakiryu">
-    </a>
-    <a href="https://bsky.app/profile/ktoa.me">
-      <img alt="Bluesky followers" src="https://img.shields.io/bluesky/followers/ktoa.me">
-    </a>
-    <!-- <a href="https://www.youtube.com/channel/UCT34DhsVlYoyV8Y4c-MTTrQ">
-      <img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCT34DhsVlYoyV8Y4c-MTTrQ">
-    </a> -->
-    <a>
-      <img src="https://komarev.com/ghpvc/?username=toakiryu&color=blue" />
-    </a>
-  </div>
-</h1>
+### 桐生トアの GitHub へようこそ！
 
-<div align="center">
+僕は、日本を拠点に活動する学生・個人開発者です。
+
+TypeScriptを中心としたWebアプリケーション、開発者向けツール、ライブラリ、APIなどの設計・開発を行っています。
+
+フロントエンドからバックエンド、インフラまで幅広い領域に取り組み、個人開発やオープンソースソフトウェアの開発を中心に活動しています。
+
+技術の探究と実用性を重視し、自由で持続可能なソフトウェア開発を目指しています。
+
+<div>
   <a href="../README.md">
     English
   </a>
@@ -46,47 +23,6 @@
     日本語
   </a>
 </div>
-
-### 日本在住の情熱的なプログラマー
-
-- **年齢**: 17
-
-### 📫 連絡先:
-
-[![Bluesky][gmail-img]](https://bsky.app/profile/ktoa.me)
-[![Twitter(x)][twitter-img]](https://twitter.com/toakiryu)
-
-### 🌱 現在学んでいること
-
-[![Go][go-img]](https://go.dev/)
-[![Python][python-img]](https://www.python.org/)
-[![Swift][swift-img]](https://www.swift.org/)
-
-# 🔗 リンク
-
-[![NPM][npm-img]](https://www.npmjs.com/~toakiryu)
-[![Discord][discord-img]](https://discord.com/users/990984460365365258)
-[![Youtube][youtube-img]](https://www.youtube.com/@toakiryu)
-[![Twitter(x)][twitter-img]](https://x.com/toakiryu)
-[![Scratch (旧][scratch-img]](https://scratch.mit.edu/users/Fun_117/)
-[![Scratch (新][scratch-img]](https://scratch.mit.edu/users/Toakiryu/)
-[![Minecraft][minecraft-img]](https://ja.namemc.com/profile/toakiryu)
-
-<p align="center">
-  <picture>
-    <source
-      srcset="../assets/svg/github-contribution-grid-snake-dark.svg"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="../assets/svg/github-contribution-grid-snake.svg"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="../assets/svg/github-contribution-grid-snake.svg" />
-  </picture>
-</p>
-
----
 
 <p align="center">
   <picture>
@@ -103,47 +39,6 @@
 
   <picture>
     <source
-      srcset="https://github-profile-trophy.vercel.app/?username=toakiryu&theme=algolia&row=1&margin-w=20&no-bg=true&no-frame=true&locale=ja"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-profile-trophy.vercel.app/?username=toakiryu&theme=flat&row=1&margin-w=20&no-bg=true&no-frame=true&locale=ja"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="https://github-profile-trophy.vercel.app/?username=toakiryu&theme=flat&row=1&margin-w=20&no-bg=true&no-frame=true&locale=ja" />
-  </picture>
-</p>
-
----
-
-<p align="center">
-  <picture>
-    <source
-      srcset="https://github-readme-stats.vercel.app/api?username=toakiryu&show_icons=true&theme=github_dark&locale=ja"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-readme-stats.vercel.app/api?username=toakiryu&show_icons=true&locale=ja"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img width="600" height="200" src="https://github-readme-stats.vercel.app/api?username=toakiryu&show_icons=true&locale=ja" />
-  </picture>
-  <picture>
-    <source
-      srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=toakiryu&size_weight=0.15&count_weight=0.5&layout=compact&theme=github_dark&locale=ja"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=toakiryu&size_weight=0.15&count_weight=0.5&layout=compact&locale=ja"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img width="600" height="200" src="https://github-readme-stats.vercel.app/api/top-langs/?username=toakiryu&size_weight=0.15&count_weight=0.5&layout=compact&locale=ja" />
-  </picture>
-</p>
-
-<p align="center">
-  <picture>
-    <source
       srcset="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=toakiryu&theme=github_dark"
       media="(prefers-color-scheme: dark)"
     />
@@ -153,57 +48,163 @@
     />
     <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=toakiryu" />
   </picture>
-
-  <picture>
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu&theme=github_dark"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu" />
-  </picture>
-
-  <picture>
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu&theme=github_dark"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu" />
-  </picture>
-
-  <picture>
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu&theme=github_dark"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu" />
-  </picture>
-
-  <picture>
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9&theme=github_dark"
-      media="(prefers-color-scheme: dark)"
-    />
-    <source
-      srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9"
-      media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-    />
-    <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9" />
-  </picture>
 </p>
 
----
+<table width="100%">
+  <tr>
+<td width="50%" valign="top">
+
+```yml
+name:
+  firstName: Toa
+  lastName: Kiryu
+  displayName: 桐生トア
+  username: toakiryu
+
+birthday: 2009-08-14
+age: 17
+
+location:
+  country: Japan
+  prefecture: Aichi
+
+occupation:
+  - Student
+  - Web Developer
+  - OSS Developer
+
+languages:
+  - ja
+  - en
+
+website: https://ktoa.me
+github: https://github.com/toakiryu
+```
+
+</td>
+<td width="50%" valign="top">
+
+## SNS
+
+<a href="https://discord.com/users/990984460365365258">
+  <img
+    src="https://skillicons.dev/icons?i=discord"
+    alt="discord"
+    width="50"
+    height="50"
+  >
+</a>
+<a href="https://x.com/toakiryu">
+  <img
+    src="https://skillicons.dev/icons?i=twitter"
+    alt="X (Twitter)"
+    width="50"
+    height="50"
+  >
+</a>
+<a href="https://bsky.app/profile/ktoa.me">
+  <img
+    src="https://api.iconify.design/fa7-brands/bluesky.svg"
+    alt="Bluesky"
+    width="50"
+    height="50"
+  >
+</a>
+<a href="https://www.npmjs.com/~toakiryu">
+  <img
+    src="https://skillicons.dev/icons?i=npm"
+    alt="npm"
+    width="50"
+    height="50"
+  >
+</a>
+
+## 主な使用技術
+
+<img
+  src="https://skillicons.dev/icons?i=aws,astro,css,cloudflare,docker,figma,gcp,git,github,githubactions">
+<img
+  src="https://skillicons.dev/icons?i=html,idea,javascript,md,materialui,mysql,netlify,nextjs,nodejs,notion">
+<img
+  src="https://skillicons.dev/icons?i=npm,nuxtjs,pnpm,powershell,py,redis,supabase,tailwind,ts,vite">
+<img
+  src="https://skillicons.dev/icons?i=vitest,vscode,vue,webpack,workers,,,,,">
+
+## リンク集
+
+[Youtube](https://www.youtube.com/@toakiryu) / [Scratch (旧)](https://scratch.mit.edu/users/Fun_117/) / [Scratch](https://scratch.mit.edu/users/Toakiryu/) / [Minecraft](https://ja.namemc.com/profile/toakiryu)
+
+</td>
+  </tr>
+
+  <tr>
+  </tr>
+
+  <tr>
+<td>
+  <p align="center">
+    <picture>
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu&theme=github_dark"
+        media="(prefers-color-scheme: dark)"
+      />
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+      />
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=toakiryu" />
+    </picture>
+  </p>
+</td>
+<td>
+  <p align="center">
+    <picture>
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu&theme=github_dark"
+        media="(prefers-color-scheme: dark)"
+      />
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+      />
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=toakiryu" />
+    </picture>
+  </p>
+</td>
+  </tr>
+  <tr>
+<td>
+  <p align="center">
+    <picture>
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu&theme=github_dark"
+        media="(prefers-color-scheme: dark)"
+      />
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+      />
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=toakiryu" />
+    </picture>
+  </p>
+</td>
+<td>
+  <p align="center">
+    <picture>
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9&theme=github_dark"
+        media="(prefers-color-scheme: dark)"
+      />
+      <source
+        srcset="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9"
+        media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+      />
+      <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=toakiryu&utcOffset=9" />
+    </picture>
+  </p>
+</td>
+  </tr>
+</table>
 
 <!-- 日本, 愛知 - My Home-->
 
@@ -236,14 +237,3 @@
   ]
 }
 ```
-
-<div align="center">
-  <img src="https://profile-counter.glitch.me/toakiryu/count.svg" />
-</div>
-
-<details>
-  <summary>クレジット</summary>
-  <div>
-    <a href="https://github.com/BEPb/">BEPb</a>
-  </div>
-</details>
