@@ -1,4 +1,4 @@
-name: Deploy website
+name: デプロイ
 
 on:
   push:
@@ -21,12 +21,13 @@ jobs:
     timeout-minutes: 10
     outputs:
       release_created: ${{ steps.release.outputs['website--release_created'] }}
+      skip_deployment: ${{ steps.deployment.outputs.skip_deployment }}
     permissions:
       contents: write
       issues: write
       pull-requests: write
     steps:
-      - name: Create or update release PR and publish merged releases
+      - name: リリースPRを作成・更新し、マージ済みリリースを公開
         id: release
         uses: googleapis/release-please-action@v4
         with:
@@ -34,6 +35,35 @@ jobs:
           target-branch: main
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+      - name: マージ済みリリースPRのデプロイ設定を確認
+        id: deployment
+        if: steps.release.outputs['website--release_created'] == 'true'
+        uses: actions/github-script@v7
+        env:
+          RELEASE_SHA: ${{ steps.release.outputs['website--sha'] }}
+        with:
+          script: |
+            const sha = process.env.RELEASE_SHA;
+            if (!sha) {
+              throw new Error('リリースのコミットSHAが取得できないため、デプロイを中止します。');
+            }
+            const pulls = await github.paginate(github.rest.repos.listPullRequestsAssociatedWithCommit, {
+              ...context.repo,
+              commit_sha: sha,
+              per_page: 100,
+            });
+            const releasePr = pulls.find(pr =>
+              pr.merged_at && pr.base.ref === 'main' && pr.merge_commit_sha === sha
+            );
+            if (!releasePr) {
+              throw new Error('マージ済みのリリースPRが見つからないため、デプロイを中止します。');
+            }
+            const skip = /^\s*- \[[xX]\] Cloudflareへの本番デプロイをスキップする\s*$/m.test(releasePr.body || '');
+            core.setOutput('skip_deployment', String(skip));
+            await core.summary
+              .addHeading('本番デプロイ')
+              .addRaw(`リリースPR #${releasePr.number}: ${skip ? 'チェック項目により本番デプロイをスキップ（リリースは公開済み）' : '本番デプロイを実行'}.`)
+              .write();
 
   deploy:
     needs: release
@@ -47,17 +77,17 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Set up tools with mise
+      - name: miseでツールをセットアップ
         uses: jdx/mise-action@v5
         with:
           working_directory: .
           cache: true
-      - name: Install dependencies
+      - name: 依存関係をインストール
         working-directory: .
         run: pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm lint
-      - name: Detect published release for this commit
+      - name: このコミットの公開済みリリースを確認
         if: github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -71,14 +101,14 @@ jobs:
               fi
             fi
           done < <(git tag --points-at HEAD --sort=-version:refname)
-      - name: Build
+      - name: ビルド
         run: pnpm build
         env:
           PUBLIC_BUILD_SHA: ${{ github.sha }}
-      - name: Validate deployment package
+      - name: デプロイ内容を検証
         run: pnpm exec wrangler deploy --dry-run --env=""
-      - name: Deploy to Cloudflare
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.release.outputs.release_created == 'true'
+      - name: Cloudflareの本番環境へデプロイ
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.release.outputs.release_created == 'true' && needs.release.outputs.skip_deployment == 'false'
         run: pnpm exec wrangler deploy --env=""
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
