@@ -83,7 +83,7 @@
     "yaml": "^2.9.1"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "14.4.2",
+    "@astrojs/cloudflare": "14.4.6",
     "@astrojs/compiler-rs": "^0.5.2",
     "@astrojs/partytown": "^2.1.9",
     "@astrojs/react": "^7.1.1",
