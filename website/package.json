@@ -107,7 +107,7 @@
     "astro": "^7.4.2",
     "astro-icon": "^1.2.0",
     "astro-meta-tags": "^0.4.1",
-    "oxfmt": "^0.74.0",
+    "oxfmt": "^0.77.0",
     "oxlint": "^1.89.0",
     "shadcn": "^4.22.1",
     "tailwindcss": "^4.3.3",
